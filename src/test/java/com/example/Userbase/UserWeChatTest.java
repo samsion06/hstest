@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URI;
 
 @SpringBootTest
-public class UserWeChatTest extends AbstractTestNGSpringContextTests {
+public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 
     @Autowired
     private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
@@ -93,12 +93,12 @@ public class UserWeChatTest extends AbstractTestNGSpringContextTests {
     //根据微信ID和OPENID获取用户信息
     @org.testng.annotations.Test(timeOut = 50000)
     public void test3() {
-          System.out.println(userBaseInfoMapper.queryUserBaseInfo());
+         //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
          //uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
         try {
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
-            //uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
+           // uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
             System.out.println(uri);
             post = new HttpPost(uri);;
             byteArrayEntity = ConvertData.UserInfoUnionIdOpenIdRequestConvertBuilder(1, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
