@@ -1,8 +1,7 @@
 package com.example.utils;
 
 public class HttpConfig {
-    //User-base-Service 172.18.0.112
-    //platform.huasheng100.com/user-base
+    // 测试环境url:172.18.0.112
     public static final  String url="platform.huasheng100.com/user-base";
     public static final  Integer port=8080;
     public static final String scheme="http";
