@@ -92,7 +92,6 @@ public class ExtentTestNGReporterListener implements IReporter {
             }
 
         }
-
         extent.flush();
     }
 
@@ -105,11 +104,9 @@ public class ExtentTestNGReporterListener implements IReporter {
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(OUTPUT_FOLDER + FILE_NAME);
         htmlReporter.config().setDocumentTitle("api测试报告");
         htmlReporter.config().setReportName("api测试报告");
-
-        System.out.println("cao"+htmlReporter.config().getJS());
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-        //htmlReporter.config().setTheme(Theme.STANDARD); ResourceCDN.EXTENTREPORTS
+        //htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setResourceCDN(ResourceCDN.EXTENTREPORTS);
         htmlReporter.config().setJS("var script = document.createElement(\"script\");\n" +
                                     "script.type = \"text/javascript\";\n" +
@@ -123,7 +120,7 @@ public class ExtentTestNGReporterListener implements IReporter {
                         "script.src = \"https://extentreports.com/resx/dist/js/extent.js\";\n" +
                         "document.getElementsByTagName(\"body\")[0].appendChild(script);"+
                 "" +
-                "function addCssByLink(url){ alert(123)\n" +
+                "function addCssByLink(url){ \n" +
                 "  var doc=document;\n" +
                 "  var link=doc.createElement(\"link\");\n" +
                 "  link.setAttribute(\"rel\", \"stylesheet\");\n" +

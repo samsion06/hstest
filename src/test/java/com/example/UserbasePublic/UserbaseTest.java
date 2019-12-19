@@ -1,23 +1,19 @@
-package com.example.Userbase;
+package com.example.UserbasePublic;
 
-import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;
 import com.example.utils.HttpConfig;
 import com.example.utils.MD5Util;
-import com.hs.user.base.proto.ResultResponse;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Map;
 
 //https://blog.csdn.net/qq_16605855/article/details/81183990  testNg集成springboot框架
 @SpringBootTest

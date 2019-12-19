@@ -1,4 +1,4 @@
-package com.example.Userbase;
+package com.example.UserbasePublic.UserbasePrivate;
 
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;
@@ -87,10 +87,6 @@ public class UserAddressTest {
             e.printStackTrace();
         }
     }
-
-
-
-
     }
 
 

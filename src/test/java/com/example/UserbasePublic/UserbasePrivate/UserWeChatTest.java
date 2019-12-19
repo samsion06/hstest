@@ -1,4 +1,4 @@
-package com.example.Userbase;
+package com.example.UserbasePublic.UserbasePrivate;
 
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.CheckReponseResult;
@@ -68,7 +68,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-
     //@org.testng.annotations.Test(description = "用户微信一键登录")
     public void test1(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -77,7 +76,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         HttpPost post=null;
         try{
             //微信绑定
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/loginByOneKey", "", null);
+            uri = new URI(HttpConfig.scheme, null, HttpConfig.priUrl, HttpConfig.priPort, "/weChat/loginByOneKey", "", null);
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserWeChatOneKeyLoginRequest(1,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
@@ -92,14 +91,12 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 
     //根据微信ID和OPENID获取用户信息
     @org.testng.annotations.Test(timeOut = 50000)
-    public void test3() {
-         //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
-         //uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
+    public void getbyopenId() {
+        //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
         try {
             httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
-           // uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
-            System.out.println(uri);
+            uri = new URI(HttpConfig.scheme, null, HttpConfig.priUrl, HttpConfig.priPort, "/base/user/info/pd/get/by/unionId/openId", "", null);
+            System.out.println("url地址："+uri);
             post = new HttpPost(uri);;
             byteArrayEntity = ConvertData.UserInfoUnionIdOpenIdRequestConvertBuilder(1, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
             post.setEntity(byteArrayEntity);

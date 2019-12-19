@@ -7,12 +7,16 @@ import com.hs.productservice.api.proto.getlistbypage.ProductServiceApiGetListByP
 import com.hs.productservice.api.proto.lockuserstock.ProductServiceApiStockService;
 import com.hs.user.base.proto.*;
 import org.apache.http.entity.ByteArrayEntity;
+import org.testng.Reporter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ConvertData {
+
+    static String incomeMessage="MessageIn:"+" {";
+
     //花生日记登录用根据手机号,密码
     public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){
         UserBaseServiceProto.UserInfoPdLoginRequest.Builder builder= UserBaseServiceProto.UserInfoPdLoginRequest.newBuilder();
@@ -64,6 +68,7 @@ public class ConvertData {
         builder.setUnionId(unionId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log(incomeMessage+builder+ "}");
         return bytes;
     }
     //修改手机号码

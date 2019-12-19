@@ -1,9 +1,11 @@
 package com.example.utils;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.ResultResponse;
 import org.apache.http.HttpResponse;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -79,14 +81,25 @@ public class CheckReponseResult {
         }
     }
 
-    public static String AssertResponse(HttpResponse response, Class<? extends Message> clazz) throws IOException {
+    public static String AssertResponse(HttpResponse response, Class<? extends Message> clazz)  {
         System.out.println(clazz);
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
-        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        ResultResponse.ResultSet resp = null;
+        try {
+            resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         Assert.assertTrue(resp.getData().is(clazz));
-        resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
+        try {
+            resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
         System.out.println(resultContent);
+        Reporter.log(resultContent);
         return  resultContent;
     }
 }

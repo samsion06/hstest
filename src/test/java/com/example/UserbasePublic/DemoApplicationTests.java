@@ -1,4 +1,4 @@
-package com.example.Userbase;
+package com.example.UserbasePublic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
