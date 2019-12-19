@@ -7,6 +7,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.model.TestAttribute;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
+import com.relevantcodes.extentreports.NetworkMode;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
@@ -105,11 +106,38 @@ public class ExtentTestNGReporterListener implements IReporter {
         htmlReporter.config().setDocumentTitle("api测试报告");
         htmlReporter.config().setReportName("api测试报告");
 
+        System.out.println("cao"+htmlReporter.config().getJS());
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-        // htmlReporter.config().setTheme(Theme.STANDARD); ResourceCDN.EXTENTREPORTS
-        htmlReporter.config().setResourceCDN(ResourceCDN.GITHUB);
+        //htmlReporter.config().setTheme(Theme.STANDARD); ResourceCDN.EXTENTREPORTS
+        htmlReporter.config().setResourceCDN(ResourceCDN.EXTENTREPORTS);
+        htmlReporter.config().setJS("var script = document.createElement(\"script\");\n" +
+                                    "script.type = \"text/javascript\";\n" +
+                                    "script.src = \"https://extentreports.com/resx/dist/js/extent.js\";\n" +
+                                    "document.getElementsByTagName(\"body\")[0].appendChild(script);");
         htmlReporter.config().setCSS(".node.level-1  ul{ display:none;} .node.level-1.active ul{display:block;}");
+        //改变https请求方法
+        htmlReporter.config().setJS(
+                "var script = document.createElement(\"script\");\n" +
+                        "script.type = \"text/javascript\";\n" +
+                        "script.src = \"https://extentreports.com/resx/dist/js/extent.js\";\n" +
+                        "document.getElementsByTagName(\"body\")[0].appendChild(script);"+
+                "" +
+                "function addCssByLink(url){ alert(123)\n" +
+                "  var doc=document;\n" +
+                "  var link=doc.createElement(\"link\");\n" +
+                "  link.setAttribute(\"rel\", \"stylesheet\");\n" +
+                "    link.setAttribute(\"type\", \"text/css\");\n" +
+                "    link.setAttribute(\"href\", url);\n" +
+                "\n" +
+                "  var heads = doc.getElementsByTagName(\"head\");\n" +
+                "  if(heads.length)\n" +
+                "    heads[0].appendChild(link);\n" +
+                "  else\n" +
+                "    doc.documentElement.appendChild(link);\n" +
+                "}\n" +
+                "\n" +
+                "addCssByLink(\"https://extentreports.com/resx/dist/css/extent.css\")");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setReportUsesManualConfiguration(true);
