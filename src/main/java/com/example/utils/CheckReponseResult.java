@@ -81,26 +81,18 @@ public class CheckReponseResult {
         }
     }
 
-    public static String AssertResponse(HttpResponse response, Class<? extends Message> clazz)  {
+    public static String AssertResponse(HttpResponse response, Class<? extends Message> clazz) throws IOException {
         System.out.println(clazz);
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
         ResultResponse.ResultSet resp = null;
-        try {
-            resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         Assert.assertTrue(resp.getData().is(clazz));
-        Assert.assertEquals(1,2);
-        try {
-            resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
-        }
+        resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
         System.out.println(resultContent);
+        //记录结果
         Reporter.log(resultContent);
+        Assert.assertEquals(1,2);
         return  resultContent;
     }
 }

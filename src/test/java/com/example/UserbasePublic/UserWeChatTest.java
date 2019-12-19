@@ -69,33 +69,32 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-
-    //@org.testng.annotations.Test(description = "用户微信一键登录")
-    public void test1(){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        ByteArrayEntity byteArrayEntity=null;
-        URI uri=null;
-        HttpPost post=null;
+    @Test  //用户微信一键登录
+    public void loginByOneKey(){
         try{
             //微信绑定
+            httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/loginByOneKey", "", null);
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserWeChatOneKeyLoginRequest(1,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            //校验状态码,是否需要加数据库判断？
-            CheckReponseResult.checkResponseCodeAndObj(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
+            CheckReponseResult.AssertResponse(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    //根据微信ID和OPENID获取用户信息
-    @Test
-    public void test3() {
+    @Test //根据微信ID和OPENID获取用户信息
+    public void getByOpenId() {
          //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
-         //uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
         try {
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
