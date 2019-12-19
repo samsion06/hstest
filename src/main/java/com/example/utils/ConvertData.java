@@ -151,6 +151,7 @@ public class ConvertData {
         builder.setMobileAreaCode(mobileareacode);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log(incomeMessage+builder+ "}");
         return bytes;
     }
     //微信解绑

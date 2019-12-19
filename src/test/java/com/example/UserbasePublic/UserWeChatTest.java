@@ -39,7 +39,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 
 //    @org.testng.annotations.Test(description = "1.微信绑定" +
 //            "                                   2.微信解绑 OK")
-    public void test2(){
+    public void bindingAndunBinding(){
         try {
             //微信绑定
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/binding", "", null);
@@ -48,7 +48,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            //校验状态码,是否需要加数据库判断？
             CheckReponseResult.checkResponseCode(response);
             //解除绑定
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/unBinding", "", null);
@@ -74,7 +73,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         try{
             //微信绑定
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/loginByOneKey", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserWeChatOneKeyLoginRequest(1,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
