@@ -93,6 +93,7 @@ public class CheckReponseResult {
         }
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         Assert.assertTrue(resp.getData().is(clazz));
+        Assert.assertEquals(1,2);
         try {
             resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
         } catch (InvalidProtocolBufferException e) {

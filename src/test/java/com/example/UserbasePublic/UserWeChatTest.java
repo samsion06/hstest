@@ -14,6 +14,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -90,7 +92,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     }
 
     //根据微信ID和OPENID获取用户信息
-    @org.testng.annotations.Test(timeOut = 50000)
+    @Test
     public void test3() {
          //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
          //uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
