@@ -104,7 +104,7 @@ public class CheckReponseResult {
         ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         resultContent=resp.getMsg();
-        System.out.println(resultContent);
+        System.out.println("出参: \n"+resultContent);
         return resultContent;
     }
 
@@ -115,7 +115,8 @@ public class CheckReponseResult {
             List<UserBaseInfo> userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
             for(UserBaseInfo userbaseinfo:userBaseInfos) {
                 int is_delete = userbaseinfo.getIs_delete();
-                System.out.println("is_delete:" + is_delete);
+                System.out.println("数据库查找channeluserid:"+userbaseinfo.getChannel_user_id());
+                System.out.println("数据库查找is_delete:" + is_delete);
                 Assert.assertEquals(is_delete, Integer.parseInt(TargetOutPut));
             }
         }else if(method.equals("queryUserBaseInfo")){

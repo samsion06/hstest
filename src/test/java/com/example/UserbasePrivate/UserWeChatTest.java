@@ -1,4 +1,4 @@
-package com.example.UserbasePublic.UserbasePrivate;
+package com.example.UserbasePrivate;
 
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.CheckReponseResult;
@@ -15,7 +15,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.Assert;
 
 import java.io.IOException;
 import java.net.URI;

@@ -32,18 +32,20 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 
     private static String AppId="Appid01";
     private static Integer ChannelId=1;
-    private static String ChannelUserId="3692091";
-    static CloseableHttpClient httpClient;
-    static ByteArrayEntity byteArrayEntity;
-    static URI uri;
-    static HttpPost post;
-    static HttpResponse response;
+    private static CloseableHttpClient httpClient;
+    private static ByteArrayEntity byteArrayEntity;
+    private static URI uri;
+    private static HttpPost post;
+    private static HttpResponse response;
 
     @org.testng.annotations.Test(description = "1.微信绑定" +
-            "                              2.微信解绑 OK")
+            "                              2.微信解绑 ")
     public void bindingAndunBinding(){
-        //生成随机得openId
+        //随机生成openId 和 channeluserid
         String openId= DataUtils.getRandomString(9);
+        String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
+        System.out.println("传入随机生成得："+"openId:"+openId+"\b ChannelUserId:"+ChannelUserId);
+        System.out.println("开始执行：bindingAndunBinding（）方法");
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
@@ -65,7 +67,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             String msg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
             if(msg.equals("RESP_CODE_SUCCESS")){
-                CheckReponseResult.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1","3692091");
+                CheckReponseResult.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1",ChannelUserId);
             }else{
                 System.out.println(msg);
             }
@@ -78,16 +80,18 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
+        System.out.println("bindingAndunBinding（）方法结束");
     }
 
     @Test  //用户微信一键登录
     public void loginByOneKey(){
+        System.out.println("开始执行：loginByOneKey（）方法");
         try{
             //微信绑定
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserWeChatOneKeyLoginRequest(1,"17702015334","177417","86");
+            byteArrayEntity = ConvertData.UserWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -101,18 +105,20 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
+        System.out.println("loginByOneKey（）方法结束");
     }
 
     @Test //根据微信ID和OPENID获取用户信息
     public void getByOpenId() {
          //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
+        System.out.println("开始执行：getByOpenId（）方法");
         try {
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
-           // uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
+           //uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
             System.out.println(uri);
             post = new HttpPost(uri);;
-            byteArrayEntity = ConvertData.UserInfoUnionIdOpenIdRequestConvertBuilder(1, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            byteArrayEntity = ConvertData.UserInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -126,5 +132,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
+        System.out.println("getByOpenId（）方法结束");
     }
 }

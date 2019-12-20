@@ -1,4 +1,4 @@
-package com.example.UserbasePublic.UserbasePrivate;
+package com.example.UserbasePrivate;
 
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;

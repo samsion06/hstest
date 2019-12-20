@@ -138,8 +138,9 @@ public class ConvertData {
         builder.setChannelId(ChannelId);
         builder.setChannelUserId(ChannelUserId);
         builder.setOpenId(openId);
-        System.out.println(builder);
+        System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log(builder.toString());
         return bytes;
     }
     //微信一键登录
