@@ -4,6 +4,11 @@ public class User_info {
     private  Integer id;
     private  String username;
     private  String password;
+    private  Integer is_delete;
+
+    public Integer getIs_delete() { return is_delete; }
+
+    public void setIs_delete(Integer is_delete) { this.is_delete = is_delete; }
 
     public Integer getId() {
         return id;
@@ -35,9 +40,8 @@ public class User_info {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", is_delete=" + is_delete +
                 '}';
     }
-
-
 
 }

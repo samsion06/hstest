@@ -1,18 +1,21 @@
 package com.example.utils;
+import com.example.Obj.UserBaseInfo;
+import com.example.mapper.UserBaseInfoMapper;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.ResultResponse;
 import org.apache.http.HttpResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.Reporter;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CheckReponseResult {
-
     private static JsonFormat jsonFormat;
     private static String resultContent = null;
     private static Map<String, Object> map;
@@ -81,18 +84,44 @@ public class CheckReponseResult {
         }
     }
 
-    public static String AssertResponse(HttpResponse response, Class<? extends Message> clazz) throws IOException {
+    //返回内容检查 带对象
+    public static String AssertResponses(HttpResponse response, Class<? extends Message> clazz) throws IOException {
         System.out.println(clazz);
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
-        ResultResponse.ResultSet resp = null;
-        resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         Assert.assertTrue(resp.getData().is(clazz));
         resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
         System.out.println(resultContent);
         //记录结果
         Reporter.log(resultContent);
-        Assert.assertEquals(1,2);
+        //Assert.assertEquals(1,2);
         return  resultContent;
+    }
+    //返回内容检查 不带对象
+    public static String AssertResponse(HttpResponse response) throws IOException {
+        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
+        resultContent=resp.getMsg();
+        System.out.println(resultContent);
+        return resultContent;
+    }
+
+    //数据库检查
+    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method,String TargetOutPut,String channel_user_id){
+        //方法名看UserBaseInfoMapper.xml里面
+        if(method.equals("queryWeChatInfo")){
+            List<UserBaseInfo> userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
+            for(UserBaseInfo userbaseinfo:userBaseInfos) {
+                int is_delete = userbaseinfo.getIs_delete();
+                System.out.println("is_delete:" + is_delete);
+                Assert.assertEquals(is_delete, Integer.parseInt(TargetOutPut));
+            }
+        }else if(method.equals("queryUserBaseInfo")){
+            System.out.println("调用queryUserBaseInfo方法");
+        }else{
+            System.out.println("没找到方法");
+        }
     }
 }

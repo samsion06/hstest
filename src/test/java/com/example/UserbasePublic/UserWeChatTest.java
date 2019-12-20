@@ -1,9 +1,12 @@
 package com.example.UserbasePublic;
 
+import com.example.Obj.UserBaseInfo;
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;
+import com.example.utils.DataUtils;
 import com.example.utils.HttpConfig;
+import com.hs.user.base.proto.ResultResponse;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import com.hs.user.base.proto.UserWeChatAuthServiceProto;
 import org.apache.http.HttpResponse;
@@ -19,6 +22,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 @SpringBootTest
 public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
@@ -29,34 +33,42 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static String AppId="Appid01";
     private static Integer ChannelId=1;
     private static String ChannelUserId="3692091";
-    private static String openId="oBrt31Sg6EqD9DJxB0Mz9EOl-Pp5";
-
     static CloseableHttpClient httpClient;
     static ByteArrayEntity byteArrayEntity;
     static URI uri;
     static HttpPost post;
     static HttpResponse response;
 
-//    @org.testng.annotations.Test(description = "1.微信绑定" +
-//            "                                   2.微信解绑 OK")
+    @org.testng.annotations.Test(description = "1.微信绑定" +
+            "                              2.微信解绑 OK")
     public void bindingAndunBinding(){
+        //生成随机得openId
+        String openId= DataUtils.getRandomString(9);
         try {
+            httpClient = HttpClients.createDefault();
             //微信绑定
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/binding", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/binding","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
             //解除绑定
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/unBinding", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            //普通状态检验
+            String msg = CheckReponseResult.AssertResponse(response);
+            //数据库再次验证
+            if(msg.equals("RESP_CODE_SUCCESS")){
+                CheckReponseResult.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1","3692091");
+            }else{
+                System.out.println(msg);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }finally {
@@ -79,7 +91,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
+            CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -104,7 +116,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response, UserBaseServiceProto.userInfoPdCombine.class);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

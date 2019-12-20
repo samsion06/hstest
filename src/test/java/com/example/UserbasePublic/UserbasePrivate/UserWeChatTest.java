@@ -3,6 +3,7 @@ package com.example.UserbasePublic.UserbasePrivate;
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;
+import com.example.utils.DataUtils;
 import com.example.utils.HttpConfig;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import com.hs.user.base.proto.UserWeChatAuthServiceProto;
@@ -39,7 +40,10 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 //    @org.testng.annotations.Test(description = "1.微信绑定" +
 //            "                                   2.微信解绑 OK")
     public void test2(){
+        //生成随机得openId
+        String openId= DataUtils.getRandomString(9);
         try {
+            httpClient = HttpClients.createDefault();
             //微信绑定
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/binding", "", null);
             post = new HttpPost(uri);
@@ -47,8 +51,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            //校验状态码,是否需要加数据库判断？
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
             //解除绑定
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/weChat/unBinding", "", null);
             post = new HttpPost(uri);
@@ -56,7 +59,14 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            //普通状态检验
+            String msg = CheckReponseResult.AssertResponse(response);
+            //数据库再次验证
+            if(msg.equals("RESP_CODE_SUCCESS")){
+                CheckReponseResult.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1","3692091");
+            }else{
+                System.out.println(msg);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }finally {
@@ -102,7 +112,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response, UserBaseServiceProto.userInfoPdCombine.class);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -8,9 +8,11 @@ import java.util.List;
 
 @Mapper
 public interface UserBaseInfoMapper {
-
+    //查询用户
     public List<UserBaseInfo> queryUserBaseInfo();
 
-    public List<User_info> queryUserInfo();
+   //查询微信
+    public List<UserBaseInfo> queryWeChatInfo(String channel_user_id);
+
 
 }

@@ -162,6 +162,8 @@ public class ConvertData {
         builder.setChannelUserId(channelUserId);
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log(builder.toString());
         return bytes;
     }
     //绑定支付宝
@@ -333,8 +335,4 @@ public class ConvertData {
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return  bytes;
     }
-
-
-
-
 }

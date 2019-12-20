@@ -4,11 +4,16 @@ public class UserBaseInfo {
 
     private Long id;
     private Long user_id;
-    private String  channel_user_id;
     private Long channel_id;
+    private String  channel_user_id;
     private String nick_name;
     private String real_name;
     private String mobile_area_code;
+    private Integer is_delete;
+
+    public Integer getIs_delete() { return is_delete; }
+
+    public void setIs_delete(Integer is_delete) { this.is_delete = is_delete; }
 
     public Long getId() {
         return id;
@@ -76,6 +81,7 @@ public class UserBaseInfo {
                 ", nick_name='" + nick_name + '\'' +
                 ", real_name='" + real_name + '\'' +
                 ", mobile_area_code='" + mobile_area_code + '\'' +
+                ", is_delete=" + is_delete +
                 '}';
     }
 }
