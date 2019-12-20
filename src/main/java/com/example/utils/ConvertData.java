@@ -66,7 +66,7 @@ public class ConvertData {
         builder.setChannelId(channelId);
         builder.setOpenId(openId);
         builder.setUnionId(unionId);
-        System.out.println(builder);
+        //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log(incomeMessage+builder+ "}");
         return bytes;
@@ -138,7 +138,7 @@ public class ConvertData {
         builder.setChannelId(ChannelId);
         builder.setChannelUserId(ChannelUserId);
         builder.setOpenId(openId);
-        System.out.println("入参 \n："+builder);
+        //System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log(builder.toString());
         return bytes;
@@ -150,7 +150,7 @@ public class ConvertData {
         builder.setMobile(mobile);
         builder.setInviteChannelUserId(inviteChannelUserId);
         builder.setMobileAreaCode(mobileareacode);
-        System.out.println(builder);
+        //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log(incomeMessage+builder+ "}");
         return bytes;
@@ -163,7 +163,7 @@ public class ConvertData {
         builder.setChannelUserId(channelUserId);
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        System.out.println(builder);
+        //System.out.println(builder);
         Reporter.log(builder.toString());
         return bytes;
     }

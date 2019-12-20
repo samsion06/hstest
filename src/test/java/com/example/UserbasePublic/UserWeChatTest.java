@@ -44,8 +44,8 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         //随机生成openId 和 channeluserid
         String openId= DataUtils.getRandomString(9);
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        System.out.println("传入随机生成得："+"openId:"+openId+"\b ChannelUserId:"+ChannelUserId);
-        System.out.println("开始执行：bindingAndunBinding（）方法");
+        //System.out.println("传入随机生成得："+"openId:"+openId+"\b ChannelUserId:"+ChannelUserId);
+       // System.out.println("开始执行：bindingAndunBinding（）方法");
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
@@ -84,8 +84,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     }
 
     @Test  //用户微信一键登录
-    public void loginByOneKey(){
-        System.out.println("开始执行：loginByOneKey（）方法");
+    public void loginByOneKey(){ ;
         try{
             //微信绑定
             httpClient = HttpClients.createDefault();
@@ -105,17 +104,13 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
-        System.out.println("loginByOneKey（）方法结束");
     }
 
     @Test //根据微信ID和OPENID获取用户信息
     public void getByOpenId() {
-         //System.out.println(userBaseInfoMapper.queryUserBaseInfo());
-        System.out.println("开始执行：getByOpenId（）方法");
         try {
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
-           //uri = new URI(HttpConfig.scheme, null, "172.18.0.112", 8080, "/base/user/info/pd/get/by/unionId/openId", "", null);
             System.out.println(uri);
             post = new HttpPost(uri);;
             byteArrayEntity = ConvertData.UserInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
@@ -132,6 +127,5 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
-        System.out.println("getByOpenId（）方法结束");
     }
 }
