@@ -105,6 +105,7 @@ public class CheckReponseResult {
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         resultContent=resp.getMsg();
         System.out.println("出参: \n"+resultContent);
+        Reporter.log(resultContent);
         return resultContent;
     }
 
