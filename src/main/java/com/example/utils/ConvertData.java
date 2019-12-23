@@ -176,6 +176,7 @@ public class ConvertData {
         builder.setAlipayRealname(alipayRealname);
         builder.setAlipayUserId(alipayUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
         return bytes;
     }
     //支付宝授权
@@ -185,6 +186,7 @@ public class ConvertData {
         builder.setChannelId(channelId);
         builder.setAlipayUserId(alipayUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
         return bytes;
     }
     //用户支付宝取消授权

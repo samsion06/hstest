@@ -45,8 +45,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         //随机生成alipayAccount
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
         System.out.println(alipayAccount);
-
-
         try {
             //绑定支付宝
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
@@ -63,7 +61,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
@@ -71,7 +69,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -142,10 +140,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             } catch (IOException e) {
             }
         }
-
-
-
-
     }
 }
 
