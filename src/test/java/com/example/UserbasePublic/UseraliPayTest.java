@@ -22,29 +22,29 @@ import java.net.URI;
 public class UseraliPayTest extends AbstractTestNGSpringContextTests {
 
     private static Integer channelId=1;
-    private static String alipayAccount="17702015335";
 
     static CloseableHttpClient httpClient = HttpClients.createDefault();
     static URI uri ;
     static HttpPost post ;
     static HttpResponse response ;
     static ByteArrayEntity byteArrayEntity ;
-    static JsonFormat jsonFormat;
-
 
 //    @org.testng.annotations.Test(description = "1.绑定支付宝" +
 //            "                                   2.用户支付宝授权" +
 //            "                                   3.用户支付宝取消授权 OK")
     public void test5(){
-        //生成随机的channuserid
+        /**
+         * 生成随机
+         * channelUserId
+         * aliypayuserid
+         * alipayRealname
+         * alipayAccount
+         */
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        //生成随机的aliypayuserid 4位
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        //生成随机的alipayRealname
         String alipayRealname= DataUtils.getRandomString(9);
-        //随机生成alipayAccount
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
-        System.out.println(alipayAccount);
+
         try {
             //绑定支付宝
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
@@ -80,43 +80,13 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @org.testng.annotations.Test(description = "1.实名认证" +
-            "                              2.实名认证查询")
-    public void test6(){
-        String channeluserId="177392";
-        try {
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/idCard/identify", "", null);
-            post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserIdCardIdentifyRequestConvertBuilder(channeluserId, 1, "向亚运","431224199009227572","http://www.baidu.com");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/idCard/queryStatus", "", null);
-            post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, 1);
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response,UserIdCardIdentifyServiceProto.UserIdCardIdentifyInfo.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-            }
-        }
-    }
-
-    //@org.testng.annotations.Test(description = "用户支付宝授权信息查询")
+    @org.testng.annotations.Test(description = "用户支付宝授权信息查询")
     public void test8(){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        String channeluserId="180409";
+        String channeluserId="2571";
         try {
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/aliPay/auth/info", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/info","");
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAliPayAuthInfoRequest(channeluserId, 1);
+            byteArrayEntity = ConvertData.UserAliPayAuthInfoRequest(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -135,6 +105,35 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
+    //    @org.testng.annotations.Test(description = "1.实名认证" +
+    //                "                               2.实名认证查询")
+    public void test6(){
+        String channeluserId="2571";
+        try {
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/identify","");
+            post = new HttpPost(uri);
+            byteArrayEntity = ConvertData.UserIdCardIdentifyRequestConvertBuilder(channeluserId, 1, "向亚运","431224199009227572","http://www.baidu.com");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponse(response);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/queryStatus","");
+            post = new HttpPost(uri);
+            byteArrayEntity = ConvertData.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, 1);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserIdCardIdentifyServiceProto.UserIdCardIdentifyInfo.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+            }
+        }
+    }
+
 }
 
 
