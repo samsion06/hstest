@@ -29,9 +29,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     static HttpResponse response ;
     static ByteArrayEntity byteArrayEntity ;
 
-//    @org.testng.annotations.Test(description = "1.绑定支付宝" +
-//            "                                   2.用户支付宝授权" +
-//            "                                   3.用户支付宝取消授权 OK")
+    @org.testng.annotations.Test(description = "1.绑定支付宝" +
+            "                              2.用户支付宝授权" +
+            "                              3.用户支付宝取消授权 OK")
     public void test5(){
         /**
          * 生成随机
@@ -44,7 +44,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayRealname= DataUtils.getRandomString(9);
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
-
         try {
             //绑定支付宝
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
@@ -105,6 +104,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
+
     //    @org.testng.annotations.Test(description = "1.实名认证" +
     //                "                               2.实名认证查询")
     public void test6(){
