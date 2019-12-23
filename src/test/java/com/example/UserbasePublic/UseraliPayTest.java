@@ -32,9 +32,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     static JsonFormat jsonFormat;
 
 
-    @org.testng.annotations.Test(description = "1.绑定支付宝" +
-            "                              2.用户支付宝授权" +
-            "                              3.用户支付宝取消授权 OK")
+//    @org.testng.annotations.Test(description = "1.绑定支付宝" +
+//            "                                   2.用户支付宝授权" +
+//            "                                   3.用户支付宝取消授权 OK")
     public void test5(){
         //生成随机的channuserid
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
@@ -80,14 +80,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-//    @org.testng.annotations.Test(description = "1.实名认证" +
-//            "                                   2.实名认证查询")
+    @org.testng.annotations.Test(description = "1.实名认证" +
+            "                              2.实名认证查询")
     public void test6(){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        URI uri = null;
-        HttpPost post = null;
-        HttpResponse response = null;
-        ByteArrayEntity byteArrayEntity = null;
         String channeluserId="177392";
         try {
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/idCard/identify", "", null);
@@ -96,14 +91,14 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/idCard/queryStatus", "", null);
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, 1);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCodeAndObj(response,UserIdCardIdentifyServiceProto.UserIdCardIdentifyInfo.class);
+            CheckReponseResult.AssertResponses(response,UserIdCardIdentifyServiceProto.UserIdCardIdentifyInfo.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -114,8 +109,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-
-   // @org.testng.annotations.Test(description = "用户支付宝授权信息查询")
+    //@org.testng.annotations.Test(description = "用户支付宝授权信息查询")
     public void test8(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String channeluserId="180409";
