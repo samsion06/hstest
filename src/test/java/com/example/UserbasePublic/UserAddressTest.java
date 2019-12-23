@@ -59,7 +59,7 @@ public class UserAddressTest {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             //删除收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/delete", "", null);
             post = new HttpPost(uri);
@@ -67,7 +67,7 @@ public class UserAddressTest {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
         }catch (Exception e){
             e.printStackTrace();
         }

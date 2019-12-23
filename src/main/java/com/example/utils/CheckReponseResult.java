@@ -26,16 +26,8 @@ public class CheckReponseResult {
         map = new HashMap();
     }
 
-    //截取返回内容  10  1 "userId" ","
-    public static String substring(String result,String beginString,Integer beginindex,String endString,Integer endindex){
-        int begin = result.indexOf(beginString) + beginindex;
-        int end = result.indexOf(endString) - endindex;
-        String channelUserId = result.substring(begin, end);
-        return  channelUserId;
-    }
-
     //返回字符串
-    public static String checkResponseResult(HttpResponse response, Class<? extends Message> clazz) throws IOException {
+    public static String checkResponses(HttpResponse response, Class<? extends Message> clazz) throws IOException {
         System.out.println(clazz);
         if (response.getStatusLine().getStatusCode() == 200) {
             ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
@@ -48,6 +40,43 @@ public class CheckReponseResult {
             System.out.println(response.getStatusLine().getStatusCode());
         }
         return resultContent;
+    }
+    public static void checkResponse(HttpResponse response) throws IOException {
+        if (response.getStatusLine().getStatusCode() == 200) {
+            ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+            if (resp.getCode() == ResultResponse.ResponseCode.RESP_CODE_SUCCESS) {
+                System.out.println(resp.getCode());
+            } else {
+                System.out.println(resp.getCode());
+            }
+        } else {
+            System.out.println(response.getStatusLine().getStatusCode());
+        }
+    }
+
+    //框架断言
+    public static String AssertResponse(HttpResponse response) throws IOException {
+        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
+        resultContent=resp.getMsg();
+        System.out.println("出参: \n"+resultContent);
+        Reporter.log(resultContent);
+        return resultContent;
+    }
+
+    public static String AssertResponses(HttpResponse response, Class<? extends Message> clazz) throws IOException {
+        System.out.println(clazz);
+        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
+        Assert.assertTrue(resp.getData().is(clazz));
+        resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
+        System.out.println(resultContent);
+        //记录结果
+        Reporter.log(resultContent);
+        //Assert.assertEquals(1,2);
+        return  resultContent;
     }
 
     //返回对象和字符串
@@ -71,59 +100,4 @@ public class CheckReponseResult {
         return map;
     }
 
-    //无返回对象
-    public static void checkResponseCode(HttpResponse response) throws IOException {
-        if (response.getStatusLine().getStatusCode() == 200) {
-            ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-            if (resp.getCode() == ResultResponse.ResponseCode.RESP_CODE_SUCCESS) {
-                System.out.println(resp.getCode());
-            } else {
-                System.out.println(resp.getCode());
-            }
-        } else {
-            System.out.println(response.getStatusLine().getStatusCode());
-        }
-    }
-
-    //返回内容检查 带对象
-    public static String AssertResponses(HttpResponse response, Class<? extends Message> clazz) throws IOException {
-        System.out.println(clazz);
-        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
-        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
-        Assert.assertTrue(resp.getData().is(clazz));
-        resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
-        System.out.println(resultContent);
-        //记录结果
-        Reporter.log(resultContent);
-        //Assert.assertEquals(1,2);
-        return  resultContent;
-    }
-
-    //返回内容检查 不带对象
-    public static String AssertResponse(HttpResponse response) throws IOException {
-        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
-        ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
-        resultContent=resp.getMsg();
-        System.out.println("出参: \n"+resultContent);
-        Reporter.log(resultContent);
-        return resultContent;
-    }
-
-    //数据库检查
-    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method,String TargetOutPut,String channel_user_id){
-        //方法名看UserBaseInfoMapper.xml里面
-        if(method.equals("queryWeChatInfo")){
-            List<UserBaseInfo> userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-            for(UserBaseInfo userbaseinfo:userBaseInfos) {
-                int is_delete = userbaseinfo.getIs_delete();
-                Assert.assertEquals(is_delete, Integer.parseInt(TargetOutPut));
-            }
-        }else if(method.equals("queryUserBaseInfo")){
-            System.out.println("调用queryUserBaseInfo方法");
-        }else{
-            System.out.println("没找到方法");
-        }
-    }
 }

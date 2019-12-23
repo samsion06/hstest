@@ -38,7 +38,7 @@ public class UserLoginTest extends AbstractTestNGSpringContextTests
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             //登录
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/info/pd/login", "", null);
             post = new HttpPost(uri);
@@ -55,7 +55,7 @@ public class UserLoginTest extends AbstractTestNGSpringContextTests
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             //校验结果
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

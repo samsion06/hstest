@@ -1,9 +1,6 @@
 package com.example.UserbasePublic;
 
-import com.example.utils.CheckReponseResult;
-import com.example.utils.ConvertData;
-import com.example.utils.HttpConfig;
-import com.example.utils.MD5Util;
+import com.example.utils.*;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -51,8 +48,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            String result = CheckReponseResult.checkResponseResult(response, UserBaseServiceProto.userInfoPdCombine.class);
-            String channelUserId = CheckReponseResult.substring(result, "userId", 10, ",", 1);
+            String result = CheckReponseResult.checkResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+            String channelUserId = DataUtils.substring(result, "userId", 10, ",", 1);
             //修改昵称
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/nick/name/update", "", null);
             post = new HttpPost(uri);
@@ -60,7 +57,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             //修改头像
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/head/img/update", "", null);
             post = new HttpPost(uri);
@@ -68,7 +65,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             mobile++;
             System.out.println(mobile);
             //修改手机号
@@ -78,7 +75,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             //转换密码成md5
             pwd++;
             String md5pwd=MD5Util.toMD5(pwd.toString()).toUpperCase();
@@ -89,7 +86,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.checkResponse(response);
             //再次登录
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/info/pd/login", "", null);
             post = new HttpPost(uri);
@@ -97,7 +94,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseResult(response, UserBaseServiceProto.userInfoPdCombine.class);
+            CheckReponseResult.checkResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

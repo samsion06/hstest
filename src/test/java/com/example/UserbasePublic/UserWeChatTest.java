@@ -2,10 +2,7 @@ package com.example.UserbasePublic;
 
 import com.example.Obj.UserBaseInfo;
 import com.example.mapper.UserBaseInfoMapper;
-import com.example.utils.CheckReponseResult;
-import com.example.utils.ConvertData;
-import com.example.utils.DataUtils;
-import com.example.utils.HttpConfig;
+import com.example.utils.*;
 import com.hs.user.base.proto.ResultResponse;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import com.hs.user.base.proto.UserWeChatAuthServiceProto;
@@ -67,7 +64,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             String msg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
             if(msg.equals("RESP_CODE_SUCCESS")){
-                CheckReponseResult.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1",ChannelUserId);
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1",ChannelUserId);
             }else{
                 System.out.println(msg);
             }

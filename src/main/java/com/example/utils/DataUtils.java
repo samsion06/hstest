@@ -14,4 +14,13 @@ public class DataUtils {
         }
         return sb.toString();
     }
+
+    //截取返回内容  10  1 "userId" ","
+    public static String substring(String result,String beginString,Integer beginindex,String endString,Integer endindex){
+        int begin = result.indexOf(beginString) + beginindex;
+        int end = result.indexOf(endString) - endindex;
+        String channelUserId = result.substring(begin, end);
+        return  channelUserId;
+    }
+
 }
