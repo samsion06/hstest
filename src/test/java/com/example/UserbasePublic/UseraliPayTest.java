@@ -45,6 +45,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayRealname= DataUtils.getRandomString(9);
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
+
         try {
             httpClient= HttpClients.createDefault();
             //绑定支付宝
