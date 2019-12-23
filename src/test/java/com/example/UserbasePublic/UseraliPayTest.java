@@ -2,6 +2,7 @@ package com.example.UserbasePublic;
 
 import com.example.utils.CheckReponseResult;
 import com.example.utils.ConvertData;
+import com.example.utils.DataUtils;
 import com.example.utils.HttpConfig;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.UserAliPayAuthServiceProto;
@@ -20,31 +21,41 @@ import java.net.URI;
 @SpringBootTest
 public class UseraliPayTest extends AbstractTestNGSpringContextTests {
 
-    private static String channelUserId="5201315";
     private static Integer channelId=1;
-    private static String alipayRealname="周雄鑫";
     private static String alipayAccount="17702015335";
-    private static String alipayUserId="5201315";
 
-//    @org.testng.annotations.Test(description = "1.绑定支付宝" +
-//            "                              2.用户支付宝授权" +
-//            "                              3.用户支付宝取消授权 OK")
+    static CloseableHttpClient httpClient = HttpClients.createDefault();
+    static URI uri ;
+    static HttpPost post ;
+    static HttpResponse response ;
+    static ByteArrayEntity byteArrayEntity ;
+    static JsonFormat jsonFormat;
+
+
+    @org.testng.annotations.Test(description = "1.绑定支付宝" +
+            "                              2.用户支付宝授权" +
+            "                              3.用户支付宝取消授权 OK")
     public void test5(){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        ByteArrayEntity byteArrayEntity = null;
-        URI uri=null;
-        HttpPost post=null;
+        //生成随机的channuserid
+        String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
+        //生成随机的aliypayuserid 4位
+        String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
+        //生成随机的alipayRealname
+        String alipayRealname= DataUtils.getRandomString(9);
+        System.out.println(alipayUserId);
+
+
         try {
             //绑定支付宝
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/aliPay/binding", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAliPayBidingRequest(channelUserId,channelId,alipayRealname,alipayAccount,alipayUserId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCode(response);
+            CheckReponseResult.AssertResponse(response);
             //用户支付宝授权
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/aliPay/auth", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAliPayAuthRequest(channelUserId,channelId,alipayUserId);
             post.setEntity(byteArrayEntity);
@@ -52,7 +63,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             CheckReponseResult.checkResponseCode(response);
             //用户取消授权
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/aliPay/auth/cancel", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAliPayAuthRequest(channelUserId,channelId,alipayUserId);
             post.setEntity(byteArrayEntity);
@@ -70,7 +81,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     }
 
 //    @org.testng.annotations.Test(description = "1.实名认证" +
-//            "                              2.实名认证查询")
+//            "                                   2.实名认证查询")
     public void test6(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
         URI uri = null;
@@ -107,11 +118,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
    // @org.testng.annotations.Test(description = "用户支付宝授权信息查询")
     public void test8(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        URI uri = null;
-        HttpPost post = null;
-        HttpResponse response = null;
-        ByteArrayEntity byteArrayEntity = null;
-        JsonFormat jsonFormat=null;
         String channeluserId="180409";
         try {
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/aliPay/auth/info", "", null);
