@@ -38,8 +38,8 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static HttpPost post;
     private static HttpResponse response;
 
-    @org.testng.annotations.Test(description = "1.微信绑定" +
-            "                              2.微信解绑 ")
+    @Test(description = "1.微信绑定" +
+            "          2.微信解绑 ")
     public void bindingAndunBinding(){
         //随机生成openId 和 channeluserid
         String openId= DataUtils.getRandomString(9);

@@ -14,6 +14,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,7 +24,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
 
     private static Integer channelId=1;
 
-    static CloseableHttpClient httpClient = HttpClients.createDefault();
+    static CloseableHttpClient httpClient;
     static URI uri ;
     static HttpPost post ;
     static HttpResponse response ;
@@ -32,7 +33,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     @org.testng.annotations.Test(description = "1.绑定支付宝" +
             "                              2.用户支付宝授权" +
             "                              3.用户支付宝取消授权 OK")
-    public void test5(){
+    public void BindAndAuthAndCancel(){
         /*
          * 生成随机
          * channelUserId
@@ -45,6 +46,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         String alipayRealname= DataUtils.getRandomString(9);
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
         try {
+            httpClient= HttpClients.createDefault();
             //绑定支付宝
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
             post = new HttpPost(uri);
@@ -79,10 +81,11 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @org.testng.annotations.Test(description = "用户支付宝授权信息查询")
-    public void test8(){
+    @Test(description = "用户支付宝授权信息查询")
+    public void authGetInfo(){
         String channeluserId="2571";
         try {
+            httpClient= HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/info","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAliPayAuthInfoRequest(channeluserId, channelId);
@@ -133,7 +136,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
-
 }
 
 
