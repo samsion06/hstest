@@ -33,7 +33,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             "                              2.用户支付宝授权" +
             "                              3.用户支付宝取消授权 OK")
     public void test5(){
-        /**
+        /*
          * 生成随机
          * channelUserId
          * aliypayuserid

@@ -3,7 +3,6 @@ package com.example.utils;
 import java.util.Random;
 
 public class DataUtils {
-
     //length用户要求产生字符串的长度
     public static String getRandomString(int length){
         String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CheckReponseResult {
+
     private static JsonFormat jsonFormat;
     private static String resultContent = null;
     private static Map<String, Object> map;
@@ -98,6 +99,7 @@ public class CheckReponseResult {
         //Assert.assertEquals(1,2);
         return  resultContent;
     }
+
     //返回内容检查 不带对象
     public static String AssertResponse(HttpResponse response) throws IOException {
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
