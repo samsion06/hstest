@@ -70,7 +70,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             String responseMsg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
             if(responseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1",ChannelUserId);
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","1",ChannelUserId);
             }else{
                 System.out.println(responseMsg);
             }

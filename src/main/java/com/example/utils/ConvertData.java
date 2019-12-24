@@ -141,7 +141,7 @@ public class ConvertData {
         builder.setOpenId(openId);
         //System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("微信绑定"+incomeMessage+builder+ "}");
+        Reporter.log("微信绑定_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信解绑
@@ -153,7 +153,7 @@ public class ConvertData {
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
-        Reporter.log("微信绑定解绑"+incomeMessage+builder+ "}");
+        Reporter.log("微信绑定_解绑"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信一键登录
