@@ -67,12 +67,12 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             //普通状态检验
-            String responseMsg = CheckReponseResult.AssertResponse(response);
+            String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
-            if(responseMsg.equals("RESP_CODE_SUCCESS")){
+            if(unbindResponseMsg.equals("RESP_CODE_SUCCESS")){
                 CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","1",ChannelUserId);
             }else{
-                System.out.println(responseMsg);
+                System.out.println(unbindResponseMsg);
             }
         }catch(Exception e){
             e.printStackTrace();

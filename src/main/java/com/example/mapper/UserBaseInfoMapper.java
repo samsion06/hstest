@@ -1,6 +1,6 @@
 package com.example.mapper;
 
-import com.example.Obj.UserAlipayAuthInfo;
+import com.example.Obj.UserWeChatInfo;
 import com.example.Obj.UserBaseInfo;
 import com.example.Obj.User_info;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,6 +18,6 @@ public interface UserBaseInfoMapper {
    //public List<UserAlipayAuthInfo> queryWeChatInfos(String channel_user_id);
 
     //返回单条对象
-    public UserAlipayAuthInfo queryWeChatInfo(String channel_user_id);
+    public UserWeChatInfo queryWeChatInfo(String channel_user_id);
 
 }

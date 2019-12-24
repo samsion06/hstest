@@ -1,9 +1,7 @@
 package com.example.UserbasePublic;
 
-import com.example.utils.CheckReponseResult;
-import com.example.utils.ConvertData;
-import com.example.utils.DataUtils;
-import com.example.utils.HttpConfig;
+import com.example.mapper.UserBaseInfoMapper;
+import com.example.utils.*;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.UserAliPayAuthServiceProto;
 import com.hs.user.base.proto.UserIdCardIdentifyServiceProto;
@@ -12,6 +10,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
@@ -24,30 +23,25 @@ import java.net.URI;
 @SpringBootTest
 public class UseraliPayTest extends AbstractTestNGSpringContextTests {
 
-    private static Integer channelId=1;
+    @Autowired
+    private UserBaseInfoMapper userBaseInfoMapper;
 
-    static CloseableHttpClient httpClient;
-    static URI uri ;
-    static HttpPost post ;
-    static HttpResponse response ;
-    static ByteArrayEntity byteArrayEntity ;
+    private static Integer channelId=1;
+    private static CloseableHttpClient httpClient;
+    private static URI uri ;
+    private static HttpPost post ;
+    private static HttpResponse response ;
+    private static ByteArrayEntity byteArrayEntity ;
 
     @org.testng.annotations.Test(description = "1.绑定支付宝" +
             "                              2.用户支付宝授权" +
             "                              3.用户支付宝取消授权 OK")
     public void BindAndAuthAndCancel(){
-        /*
-         * 生成随机
-         * channelUserId
-         * aliypayuserid
-         * alipayRealname
-         * alipayAccount
-         */
+        //生成随机数
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayRealname= DataUtils.getRandomString(9);
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
-
         try {
             httpClient= HttpClients.createDefault();
             //绑定支付宝
@@ -57,7 +51,14 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+            String bindResponseMsg = CheckReponseResult.AssertResponse(response);
+            if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,);
+            }else{
+                System.out.println(bindResponseMsg);
+            }
+
+
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);

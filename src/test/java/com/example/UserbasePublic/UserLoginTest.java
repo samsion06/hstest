@@ -23,8 +23,8 @@ public class UserLoginTest extends AbstractTestNGSpringContextTests
     private static String newPassword="1234567";
 
 //    @Test(description = "1.用户修改密码" +
-//            "          2.用户登录" +
-//            "          3.用户忘记密码")
+//            "            2.用户登录" +
+//            "            3.用户忘记密码")
     public void test1(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
         ByteArrayEntity byteArrayEntity = null;

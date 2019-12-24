@@ -1,6 +1,6 @@
 package com.example.Obj;
 
-public class UserAlipayAuthInfo {
+public class UserWeChatInfo {
 
     private Long id;
     private Long user_id;
