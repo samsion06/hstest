@@ -27,16 +27,16 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
    static Long mobile=17702015336l;
    static Long pwd=123456l;
 
-//    @org.testng.annotations.Test(description = "1.用户登录" +
-//            "                              2.修改昵称" +
-//            "                              3.修改头像" +
-//            "                              4.修改手机号" +
-//            "                              5.修改密码" +
-//            "                              6.再次登录"+
-//            "                              7.用户注册")
-//          Map result = CheckReponseResult.checkResponseCodeAndObj(response, UserBaseServiceProto.userInfoPdCombine.class);
-//          ResultResponse.ResultSet resp = (ResultResponse.ResultSet)result.get("resultObject");
-//          String userId = resp.getData().unpack(UserBaseServiceProto.userInfoPdCombine.class).getUserId();
+    //@org.testng.annotations.Test(description = "1.用户登录" +
+    //            "                               2.修改昵称" +
+    //            "                               3.修改头像" +
+    //            "                               4.修改手机号" +
+    //            "                               5.修改密码" +
+    //            "                               6.再次登录"+
+    //            "                               7.用户注册")
+    //Map result = CheckReponseResult.checkResponseCodeAndObj(response, UserBaseServiceProto.userInfoPdCombine.class);
+    //ResultResponse.ResultSet resp = (ResultResponse.ResultSet)result.get("resultObject");
+    //String userId = resp.getData().unpack(UserBaseServiceProto.userInfoPdCombine.class).getUserId();
     public void test7(){
         System.out.println(mobile);
         System.out.println(pwd);
@@ -128,19 +128,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
    // @org.testng.annotations.Test(description = "修改用户标签")
     public void test10(){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        ByteArrayEntity byteArrayEntity = null;
-        URI uri = null;
-        HttpPost post = null;
-        HttpResponse response = null;
-
-
-
-
-
 
     }
-
-
-
 }
