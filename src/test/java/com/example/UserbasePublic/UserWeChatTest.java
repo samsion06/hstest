@@ -51,6 +51,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
+
             //解除绑定
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
@@ -59,12 +60,12 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             //普通状态检验
-            String msg = CheckReponseResult.AssertResponse(response);
+            String responseMsg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
-            if(msg.equals("RESP_CODE_SUCCESS")){
+            if(responseMsg.equals("RESP_CODE_SUCCESS")){
                 CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"queryWeChatInfo","1",ChannelUserId);
             }else{
-                System.out.println(msg);
+                System.out.println(responseMsg);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -75,7 +76,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
-        System.out.println("bindingAndunBinding（）方法结束");
     }
 
     @Test  //用户微信一键登录

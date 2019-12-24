@@ -144,6 +144,18 @@ public class ConvertData {
         Reporter.log("微信绑定"+incomeMessage+builder+ "}");
         return bytes;
     }
+    //微信解绑
+    public static ByteArrayEntity UserWeChatAuthUnBindRequest(String openId,Integer channelId,String channelUserId,String appId ){
+        UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.newBuilder();
+        builder.setOpenId(openId);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("微信绑定解绑"+incomeMessage+builder+ "}");
+        return bytes;
+    }
     //微信一键登录
     public static ByteArrayEntity UserWeChatOneKeyLoginRequest(Integer ChannelId,String mobile,String inviteChannelUserId,String mobileareacode){
         UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.newBuilder();
@@ -156,18 +168,7 @@ public class ConvertData {
         Reporter.log("接口名：binding"+incomeMessage+builder+ "}");
         return bytes;
     }
-    //微信解绑
-    public static ByteArrayEntity UserWeChatAuthUnBindRequest(String openId,Integer channelId,String channelUserId,String appId ){
-        UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.newBuilder();
-        builder.setOpenId(openId);
-        builder.setChannelId(channelId);
-        builder.setChannelUserId(channelUserId);
-        builder.setAppId(appId);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        System.out.println(builder);
-        Reporter.log("接口名：unBinding"+incomeMessage+builder+ "}");
-        return bytes;
-    }
+
     //绑定支付宝
     public static ByteArrayEntity  UserAliPayBidingRequest(String channelUserId,Integer channelId,String alipayRealname,String alipayAccount,String  alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayBidingRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayBidingRequest.newBuilder();

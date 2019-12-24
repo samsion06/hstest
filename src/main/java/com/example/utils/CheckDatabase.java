@@ -12,7 +12,7 @@ public class CheckDatabase {
     public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut, String channel_user_id){
         Integer is_delete=null;
         switch (method){
-            case "queryWeChatInfo":
+            case "queryWeChatInfo_unbind":
                 List<UserBaseInfo> userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
                 for(UserBaseInfo userbaseinfo:userBaseInfos) {
                     is_delete = userbaseinfo.getIs_delete();
