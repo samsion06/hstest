@@ -44,16 +44,16 @@ public class CheckDatabase {
                 break;
             case "AliPayAuth":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
-                int status=userAliPayInfo.getStatus();
-                Assert.assertEquals(status,2);
+                int bindStatus=userAliPayInfo.getStatus();
+                Assert.assertEquals(bindStatus,1);
                 Reporter.log(PartMsg+userAliPayInfo);
                 break;
             case "AliPayCancel":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
-                
-
+                int unbindStatus=userAliPayInfo.getStatus();
+                Assert.assertEquals(unbindStatus,2);
+                Reporter.log(PartMsg+userAliPayInfo);
                 break;
-
             default:
                 System.out.println("没找到方法");
                 break;
