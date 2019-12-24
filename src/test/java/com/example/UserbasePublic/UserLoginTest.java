@@ -27,9 +27,9 @@ public class UserLoginTest extends AbstractTestNGSpringContextTests
 //            "            3.用户忘记密码")
     public void test1(){
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        ByteArrayEntity byteArrayEntity = null;
-        URI uri=null;
-        HttpPost post=null;
+        ByteArrayEntity byteArrayEntity;
+        URI uri;
+        HttpPost post;
         try {
             //修改密码
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/pwd/update", "", null);

@@ -20,7 +20,7 @@ public class CheckReponseResult {
     private static JsonFormat jsonFormat;
     private static String resultContent;
     private static Map<String, Object> map;
-    private static  String result="出参: {";
+    private static  String result="返回值: {";
 
     static {
         jsonFormat = new JsonFormat();

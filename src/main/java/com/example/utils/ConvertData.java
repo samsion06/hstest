@@ -153,7 +153,7 @@ public class ConvertData {
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
-        Reporter.log("微信绑定_解绑"+incomeMessage+builder+ "}");
+        Reporter.log("微信绑定解绑_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信一键登录
@@ -165,7 +165,7 @@ public class ConvertData {
         builder.setMobileAreaCode(mobileareacode);
         //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("接口名：binding"+incomeMessage+builder+ "}");
+        Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
         return bytes;
     }
 
@@ -179,6 +179,7 @@ public class ConvertData {
         builder.setAlipayUserId(alipayUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("绑定支付宝_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //支付宝授权
@@ -189,6 +190,7 @@ public class ConvertData {
         builder.setAlipayUserId(alipayUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("支付宝授权_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户支付宝取消授权
@@ -197,6 +199,8 @@ public class ConvertData {
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("取消支付宝授权_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户支付宝授权查询

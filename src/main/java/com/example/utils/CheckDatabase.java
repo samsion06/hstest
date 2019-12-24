@@ -10,8 +10,8 @@ public class CheckDatabase {
 
     private static UserAliPayInfo userAliPayInfo;
     private static UserWeChatInfo userWeChatInfos;
-    private static String AllMsg="数据库部分匹配";
-    private static String PartMsg="数据库全部匹配";
+    private static String AllMsg="数据库部分匹配：";
+    private static String PartMsg="数据库全部匹配：";
 
     /**
      * @param userBaseInfoMapper 查询数据库
@@ -26,23 +26,34 @@ public class CheckDatabase {
             //检查的点不同,所以要分开 根据ChannelUserId查找
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                int is_delete = userWeChatInfos.getIs_delete();
-                //比对
+                int is_delete = userWeChatInfos.getIs_delete(); //比对
                 Assert.assertEquals(is_delete,TargetOutPut);
-                Reporter.log(AllMsg+"user_alipay_auth_info表is_delete字段值变化为："+is_delete);
+                Reporter.log(AllMsg+is_delete);
                 break;
             case "WeChatInfoBind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
                 Assert.assertEquals(userWeChatInfos.getChannel_user_id(),TargetOutPut);
-                Reporter.log(PartMsg+"：user_alipay_auth_info表所有字段为："+userWeChatInfos);
+                System.out.println(userWeChatInfos);
+                Reporter.log(PartMsg+userWeChatInfos);
                 break;
             case "AliPayBind":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
-                Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channel_user_id);
-                Reporter.log(PartMsg+"：user_alipay_auth_info表所有字段为"+userAliPayInfo);
+                //Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channel_user_id);
+                System.out.println(userAliPayInfo);
+                Reporter.log(AllMsg+userAliPayInfo);
                 break;
             case "AliPayAuth":
+                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
+                int status=userAliPayInfo.getStatus();
+                Assert.assertEquals(status,2);
+                Reporter.log(PartMsg+userAliPayInfo);
                 break;
+            case "AliPayCancel":
+                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
+                
+
+                break;
+
             default:
                 System.out.println("没找到方法");
                 break;

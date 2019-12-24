@@ -3,7 +3,6 @@ package com.example.mapper;
 import com.example.Obj.UserAliPayInfo;
 import com.example.Obj.UserWeChatInfo;
 import com.example.Obj.UserBaseInfo;
-import com.example.Obj.User_info;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

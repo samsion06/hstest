@@ -65,6 +65,13 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
+            if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
+            }else{
+                System.out.println(bindResponseMsg);
+            }
+
+
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
