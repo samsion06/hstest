@@ -53,12 +53,10 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             HttpResponse response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
             if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,);
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
             }else{
                 System.out.println(bindResponseMsg);
             }
-
-
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);
