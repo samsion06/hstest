@@ -20,6 +20,7 @@ public class CheckReponseResult {
     private static JsonFormat jsonFormat;
     private static String resultContent;
     private static Map<String, Object> map;
+    private static  String result="出参: {";
 
     static {
         jsonFormat = new JsonFormat();
@@ -61,8 +62,8 @@ public class CheckReponseResult {
         ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         resultContent=resp.getMsg();
-        System.out.println("出参: \n"+resultContent);
-        Reporter.log(resultContent);
+        System.out.println(result+resultContent+"}");
+        Reporter.log(result+resultContent+"}");
         return resultContent;
     }
 

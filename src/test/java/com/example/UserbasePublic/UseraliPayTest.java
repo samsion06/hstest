@@ -14,6 +14,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -93,12 +95,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            if(response.getStatusLine().getStatusCode()==200){
-                UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse resp=  UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse.parseFrom(response.getEntity().getContent());
-                System.out.println("resp"+resp);
-            }else{
-                System.out.println(response.getStatusLine().getStatusCode());
-            }
+            Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+            UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse resp=  UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse.parseFrom(response.getEntity().getContent());
+            Reporter.log(resp.toString());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -110,7 +109,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     }
 
 //        @org.testng.annotations.Test(description = "1.实名认证" +
-//                    "                          2.实名认证查询")
+//                    "                               2.实名认证查询")
     public void test6(){
         String channeluserId="2571";
         try {

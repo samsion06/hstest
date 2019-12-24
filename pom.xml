@@ -23,6 +23,18 @@
 			<url>http://nexus.huasheng100.com/nexus/content/repositories/releases</url>
 			<layout>default</layout>
 		</repository>
+
+		<repository>
+			<id>huasheng100-maven-central-release</id>
+			<name>huasheng100 maven release</name>
+			<url>http://nexus.huasheng100.com/nexus/content/repositories/releases</url>
+		</repository>
+
+		<repository>
+			<id>huasheng100-maven-central-snapshots</id>
+			<name>huasheng100 maven snapshots</name>
+			<url>http://nexus.huasheng100.com/nexus/content/repositories/snapshots</url>
+		</repository>
 	</repositories>
 
 	<properties>
@@ -133,6 +145,13 @@
 			<artifactId>product-service-api</artifactId>
 			<version>0.1.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.hs.protosdk.platfrom-service</groupId>
+			<artifactId>user-relation-service-api</artifactId>
+			<version>0.0.5-SNAPSHOT</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>

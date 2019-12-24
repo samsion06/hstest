@@ -6,7 +6,9 @@ import com.hs.productservice.api.proto.getdetailbyidlist.ProductServiceApiGetDet
 import com.hs.productservice.api.proto.getlistbypage.ProductServiceApiGetListByPage;
 import com.hs.productservice.api.proto.lockuserstock.ProductServiceApiStockService;
 import com.hs.user.base.proto.*;
+import com.hs.user.rel.proto.UserRelationProto;
 import org.apache.http.entity.ByteArrayEntity;
+import org.apache.jmeter.samplers.SampleResult;
 import org.testng.Reporter;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.List;
 
 public class ConvertData {
 
-    static String incomeMessage="MessageIn:"+" {";
+    static String incomeMessage="入参:"+" {";
 
     //花生日记登录用根据手机号,密码
     public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){
@@ -140,7 +142,7 @@ public class ConvertData {
         builder.setOpenId(openId);
         //System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log(builder.toString());
+        Reporter.log("接口名：binding"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信一键登录
@@ -152,7 +154,7 @@ public class ConvertData {
         builder.setMobileAreaCode(mobileareacode);
         //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log(incomeMessage+builder+ "}");
+        Reporter.log("接口名：binding"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信解绑
@@ -164,7 +166,7 @@ public class ConvertData {
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
-        Reporter.log(builder.toString());
+        Reporter.log("接口名：unBinding"+incomeMessage+builder+ "}");
         return bytes;
     }
     //绑定支付宝
@@ -204,6 +206,7 @@ public class ConvertData {
         builder.setChannelId(channelId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log(incomeMessage+builder+ "}");
         return bytes;
     }
 
@@ -336,6 +339,20 @@ public class ConvertData {
         builder.addAllLockUserStockDtos(lockUserStockDtoList);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        return  bytes;
+    }
+    /**
+     * @param
+     * //用户关系
+     */
+    public static ByteArrayEntity MyFansQueryRequest(String ChannelUserId,Integer ChannelId,Integer FansType,SampleResult sr){
+        UserRelationProto.MyFansQueryRequest.Builder builder = UserRelationProto.MyFansQueryRequest.newBuilder();
+        builder.setChannelUserId(ChannelUserId);
+        builder.setChannelId(ChannelId);
+        builder.setFansType(2);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        sr.setSamplerData("data:\n"+builder.toString());
+        sr.setDataType(SampleResult.TEXT);
         return  bytes;
     }
 }
