@@ -8,7 +8,6 @@ import com.hs.productservice.api.proto.lockuserstock.ProductServiceApiStockServi
 import com.hs.user.base.proto.*;
 import com.hs.user.rel.proto.UserRelationProto;
 import org.apache.http.entity.ByteArrayEntity;
-import org.apache.jmeter.samplers.SampleResult;
 import org.testng.Reporter;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class ConvertData {
 
-    static String incomeMessage="入参:"+" {";
+    static String incomeMessage="传入参数:"+" {";
 
     //花生日记登录用根据手机号,密码
     public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){
@@ -142,7 +141,7 @@ public class ConvertData {
         builder.setOpenId(openId);
         //System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("接口名：binding"+incomeMessage+builder+ "}");
+        Reporter.log("微信绑定"+incomeMessage+builder+ "}");
         return bytes;
     }
     //微信一键登录
@@ -341,18 +340,19 @@ public class ConvertData {
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return  bytes;
     }
+
     /**
      * @param
      * //用户关系
      */
-    public static ByteArrayEntity MyFansQueryRequest(String ChannelUserId,Integer ChannelId,Integer FansType,SampleResult sr){
-        UserRelationProto.MyFansQueryRequest.Builder builder = UserRelationProto.MyFansQueryRequest.newBuilder();
-        builder.setChannelUserId(ChannelUserId);
-        builder.setChannelId(ChannelId);
-        builder.setFansType(2);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        sr.setSamplerData("data:\n"+builder.toString());
-        sr.setDataType(SampleResult.TEXT);
-        return  bytes;
-    }
+//    public static ByteArrayEntity MyFansQueryRequest(String ChannelUserId,Integer ChannelId,Integer FansType,SampleResult sr){
+//        UserRelationProto.MyFansQueryRequest.Builder builder = UserRelationProto.MyFansQueryRequest.newBuilder();
+//        builder.setChannelUserId(ChannelUserId);
+//        builder.setChannelId(ChannelId);
+//        builder.setFansType(2);
+//        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+//        sr.setSamplerData("data:\n"+builder.toString());
+//        sr.setDataType(SampleResult.TEXT);
+//        return  bytes;
+//    }
 }

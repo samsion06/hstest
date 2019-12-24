@@ -41,8 +41,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         //随机生成openId 和 channeluserid
         String openId= DataUtils.getRandomString(9);
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        //System.out.println("传入随机生成得："+"openId:"+openId+"\b ChannelUserId:"+ChannelUserId);
-       // System.out.println("开始执行：bindingAndunBinding（）方法");
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
