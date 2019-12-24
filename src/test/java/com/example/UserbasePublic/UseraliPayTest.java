@@ -110,7 +110,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     }
 
         @org.testng.annotations.Test(description = "1.实名认证" +
-                    "                           2.实名认证查询")
+                    "                          2.实名认证查询")
     public void test6(){
         String channeluserId="2571";
         try {
