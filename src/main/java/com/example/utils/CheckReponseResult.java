@@ -18,7 +18,7 @@ import java.util.Map;
 public class CheckReponseResult {
 
     private static JsonFormat jsonFormat;
-    private static String resultContent = null;
+    private static String resultContent;
     private static Map<String, Object> map;
 
     static {
@@ -41,6 +41,7 @@ public class CheckReponseResult {
         }
         return resultContent;
     }
+
     public static void checkResponse(HttpResponse response) throws IOException {
         if (response.getStatusLine().getStatusCode() == 200) {
             ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
@@ -75,7 +76,6 @@ public class CheckReponseResult {
         System.out.println(resultContent);
         //记录结果
         Reporter.log(resultContent);
-        //Assert.assertEquals(1,2);
         return  resultContent;
     }
 
@@ -99,5 +99,4 @@ public class CheckReponseResult {
         }
         return map;
     }
-
 }
