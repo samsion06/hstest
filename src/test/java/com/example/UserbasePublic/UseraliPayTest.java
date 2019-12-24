@@ -30,9 +30,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     static HttpResponse response ;
     static ByteArrayEntity byteArrayEntity ;
 
-    @org.testng.annotations.Test(description = "1.绑定支付宝" +
-            "                              2.用户支付宝授权" +
-            "                              3.用户支付宝取消授权 OK")
+//    @org.testng.annotations.Test(description = "1.绑定支付宝" +
+//            "                              2.用户支付宝授权" +
+//            "                              3.用户支付宝取消授权 OK")
     public void BindAndAuthAndCancel(){
         /*
          * 生成随机
@@ -82,7 +82,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description = "用户支付宝授权信息查询")
+   //@Test(description = "用户支付宝授权信息查询")
     public void authGetInfo(){
         String channeluserId="2571";
         try {
@@ -109,21 +109,22 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    //    @org.testng.annotations.Test(description = "1.实名认证" +
-    //                "                               2.实名认证查询")
+        @org.testng.annotations.Test(description = "1.实名认证" +
+                    "                           2.实名认证查询")
     public void test6(){
         String channeluserId="2571";
         try {
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/identify","");
-            post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserIdCardIdentifyRequestConvertBuilder(channeluserId, 1, "向亚运","431224199009227572","http://www.baidu.com");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+//            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/identify","");
+//            post = new HttpPost(uri);
+//            byteArrayEntity = ConvertData.UserIdCardIdentifyRequestConvertBuilder(channeluserId, 1, "向亚运","431224199009227572","http://www.baidu.com");
+//            post.setEntity(byteArrayEntity);
+//            post.setHeader("Content-Type", "application/x-protobuf");
+//            response = httpClient.execute(post);
+//            CheckReponseResult.AssertResponse(response);
+            httpClient= HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/queryStatus","");
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, 1);
+            byteArrayEntity = ConvertData.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
