@@ -10,8 +10,8 @@ public class CheckDatabase {
 
     private static UserAliPayInfo userAliPayInfo;
     private static UserWeChatInfo userWeChatInfos;
-    private static String AllMsg="数据库部分匹配：";
-    private static String PartMsg="数据库全部匹配：";
+    private static String AllMsg="数据库全部匹配：";
+    private static String PartMsg="数据库部分匹配：";
 
     /**
      * @param userBaseInfoMapper 查询数据库
@@ -27,14 +27,14 @@ public class CheckDatabase {
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
                 int is_delete = userWeChatInfos.getIs_delete(); //比对
-                Assert.assertEquals(is_delete,TargetOutPut);
-                Reporter.log(AllMsg+is_delete);
+                Assert.assertEquals(is_delete,1);
+                Reporter.log(AllMsg+"is_delete值变更为："+is_delete);
                 break;
             case "WeChatInfoBind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                Assert.assertEquals(userWeChatInfos.getChannel_user_id(),TargetOutPut);
+                Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channel_user_id);
                 System.out.println(userWeChatInfos);
-                Reporter.log(PartMsg+userWeChatInfos);
+                Reporter.log(AllMsg+userWeChatInfos);
                 break;
             case "AliPayBind":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
@@ -46,13 +46,13 @@ public class CheckDatabase {
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
                 int bindStatus=userAliPayInfo.getStatus();
                 Assert.assertEquals(bindStatus,1);
-                Reporter.log(PartMsg+userAliPayInfo);
+                Reporter.log(PartMsg+"Status值变更为："+bindStatus);
                 break;
             case "AliPayCancel":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
                 int unbindStatus=userAliPayInfo.getStatus();
                 Assert.assertEquals(unbindStatus,2);
-                Reporter.log(PartMsg+userAliPayInfo);
+                Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
             default:
                 System.out.println("没找到方法");

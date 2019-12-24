@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
-    <test name="支付宝">
+    <test name="支付宝中心">
         <classes>
             <class name="com.example.UserbasePublic.UseraliPayTest"/>
         </classes>

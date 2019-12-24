@@ -20,7 +20,7 @@ public class CheckReponseResult {
     private static JsonFormat jsonFormat;
     private static String resultContent;
     private static Map<String, Object> map;
-    private static  String result="返回值: {";
+    private static  String result="返回值: [";
 
     static {
         jsonFormat = new JsonFormat();
@@ -63,7 +63,7 @@ public class CheckReponseResult {
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         resultContent=resp.getMsg();
         System.out.println(result+resultContent+"}");
-        Reporter.log(result+resultContent+"}");
+        Reporter.log(result+resultContent+"]");
         return resultContent;
     }
 
@@ -76,7 +76,7 @@ public class CheckReponseResult {
         resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
         System.out.println(resultContent);
         //记录结果
-        Reporter.log(resultContent);
+        Reporter.log(result+resultContent+"]");
         return  resultContent;
     }
 

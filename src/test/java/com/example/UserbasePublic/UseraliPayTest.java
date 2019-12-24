@@ -70,8 +70,6 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             }else{
                 System.out.println(bindResponseMsg);
             }
-
-
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
@@ -79,7 +77,13 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+            String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
+            if(unbindResponseMsg.equals("RESP_CODE_SUCCESS")){
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayCancel","1",channelUserId);
+            }else{
+                System.out.println(bindResponseMsg);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
