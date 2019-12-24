@@ -9,25 +9,29 @@ import javax.validation.constraints.AssertTrue;
 
 public class CheckDatabase {
 
-    private static int is_delete;
     private static UserAlipayAuthInfo userBaseInfos;
+    private static String AllMsg="数据库部分匹配";
+    private static String PartMsg="数据库全部匹配";
 
     //数据库检查
     public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut, String channel_user_id){
         switch (method){
-            //检查的点不同,所以要分开
+            //检查的点不同,所以要分开 根据ChannelUserId查找
             case "WeChatInfoUnbind":
                 userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                is_delete = userBaseInfos.getIs_delete();
+                int is_delete = userBaseInfos.getIs_delete();
                 //比对
-                Assert.assertEquals(is_delete,1);
-                Reporter.log("数据库部分匹配：user_alipay_auth_info表is_delete字段值变化为："+is_delete);
+                Assert.assertEquals(is_delete,TargetOutPut);
+                Reporter.log(AllMsg+"user_alipay_auth_info表is_delete字段值变化为："+is_delete);
                 break;
             case "WeChatInfoBind":
                 userBaseInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                Assert.assertEquals(1,1);
-                Reporter.log("数据库全部匹配：user_alipay_auth_info表所有字段为："+userBaseInfos);
+                Assert.assertEquals(userBaseInfos.getChannel_user_id(),TargetOutPut);
+                Reporter.log(PartMsg+"：user_alipay_auth_info表所有字段为："+userBaseInfos);
                 break;
+            case "添加地址方法":
+                    System.out.println(userBaseInfoMapper.queryUserBaseInfo());
+
             default:
                 System.out.println("没找到方法");
                 break;

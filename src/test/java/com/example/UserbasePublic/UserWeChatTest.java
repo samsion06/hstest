@@ -55,7 +55,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
             //数据库再次验证
             if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind","1",ChannelUserId);
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",ChannelUserId,ChannelUserId);
             }else{
                 System.out.println(bindResponseMsg);
             }
