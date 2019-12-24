@@ -69,7 +69,7 @@ public class ConvertData {
         builder.setUnionId(unionId);
         //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log(incomeMessage+builder+ "}");
+        Reporter.log("获取用户信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //修改手机号码
@@ -210,7 +210,7 @@ public class ConvertData {
         builder.setChannelId(channelId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log(incomeMessage+builder+ "}");
+        Reporter.log("支付宝授权查询_"+incomeMessage+builder+ "}");
         return bytes;
     }
 

@@ -106,7 +106,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
             UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse resp=  UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse.parseFrom(response.getEntity().getContent());
-            Reporter.log(resp.toString());
+            Reporter.log("返回值：["+resp.toString()+"]");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
