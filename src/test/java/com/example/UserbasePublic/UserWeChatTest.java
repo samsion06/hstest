@@ -35,6 +35,8 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static HttpPost post;
     private static HttpResponse response;
 
+
+    //user_alipay_auth_info
     @Test(description = "1.微信绑定" +
             "          2.微信解绑 ")
     public void bindingAndunBinding(){
@@ -50,8 +52,13 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
-
+            String bindResponseMsg = CheckReponseResult.AssertResponse(response);
+            //数据库再次验证
+            if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
+                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind","1",ChannelUserId);
+            }else{
+                System.out.println(bindResponseMsg);
+            }
             //解除绑定
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
             post = new HttpPost(uri);

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
-    <test name="支付宝">
-        <classes>
-            <class name="com.example.UserbasePublic.UseraliPayTest"/>
-        </classes>
-    </test>
+    <!--<test name="支付宝">-->
+        <!--<classes>-->
+            <!--<class name="com.example.UserbasePublic.UseraliPayTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="微信">
         <classes>

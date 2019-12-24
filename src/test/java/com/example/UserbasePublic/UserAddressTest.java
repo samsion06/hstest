@@ -28,9 +28,9 @@ public class UserAddressTest {
     static HttpResponse response=null;
 
 //    @org.testng.annotations.Test(description = "1.添加收货地址" +
-//            "                              2.获取收货地址" +
-//            "                              3.更新收货地址"+
-//            "                              4.删除收货地址")
+//            "                                   2.获取收货地址" +
+//            "                                   3.更新收货地址"+
+//            "                                   4.删除收货地址")
     public void test1(){
         try{
             //添加收货地址
