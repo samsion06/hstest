@@ -54,6 +54,13 @@ public class CheckDatabase {
                 Assert.assertEquals(unbindStatus,2);
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
+            case "addressAdd":
+
+
+
+
+
+
             default:
                 System.out.println("没找到方法");
                 break;

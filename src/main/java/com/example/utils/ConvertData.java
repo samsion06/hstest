@@ -221,6 +221,7 @@ public class ConvertData {
         builder.setChannelId(channelId);
         builder.setAddress(address);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("添加用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //获取用户收货地址&删除用户收货地址
