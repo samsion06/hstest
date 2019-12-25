@@ -57,6 +57,7 @@ public class CheckDatabase {
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
             case "AddressUpadate"://更新收货地址
+                System.out.println(userBaseInfoMapper);
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
                 String name=userAddressInfo.getName();
                 Assert.assertEquals(TargetOutPut,name); //名称是否有更新

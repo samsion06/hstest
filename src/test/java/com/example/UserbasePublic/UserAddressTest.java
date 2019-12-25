@@ -9,6 +9,8 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -16,15 +18,13 @@ import org.testng.annotations.Test;
 import java.net.URI;
 import java.util.Map;
 
-public class UserAddressTest {
+@SpringBootTest
+public class UserAddressTest extends AbstractTestNGSpringContextTests {
+
     @Autowired
     private UserBaseInfoMapper userBaseInfoMapper;
 
     private static Integer channelId=1;
-
-    @Autowired
-    private UserBaseInfoMapper userBaseInfoMapper;
-
     private static CloseableHttpClient httpClient ;
     private static ByteArrayEntity byteArrayEntity;
     private static URI uri;
@@ -39,7 +39,7 @@ public class UserAddressTest {
         httpClient=HttpClients.createDefault();
         String address= DataUtils.getRandomString(9);//随机地址
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        String username=String.valueOf((int)((Math.random()*9+1)*1000));//随机用户名
+        String name= DataUtils.getRandomString(9);//随机用户名
         try{
             //添加收货地址
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/add","");
@@ -52,7 +52,6 @@ public class UserAddressTest {
             String addaddressResponseMsg = CheckReponseResult.AssertResponses(response, UserAddressServiceProto.UserAddressInfoResponse.class);
             //截取addressId传入下一个接口
             String addressId = DataUtils.substring(addaddressResponseMsg, "addressId:\"", 16, "\",", 0);
-            Reporter.log("截取addressId传入下个接口："+addressId);
             //获取收货地址
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/getByAddressId","");
@@ -63,23 +62,28 @@ public class UserAddressTest {
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserAddressServiceProto.UserAddressInfoResponse.class);
             //更新收货地址
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/update", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/update","");
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(ChannelUserId,channelId,addressId,username);
+            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(ChannelUserId,channelId,addressId,name);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String updateResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",updateResponseMsg);
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AddressUpadate",username,ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AddressUpadate",name,ChannelUserId);
             //删除收货地址
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/delete", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/delete","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponse(response);
+            String deleteResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",deleteResponseMsg);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AddressDelete","1",ChannelUserId);
+
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
