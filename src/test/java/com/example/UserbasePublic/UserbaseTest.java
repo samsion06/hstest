@@ -36,8 +36,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
              String pwd="123456";
              String nickname=DataUtils.getRandomString(9);//随机生成用户名
              String headimgurl=DataUtils.getRandomString(15);//随机生成用户名
-             //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,
-             //user_base_info登录得时候的mobile_area_code有值就要传递
+       //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
         try {
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login","");
