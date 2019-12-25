@@ -1,5 +1,6 @@
 package com.example.UserbasePublic;
 
+import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.*;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import org.apache.http.HttpResponse;
@@ -7,6 +8,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import java.io.IOException;
@@ -16,8 +18,9 @@ import java.net.URI;
 @SpringBootTest
 public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
-   //@Autowired
-   //private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
+
+    @Autowired
+   private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
 
    static CloseableHttpClient httpClient = HttpClients.createDefault();
    static ByteArrayEntity byteArrayEntity = null;
