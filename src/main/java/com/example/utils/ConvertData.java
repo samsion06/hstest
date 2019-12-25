@@ -24,7 +24,7 @@ public class ConvertData {
         builder.setChannelId(ChannelId);
         builder.setMobile(Mobile);
         builder.setPwd(Pwd);
-        builder.setMobileAreaCode(mobileareacode);
+      //  builder.setMobileAreaCode(mobileareacode);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return bytes;
