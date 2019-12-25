@@ -57,16 +57,16 @@ public class CheckDatabase {
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
             case "AddressUpadate"://更新收货地址
-                System.out.println(userBaseInfoMapper);
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
                 String name=userAddressInfo.getName();
                 Assert.assertEquals(TargetOutPut,name); //名称是否有更新
                 Reporter.log(PartMsg+"name值变更为："+name);
+
             case "AddressDelete"://删除收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-                int address_is_delete = userWeChatInfos.getIs_delete(); //比对
+                int address_is_delete = userAddressInfo.getIs_delete(); //比对
                 Assert.assertEquals(1,address_is_delete);
-                Reporter.log(AllMsg+"is_delete值变更为："+address_is_delete);
+                Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
             default:
                 System.out.println("没找到方法");
                 break;

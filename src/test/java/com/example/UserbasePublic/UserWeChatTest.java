@@ -60,7 +60,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             response = httpClient.execute(post);
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals(unbindResponseMsg,"RESP_CODE_SUCCESS");
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","1",ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","null",ChannelUserId);
         }catch(Exception e){
             e.printStackTrace();
         }finally {
