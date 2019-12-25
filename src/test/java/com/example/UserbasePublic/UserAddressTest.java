@@ -34,7 +34,7 @@ public class UserAddressTest {
     public void test1(){
         try{
             //添加收货地址
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/add", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/add","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserAddressInfoAddRequest(channelUserid,channelId,address);
             post.setEntity(byteArrayEntity);
