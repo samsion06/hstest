@@ -40,8 +40,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         //生成随机数
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        String alipayRealname= DataUtils.getRandomString(9);
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000);
+        //生成随机字符串
+        String alipayRealname= DataUtils.getRandomString(9);
         try {
             httpClient= HttpClients.createDefault();
             //绑定支付宝
@@ -52,11 +53,8 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
-            if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
-            }else{
-                System.out.println(bindResponseMsg);
-            }
+            Assert.assertEquals(bindResponseMsg,"RESP_CODE_SUCCESS");
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);
@@ -64,12 +62,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
-            if(bindResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
-            }else{
-                System.out.println(bindResponseMsg);
-            }
+            String authResponse = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals(authResponse,"RESP_CODE_SUCCESS");
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);

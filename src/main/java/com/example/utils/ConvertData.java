@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ConvertData {
 
-    static String incomeMessage="传入参数:"+" {";
+    private static String incomeMessage="传入参数:"+" {";
 
     //花生日记登录用根据手机号,密码
     public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){

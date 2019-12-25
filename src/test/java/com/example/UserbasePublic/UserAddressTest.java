@@ -50,8 +50,6 @@ public class UserAddressTest {
                 System.out.println(addressResponseMsg);
             }
 
-
-
             //{"addressId": "774195ceb7ce455b95c69d2beb1f5723","channelUserId": "17702015334","channelId": 1,"address": "广州海珠区你老母2号"}
             //获取收货地址
             httpClient = HttpClients.createDefault();
