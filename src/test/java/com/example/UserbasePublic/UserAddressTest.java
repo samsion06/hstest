@@ -9,6 +9,7 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
 import java.net.URI;
 import java.util.Map;
@@ -44,18 +45,18 @@ public class UserAddressTest {
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             String addressResponseMsg = CheckReponseResult.AssertResponses(response, UserAddressServiceProto.UserAddressInfoResponse.class);
-            if(addressResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"addressAdd","1",ChannelUserId);
-            }else{
-                System.out.println(addressResponseMsg);
-            }
-
+            Assert.assertEquals(addressResponseMsg,"RESP_CODE_SUCCESS");
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"addressAdd","1",ChannelUserId);
             //{"addressId": "774195ceb7ce455b95c69d2beb1f5723","channelUserId": "17702015334","channelId": 1,"address": "广州海珠区你老母2号"}
+
+
+
+
             //获取收货地址
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/getByAddressId", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressRequest(channelUserid,channelId,addressid);
+            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressid);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -63,7 +64,7 @@ public class UserAddressTest {
             //更新收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/update", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(channelUserid,channelId,addressid,username);
+            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(ChannelUserId,channelId,addressid,username);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -71,7 +72,7 @@ public class UserAddressTest {
             //删除收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/delete", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressRequest(channelUserid,channelId,addressid);
+            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressid);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

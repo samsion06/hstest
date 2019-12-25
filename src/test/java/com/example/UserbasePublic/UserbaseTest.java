@@ -24,8 +24,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
    static URI uri = null;
    static HttpPost post = null;
    static HttpResponse response = null;
-   static Long mobile=17702015336l;
-   static Long pwd=123456l;
+   static Long mobile=17702015336L;
+   static Long pwd=123456L;
 
     //@org.testng.annotations.Test(description = "1.用户登录" +
     //            "                               2.修改昵称" +

@@ -32,13 +32,11 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static HttpPost post;
     private static HttpResponse response;
 
-    //user_alipay_auth_info
     @Test(description = "1.微信绑定" +
             "          2.微信解绑 ")
     public void bindingAndunBinding(){
-        //随机生成openId 和 channeluserid
-        String openId= DataUtils.getRandomString(9);
-        String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
+        String openId= DataUtils.getRandomString(9);    //随机生成openId
+        String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000)); //随机生成ChannelUserId
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
@@ -60,10 +58,8 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            //返回值验证
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals(unbindResponseMsg,"RESP_CODE_SUCCESS");
-            //数据库再次验证
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","1",ChannelUserId);
         }catch(Exception e){
             e.printStackTrace();

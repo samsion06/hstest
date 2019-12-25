@@ -73,11 +73,8 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
-            if(unbindResponseMsg.equals("RESP_CODE_SUCCESS")){
-                CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayCancel","1",channelUserId);
-            }else{
-                System.out.println(bindResponseMsg);
-            }
+            Assert.assertEquals(unbindResponseMsg,"RESP_CODE_SUCCESS");
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayCancel","1",channelUserId);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
