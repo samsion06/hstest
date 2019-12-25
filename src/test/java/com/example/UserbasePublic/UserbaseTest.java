@@ -30,22 +30,24 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
    static Long mobile=17702015336L;
    static Long pwd=123456L;
 
-    //@org.testng.annotations.Test(description = "1.用户登录" +
-    //            "                               2.修改昵称" +
-    //            "                               3.修改头像" +
-    //            "                               4.修改手机号" +
-    //            "                               5.修改密码" +
-    //            "                               6.再次登录"+
-    //            "                               7.用户注册")
+         @org.testng.annotations.Test(description = "1.用户登录" +
+                "                               2.修改昵称" +
+                "                               3.修改头像" +
+                "                               4.修改手机号" +
+                "                               5.修改密码" +
+                "                               6.再次登录"+
+                "                               7.用户注册")
     //Map result = CheckReponseResult.checkResponseCodeAndObj(response, UserBaseServiceProto.userInfoPdCombine.class);
     //ResultResponse.ResultSet resp = (ResultResponse.ResultSet)result.get("resultObject");
     //String userId = resp.getData().unpack(UserBaseServiceProto.userInfoPdCombine.class).getUserId();
-    public void test7(){
+    public void userbase(){
         System.out.println(mobile);
         System.out.println(pwd);
         try {
+
+
             //登录
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/info/pd/login", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserInfoPdLoginRequestConvertBuilder(1, mobile.toString(), pwd.toString(),"86");
             post.setEntity(byteArrayEntity);
@@ -53,6 +55,10 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String result = CheckReponseResult.checkResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
             String channelUserId = DataUtils.substring(result, "userId", 10, ",", 1);
+            System.out.println(channelUserId);
+
+
+
             //修改昵称
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/nick/name/update", "", null);
             post = new HttpPost(uri);
