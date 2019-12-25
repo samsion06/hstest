@@ -19,8 +19,8 @@ public class DataUtils {
     public static String substring(String result,String beginString,Integer beginindex,String endString,Integer endindex){
         int begin = result.indexOf(beginString) + beginindex;
         int end = result.indexOf(endString) - endindex;
-        String channelUserId = result.substring(begin, end);
-        return  channelUserId;
+        String element = result.substring(begin, end);
+        return  element;
     }
 
 }

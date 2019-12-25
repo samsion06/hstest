@@ -10,6 +10,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
 
 import java.net.URI;
 import java.util.Map;
@@ -29,11 +31,12 @@ public class UserAddressTest {
     private static HttpPost post;
     private static HttpResponse response;
 
-//    @org.testng.annotations.Test(description = "1.添加收货地址" +
-//            "                                   2.获取收货地址" +
-//            "                                   3.更新收货地址"+
-//            "                                   4.删除收货地址")
-    public void test1(){
+    @Test(description = "1.添加收货地址" +
+            "          2.获取收货地址" +
+            "          3.更新收货地址"+
+            "          4.删除收货地址" )
+    public void address(){
+        httpClient=HttpClients.createDefault();
         String address= DataUtils.getRandomString(9);
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         try{
@@ -44,23 +47,21 @@ public class UserAddressTest {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            String addressResponseMsg = CheckReponseResult.AssertResponses(response, UserAddressServiceProto.UserAddressInfoResponse.class);
-            Assert.assertEquals(addressResponseMsg,"RESP_CODE_SUCCESS");
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"addressAdd","1",ChannelUserId);
-            //{"addressId": "774195ceb7ce455b95c69d2beb1f5723","channelUserId": "17702015334","channelId": 1,"address": "广州海珠区你老母2号"}
-
-
-
-
+            //返回对象信息得话已经是从数据库取了一次了,不用数据库再判断
+            String addaddressResponseMsg = CheckReponseResult.AssertResponses(response, UserAddressServiceProto.UserAddressInfoResponse.class);
+            //截取addressId传入下一个接口
+            String addressId = DataUtils.substring(addaddressResponseMsg, "addressId:\"", 16, "\",", 0);
+            Reporter.log("截取addressId传入下个接口："+addressId);
             //获取收货地址
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/getByAddressId", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/getByAddressId","");
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressid);
+            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCodeAndObj(response,UserAddressServiceProto.UserAddressInfoResponse.class);
+            CheckReponseResult.AssertResponses(response,UserAddressServiceProto.UserAddressInfoResponse.class);
+
             //更新收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/update", "", null);
             post = new HttpPost(uri);
