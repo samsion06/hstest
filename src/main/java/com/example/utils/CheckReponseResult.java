@@ -66,7 +66,7 @@ public class CheckReponseResult {
         System.out.println(clazz);
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
         ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-        Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
+        Assert.assertEquals(ResultResponse.ResponseCode.RESP_CODE_SUCCESS,resp.getCode() );
         Assert.assertTrue(resp.getData().is(clazz));
         resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
         System.out.println(resultContent);
