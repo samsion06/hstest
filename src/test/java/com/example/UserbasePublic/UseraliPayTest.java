@@ -53,7 +53,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
-            Assert.assertEquals(bindResponseMsg,"RESP_CODE_SUCCESS");
+            Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg);//expected  actual
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
@@ -63,7 +63,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String authResponse = CheckReponseResult.AssertResponse(response);
-            Assert.assertEquals(authResponse,"RESP_CODE_SUCCESS");
+            Assert.assertEquals("RESP_CODE_SUCCESS",authResponse);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
@@ -73,7 +73,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
-            Assert.assertEquals(unbindResponseMsg,"RESP_CODE_SUCCESS");
+            Assert.assertEquals("RESP_CODE_SUCCESS",unbindResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayCancel","1",channelUserId);
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+            Assert.assertEquals(200,response.getStatusLine().getStatusCode());
             UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse resp=  UserAliPayAuthServiceProto.UserAliPayAuthInfoResponse.parseFrom(response.getEntity().getContent());
             Reporter.log("返回值：["+resp.toString()+"]");
         } catch (Exception e) {

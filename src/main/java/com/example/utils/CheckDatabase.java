@@ -27,12 +27,12 @@ public class CheckDatabase {
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
                 int is_delete = userWeChatInfos.getIs_delete(); //比对
-                Assert.assertEquals(is_delete,1);
+                Assert.assertEquals(1,is_delete);
                 Reporter.log(AllMsg+"is_delete值变更为："+is_delete);
                 break;
             case "WeChatInfoBind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channel_user_id);
+                Assert.assertEquals(channel_user_id,userWeChatInfos.getChannel_user_id());
                 System.out.println(userWeChatInfos);
                 Reporter.log(AllMsg+userWeChatInfos);
                 break;
@@ -45,13 +45,13 @@ public class CheckDatabase {
             case "AliPayAuth":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
                 int bindStatus=userAliPayInfo.getStatus();
-                Assert.assertEquals(bindStatus,1);
+                Assert.assertEquals(1,bindStatus);
                 Reporter.log(PartMsg+"Status值变更为："+bindStatus);
                 break;
             case "AliPayCancel":
                 userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
                 int unbindStatus=userAliPayInfo.getStatus();
-                Assert.assertEquals(unbindStatus,2);
+                Assert.assertEquals(2,unbindStatus);
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
             case "addressAdd":
