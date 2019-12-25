@@ -61,12 +61,13 @@ public class CheckDatabase {
                 String name=userAddressInfo.getName();
                 Assert.assertEquals(TargetOutPut,name); //名称是否有更新
                 Reporter.log(PartMsg+"name值变更为："+name);
-
+                break;
             case "AddressDelete"://删除收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
                 int address_is_delete = userAddressInfo.getIs_delete(); //比对
                 Assert.assertEquals(1,address_is_delete);
                 Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
+                break;
             default:
                 System.out.println("没找到方法");
                 break;

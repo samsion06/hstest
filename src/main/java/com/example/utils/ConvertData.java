@@ -224,7 +224,7 @@ public class ConvertData {
         Reporter.log("添加用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
-    //获取用户收货地址&删除用户收货地址
+    //获取用户收货地址
     public static ByteArrayEntity UserAddressRequest(String channelUserId,Integer channelId,String addressId){
         UserAddressServiceProto.UserAddressRequest.Builder builder=UserAddressServiceProto.UserAddressRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
@@ -235,6 +235,18 @@ public class ConvertData {
         Reporter.log("获取用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
+    //删除收货地址
+    public static ByteArrayEntity UserAddressDelete(String channelUserId,Integer channelId,String addressId){
+        UserAddressServiceProto.UserAddressRequest.Builder builder=UserAddressServiceProto.UserAddressRequest.newBuilder();
+        builder.setChannelUserId(channelUserId);
+        builder.setChannelId(channelId);
+        builder.setAddressId(addressId);
+        System.out.println(builder);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("删除用户收货地址_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+
     //更新用户收货地址
     public static ByteArrayEntity UserAddressInfoUpdateRequest(String channelUserId,Integer channelId,String addressId,String username){
         UserAddressServiceProto.UserAddressInfoUpdateRequest.Builder builder=UserAddressServiceProto.UserAddressInfoUpdateRequest.newBuilder();
