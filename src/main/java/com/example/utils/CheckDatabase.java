@@ -28,9 +28,9 @@ public class CheckDatabase {
             //检查的点不同,所以要分开
             case "WeChatInfoUnbind": //微信解绑
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                int is_delete = userWeChatInfos.getIs_delete(); //比对
-                Assert.assertEquals(1,is_delete);
-                Reporter.log(AllMsg+"is_delete值变更为："+is_delete);
+                int wechat_is_delete = userWeChatInfos.getIs_delete(); //比对
+                Assert.assertEquals(1,wechat_is_delete);
+                Reporter.log(AllMsg+"is_delete值变更为："+wechat_is_delete);
                 break;
             case "WeChatInfoBind": //微信绑定
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
@@ -62,12 +62,17 @@ public class CheckDatabase {
                 Reporter.log(AllMsg+userWeChatInfos);
             case "AddressGet":
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-            case "AddressUpadate":
-                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-            case "AddressDelete":
+                System.out.println(userAddressInfo);
+                Reporter.log(AllMsg+userWeChatInfos);
+            case "AddressUpadate"://更新收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
 
 
+            case "AddressDelete"://删除收货地址
+                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
+                int address_is_delete = userWeChatInfos.getIs_delete(); //比对
+                Assert.assertEquals(1,address_is_delete);
+                Reporter.log(AllMsg+"is_delete值变更为："+address_is_delete);
             default:
                 System.out.println("没找到方法");
                 break;
