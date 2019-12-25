@@ -1,18 +1,13 @@
 package com.example.utils;
-import com.example.Obj.UserBaseInfo;
-import com.example.mapper.UserBaseInfoMapper;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.ResultResponse;
 import org.apache.http.HttpResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.Reporter;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CheckReponseResult {

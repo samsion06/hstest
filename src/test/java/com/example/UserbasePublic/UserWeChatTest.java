@@ -1,9 +1,7 @@
 package com.example.UserbasePublic;
 
-import com.example.Obj.UserBaseInfo;
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.*;
-import com.hs.user.base.proto.ResultResponse;
 import com.hs.user.base.proto.UserBaseServiceProto;
 import com.hs.user.base.proto.UserWeChatAuthServiceProto;
 import org.apache.http.HttpResponse;
@@ -14,12 +12,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.List;
 
 @SpringBootTest
 public class UserWeChatTest  extends AbstractTestNGSpringContextTests{

@@ -4,15 +4,15 @@
 
 <mapper namespace="com.example.mapper.UserBaseInfoMapper">
 
-    <select id="queryUserBaseInfo" resultType="com.example.Obj.UserBaseInfo">
+    <select id="queryUserBaseInfo" resultType="com.example.domain.UserBaseInfo">
          select * from user_base_info where user_id=4662
     </select>
 
-    <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.Obj.UserWeChatInfo">
+    <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserWeChatInfo">
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
-    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.Obj.UserAliPayInfo">
+    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfo">
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 

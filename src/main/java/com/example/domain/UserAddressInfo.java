@@ -1,4 +1,4 @@
-package com.example.Obj;
+package com.example.domain;
 
 public class UserAddressInfo {
 

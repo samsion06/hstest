@@ -1,7 +1,7 @@
 package com.example.utils;
 
-import com.example.Obj.UserAliPayInfo;
-import com.example.Obj.UserWeChatInfo;
+import com.example.domain.UserAliPayInfo;
+import com.example.domain.UserWeChatInfo;
 import com.example.mapper.UserBaseInfoMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
