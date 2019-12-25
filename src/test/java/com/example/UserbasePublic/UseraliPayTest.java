@@ -2,7 +2,6 @@ package com.example.UserbasePublic;
 
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.*;
-import com.googlecode.protobuf.format.JsonFormat;
 import com.hs.user.base.proto.UserAliPayAuthServiceProto;
 import com.hs.user.base.proto.UserIdCardIdentifyServiceProto;
 import org.apache.http.HttpResponse;

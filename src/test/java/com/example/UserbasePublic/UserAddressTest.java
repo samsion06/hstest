@@ -22,6 +22,9 @@ public class UserAddressTest {
 
     private static Integer channelId=1;
 
+    @Autowired
+    private UserBaseInfoMapper userBaseInfoMapper;
+
     private static CloseableHttpClient httpClient ;
     private static ByteArrayEntity byteArrayEntity;
     private static URI uri;
@@ -68,8 +71,7 @@ public class UserAddressTest {
             response = httpClient.execute(post);
             String updateResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",updateResponseMsg);
-
-
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AddressUpadate",username,ChannelUserId);
             //删除收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/delete", "", null);
             post = new HttpPost(uri);

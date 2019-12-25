@@ -56,18 +56,11 @@ public class CheckDatabase {
                 Assert.assertEquals(2,unbindStatus);
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
-            case "AddressAdd"://添加爱收货地址
-                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-                System.out.println(userAddressInfo);
-                Reporter.log(AllMsg+userWeChatInfos);
-            case "AddressGet":
-                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-                System.out.println(userAddressInfo);
-                Reporter.log(AllMsg+userWeChatInfos);
             case "AddressUpadate"://更新收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-
-
+                String name=userAddressInfo.getName();
+                Assert.assertEquals(TargetOutPut,name); //名称是否有更新
+                Reporter.log(PartMsg+"name值变更为："+name);
             case "AddressDelete"://删除收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
                 int address_is_delete = userWeChatInfos.getIs_delete(); //比对
