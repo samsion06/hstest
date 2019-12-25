@@ -17,7 +17,7 @@
     </select>
 
     <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAddressInfo">
-        select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
+        select * from user_receive_address where channel_user_id=#{channel_user_id}
     </select>
 
 
