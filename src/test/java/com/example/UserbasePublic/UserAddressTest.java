@@ -21,9 +21,6 @@ public class UserAddressTest {
     private UserBaseInfoMapper userBaseInfoMapper;
 
     private static Integer channelId=1;
-    private static String address="广州海珠区你老母2号";
-    private static String addressid="774195ceb7ce455b95c69d2beb1f5723";
-    private static String username="xiaoming";
 
     private static CloseableHttpClient httpClient ;
     private static ByteArrayEntity byteArrayEntity;
@@ -37,8 +34,9 @@ public class UserAddressTest {
             "          4.删除收货地址" )
     public void address(){
         httpClient=HttpClients.createDefault();
-        String address= DataUtils.getRandomString(9);
+        String address= DataUtils.getRandomString(9);//随机地址
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
+        String username=String.valueOf((int)((Math.random()*9+1)*1000));//随机用户名
         try{
             //添加收货地址
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/add","");
@@ -61,19 +59,21 @@ public class UserAddressTest {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserAddressServiceProto.UserAddressInfoResponse.class);
-
             //更新收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/update", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(ChannelUserId,channelId,addressid,username);
+            byteArrayEntity = ConvertData.UserAddressInfoUpdateRequest(ChannelUserId,channelId,addressId,username);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponse(response);
+            String updateResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",updateResponseMsg);
+
+
             //删除收货地址
             uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/address/delete", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressid);
+            byteArrayEntity = ConvertData.UserAddressRequest(ChannelUserId,channelId,addressId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

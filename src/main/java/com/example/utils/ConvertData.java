@@ -232,6 +232,7 @@ public class ConvertData {
         builder.setAddressId(addressId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("获取用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //更新用户收货地址
@@ -243,6 +244,7 @@ public class ConvertData {
         builder.setUserName(username);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("更新用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //更新用户收货地址标签
