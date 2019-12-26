@@ -19,11 +19,11 @@ public class DataTransfer {
     private static String incomeMessage="传入参数:"+" {";
 
     //花生日记登录
-    public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer channelId, String Mobile, String Pwd,String mobileAreaCode ){
+    public static ByteArrayEntity userInfoPdLoginRequestConvertBuilder(Integer channelId, String mobile, String pwd, String mobileAreaCode ){
         UserBaseServiceProto.UserInfoPdLoginRequest.Builder builder= UserBaseServiceProto.UserInfoPdLoginRequest.newBuilder();
         builder.setChannelId(channelId);
-        builder.setMobile(Mobile);
-        builder.setPwd(Pwd);
+        builder.setMobile(mobile);
+        builder.setPwd(pwd);
         builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);

@@ -46,7 +46,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
+            byteArrayEntity = DataTransfer.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -147,7 +147,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
             post = new HttpPost(uri);
             System.out.println("mobile"+mobile+"pwd"+pwd);
-            byteArrayEntity = DataTransfer.UserInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
+            byteArrayEntity = DataTransfer.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
