@@ -23,6 +23,10 @@
         <result column="is_delete" property="isDelete"/>
     </resultMap>
 
+    <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultMap="AddressInfoMap">
+        select * from user_receive_address where channel_user_id=#{channel_user_id}
+    </select>
+
     <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
@@ -33,10 +37,6 @@
 
     <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfo">
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
-    </select>
-
-    <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultMap="AddressInfoMap">
-        select * from user_receive_address where channel_user_id=#{channel_user_id}
     </select>
 
     <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">

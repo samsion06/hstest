@@ -19,23 +19,23 @@ public class ConvertData {
     private static String incomeMessage="传入参数:"+" {";
 
     //花生日记登录
-    public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){
+    public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer channelId, String Mobile, String Pwd,String mobileAreaCode ){
         UserBaseServiceProto.UserInfoPdLoginRequest.Builder builder= UserBaseServiceProto.UserInfoPdLoginRequest.newBuilder();
-        builder.setChannelId(ChannelId);
+        builder.setChannelId(channelId);
         builder.setMobile(Mobile);
         builder.setPwd(Pwd);
-        builder.setMobileAreaCode(mobileareacode);
+        builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("花生日记用户登录_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //修改昵称
-    public static ByteArrayEntity UserNickNameUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String NickName){
+    public static ByteArrayEntity UserNickNameUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String nickName){
         UserBaseServiceProto.UserNickNameUpdateRequest.Builder builder = UserBaseServiceProto.UserNickNameUpdateRequest.newBuilder();
         builder.setChannelId(1);
         builder.setChannelUserId(ChannelUserId);
-        builder.setNickName(NickName);
+        builder.setNickName(nickName);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("修改昵称_"+incomeMessage+builder+ "}");
@@ -87,13 +87,7 @@ public class ConvertData {
 
         //builder.setUserWeChatRegister(UserWeChatRegister);
         //builder.setUserBasePdRegister(userBasePdRegisterBuild);
-
-
         return bytes;
-
-
-
-
     }
     //修改头像
     public static ByteArrayEntity UserHeadImgUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String HeadImageUrl){
