@@ -2,160 +2,160 @@ package com.example.domain;
 
 public class UserAddressInfo {
 
-    private Long id;
-    private Long user_id;
-    private Long channel_id;
-    private String  channel_user_id;
-    private String address_id;
-    private String name;
-    private String mobile;
-    private String province;
-    private String city;
-    private String district;
-    private String street;
-    private String address;
-    private Integer address_tag;
-    private Integer is_default;
-    private Integer is_delete;
+    private Long Id;
+    private Long User_Id;
+    private Long Channel_Id;
+    private String Channel_User_Id;
+    private String Address_Id;
+    private String Name;
+    private String Mobile;
+    private String Province;
+    private String City;
+    private String District;
+    private String Street;
+    private String Address;
+    private Integer Address_Tag;
+    private Integer Is_Default;
+    private Integer Is_Delete;
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUser_Id() {
+        return User_Id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUser_Id(Long user_Id) {
+        User_Id = user_Id;
     }
 
-    public Long getChannel_id() {
-        return channel_id;
+    public Long getChannel_Id() {
+        return Channel_Id;
     }
 
-    public void setChannel_id(Long channel_id) {
-        this.channel_id = channel_id;
+    public void setChannel_Id(Long channel_Id) {
+        Channel_Id = channel_Id;
     }
 
-    public String getChannel_user_id() {
-        return channel_user_id;
+    public String getChannel_User_Id() {
+        return Channel_User_Id;
     }
 
-    public void setChannel_user_id(String channel_user_id) {
-        this.channel_user_id = channel_user_id;
+    public void setChannel_User_Id(String channel_User_Id) {
+        Channel_User_Id = channel_User_Id;
     }
 
-    public String getAddress_id() {
-        return address_id;
+    public String getAddress_Id() {
+        return Address_Id;
     }
 
-    public void setAddress_id(String address_id) {
-        this.address_id = address_id;
+    public void setAddress_Id(String address_Id) {
+        Address_Id = address_Id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getMobile() {
-        return mobile;
+        return Mobile;
     }
 
     public void setMobile(String mobile) {
-        this.mobile = mobile;
+        Mobile = mobile;
     }
 
     public String getProvince() {
-        return province;
+        return Province;
     }
 
     public void setProvince(String province) {
-        this.province = province;
+        Province = province;
     }
 
     public String getCity() {
-        return city;
+        return City;
     }
 
     public void setCity(String city) {
-        this.city = city;
+        City = city;
     }
 
     public String getDistrict() {
-        return district;
+        return District;
     }
 
     public void setDistrict(String district) {
-        this.district = district;
+        District = district;
     }
 
     public String getStreet() {
-        return street;
+        return Street;
     }
 
     public void setStreet(String street) {
-        this.street = street;
+        Street = street;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
     }
 
-    public Integer getAddress_tag() {
-        return address_tag;
+    public Integer getAddress_Tag() {
+        return Address_Tag;
     }
 
-    public void setAddress_tag(Integer address_tag) {
-        this.address_tag = address_tag;
+    public void setAddress_Tag(Integer address_Tag) {
+        Address_Tag = address_Tag;
     }
 
-    public Integer getIs_default() {
-        return is_default;
+    public Integer getIs_Default() {
+        return Is_Default;
     }
 
-    public void setIs_default(Integer is_default) {
-        this.is_default = is_default;
+    public void setIs_Default(Integer is_Default) {
+        Is_Default = is_Default;
     }
 
-    public Integer getIs_delete() {
-        return is_delete;
+    public Integer getIs_Delete() {
+        return Is_Delete;
     }
 
-    public void setIs_delete(Integer is_delete) {
-        this.is_delete = is_delete;
+    public void setIs_Delete(Integer is_Delete) {
+        Is_Delete = is_Delete;
     }
 
     @Override
     public String toString() {
         return "UserAddressInfo{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", channel_id=" + channel_id +
-                ", channel_user_id='" + channel_user_id + '\'' +
-                ", address_id='" + address_id + '\'' +
-                ", name='" + name + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                ", street='" + street + '\'' +
-                ", address='" + address + '\'' +
-                ", address_tag=" + address_tag +
-                ", is_default=" + is_default +
-                ", is_delete=" + is_delete +
+                "Id=" + Id +
+                ", User_Id=" + User_Id +
+                ", Channel_Id=" + Channel_Id +
+                ", Channel_User_Id='" + Channel_User_Id + '\'' +
+                ", Address_Id='" + Address_Id + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Mobile='" + Mobile + '\'' +
+                ", Province='" + Province + '\'' +
+                ", City='" + City + '\'' +
+                ", District='" + District + '\'' +
+                ", Street='" + Street + '\'' +
+                ", Address='" + Address + '\'' +
+                ", Address_Tag=" + Address_Tag +
+                ", Is_Default=" + Is_Default +
+                ", Is_Delete=" + Is_Delete +
                 '}';
     }
 }

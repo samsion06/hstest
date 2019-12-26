@@ -178,6 +178,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             e.printStackTrace();
         }
     }
+
     //@Test(description = "注册")
     public void register() {
         //生成手机号码
