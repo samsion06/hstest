@@ -1,6 +1,7 @@
 package com.example.domain;
 
 public class UserAddressInfo {
+    //lowerCamelCase
     private Long id;
     private Long userId;
     private Long channelId;
