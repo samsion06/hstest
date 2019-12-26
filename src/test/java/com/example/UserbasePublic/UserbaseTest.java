@@ -161,7 +161,23 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
-
+    //@Test(description = "忘记密码")
+    public void forgetPassword(){
+        try{
+            httpClient = HttpClients.createDefault();
+            //用户忘记登录密码
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = ConvertData.UserForgetPwdRequest(ChannelId,"123456","17720130632","86");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            //校验结果
+            CheckReponseResult.AssertResponse(response);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     //@Test(description = "注册")
     public void register() {
         //生成手机号码
@@ -176,19 +192,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-            //用户忘记登录密码
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/forget/pwd", "", null);
-            post = new HttpPost(uri);
-            //byteArrayEntity = ConvertData.UserPwdUpdateRequestConvertBuilder("3692080",channelId,newPassword);
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            //校验结果
-            CheckReponseResult.checkResponse(response);
         }catch (Exception e){
             e.printStackTrace();
         }

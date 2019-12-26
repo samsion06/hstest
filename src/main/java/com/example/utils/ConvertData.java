@@ -140,6 +140,19 @@ public class ConvertData {
         Reporter.log("修改密码_"+incomeMessage+builder+ "}");
         return bytes;
     }
+    //忘记密码
+    public static ByteArrayEntity UserForgetPwdRequest(Integer ChannelId,String loginPwd,String mobile,String mobileareacode){
+        UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder= UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
+        builder.setChannelId(ChannelId);
+        builder.setLoginPwd(loginPwd);
+        builder.setMobile(mobile);
+        //builder.setMobileAreaCode(mobileareacode);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("忘记密码_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+
     //用户实名认证
     public static ByteArrayEntity UserIdCardIdentifyRequestConvertBuilder(String channelUserId, Integer channelId, String realName, String idCardNum, String attachmentUrl){
         UserIdCardIdentifyServiceProto.UserIdCardIdentifyRequest.Builder builder = UserIdCardIdentifyServiceProto.UserIdCardIdentifyRequest.newBuilder();
