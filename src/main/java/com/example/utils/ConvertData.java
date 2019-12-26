@@ -42,17 +42,57 @@ public class ConvertData {
         return bytes;
     }
     //用户注册
-    public static ByteArrayEntity UserBaseRegisterRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String mobile) {
+    public static ByteArrayEntity UserBaseRegisterRequestConvertBuilder(String mobile) {
         UserBaseServiceProto.UserBaseRegisterRequest.Builder builder = UserBaseServiceProto.UserBaseRegisterRequest.newBuilder();
-        UserBaseServiceProto.UserBaseRegister.Builder userBaseRegisterBuilder = UserBaseServiceProto.UserBaseRegister.newBuilder();
-        userBaseRegisterBuilder.setChannelId(ChannelId);
-        userBaseRegisterBuilder.setChannelUserId(ChannelUserId);
-        userBaseRegisterBuilder.setMobile(mobile);
-        userBaseRegisterBuilder.setMobileAreaCode("86");
-        builder.setUserBaseRegister(userBaseRegisterBuilder);
-        ByteArrayEntity bytes = new ByteArrayEntity(builder.build().toByteArray());
+        UserBaseServiceProto.UserBaseRegister.Builder  userBaseRegisterBuild = UserBaseServiceProto.UserBaseRegister.newBuilder();
+        UserBaseServiceProto.UserLoginRegister.Builder  UserLoginRegister = UserBaseServiceProto.UserLoginRegister.newBuilder();
+        UserBaseServiceProto.UserZyyxRegister.Builder  userZyyxRegister = UserBaseServiceProto.UserZyyxRegister.newBuilder();
+        userBaseRegisterBuild.setMobileAreaCode("68");
+        userBaseRegisterBuild.setMobile(mobile);
+        userBaseRegisterBuild.setChannelUserId(Math.round((int)(Math.random()*100))+""+System.currentTimeMillis());
+        userBaseRegisterBuild.setHeadImgUrl("/sdf/sdf/sdfsdf");
+        userBaseRegisterBuild.setBirthday("2019-06-04");
+        userBaseRegisterBuild.setSex(0);
+        userBaseRegisterBuild.setNickName("小周直邮");
+        userBaseRegisterBuild.setSource(1);
+        userBaseRegisterBuild.setRealName("小周直邮");
+        userBaseRegisterBuild.setChannelId(2);
+        userBaseRegisterBuild.setIdentityCard("634233425567868");
+        userBaseRegisterBuild.setUserRole(1);
+
+        userZyyxRegister.setRegisterRecommendUserId("661571043571580");
+
+        UserLoginRegister.setLoginPwd(userBaseRegisterBuild.getMobile());
+        UserLoginRegister.setLoginName(userBaseRegisterBuild.getMobile());
+
+        builder.setUserBaseRegister(userBaseRegisterBuild);
+        builder.setUserLoginRegister(UserLoginRegister);
+        builder.setUserZyyxRegister(userZyyxRegister);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+
         System.out.println(builder);
+//        userBasePdRegisterBuild.setRegisterInviteCode("Mw2mABG");
+//        userBasePdRegisterBuild.setInviteCode("jkdsfwe");
+//        userBasePdRegisterBuild.setCompanyId(1);
+//        userBasePdRegisterBuild.setOperator(1);
+//        userBasePdRegisterBuild.setIsOfflineOperator(1);
+//        userBasePdRegisterBuild.setIsOfflineUser(1);
+//        userBasePdRegisterBuild.setUserTagStatus(1);
+        //UserBaseServiceProto.UserWeChatRegister.Builder  UserWeChatRegister = UserBaseServiceProto.UserWeChatRegister.newBuilder();
+        //UserBaseServiceProto.UserBasePdRegister.Builder  userBasePdRegisterBuild = UserBaseServiceProto.UserBasePdRegister.newBuilder();
+
+        //UserWeChatRegister.setOpenId("");
+        //UserWeChatRegister.setUnionId("");
+
+        //builder.setUserWeChatRegister(UserWeChatRegister);
+        //builder.setUserBasePdRegister(userBasePdRegisterBuild);
+
+
         return bytes;
+
+
+
+
     }
     //修改头像
     public static ByteArrayEntity UserHeadImgUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String HeadImageUrl){
