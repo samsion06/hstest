@@ -105,7 +105,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description = "注册-登录-改手机号-登录-改密码-登录")
+    @Test(description = "注册")
     public void test10() {
         //生成手机号码
         String mobile="177"+(int)((Math.random()*9+1)*10000000);
