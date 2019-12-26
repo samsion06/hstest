@@ -31,10 +31,10 @@ public class DataTransfer {
         return bytes;
     }
     //修改昵称
-    public static ByteArrayEntity UserNickNameUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String nickName){
+    public static ByteArrayEntity UserNickNameUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String nickName){
         UserBaseServiceProto.UserNickNameUpdateRequest.Builder builder = UserBaseServiceProto.UserNickNameUpdateRequest.newBuilder();
-        builder.setChannelId(1);
-        builder.setChannelUserId(ChannelUserId);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
         builder.setNickName(nickName);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
@@ -89,12 +89,13 @@ public class DataTransfer {
         //builder.setUserBasePdRegister(userBasePdRegisterBuild);
         return bytes;
     }
+
     //修改头像
-    public static ByteArrayEntity UserHeadImgUpdateRequestConvertBuilder(Integer ChannelId, String ChannelUserId, String HeadImageUrl){
+    public static ByteArrayEntity UserHeadImgUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String headImageUrl){
         UserBaseServiceProto.UserHeadImgUpdateRequest.Builder builder= UserBaseServiceProto.UserHeadImgUpdateRequest.newBuilder();
-        builder.setChannelId(ChannelId);
-        builder.setChannelUserId(ChannelUserId);
-        builder.setHeadImageUrl(HeadImageUrl);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setHeadImageUrl(headImageUrl);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("修改头像_"+incomeMessage+builder+ "}");
@@ -112,12 +113,12 @@ public class DataTransfer {
         return bytes;
     }
     //修改手机号码
-    public static ByteArrayEntity UserMobileUpdateRequestConvertBuilder(Integer channelId,String mobileNew,String ChannelUserId,String MobileAreaCodeNew){
+    public static ByteArrayEntity UserMobileUpdateRequestConvertBuilder(Integer channelId,String mobileNew,String channelUserId,String mobileAreaCodeNew){
         UserBaseServiceProto.UserMobileUpdateRequest.Builder builder=  UserBaseServiceProto.UserMobileUpdateRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobileNew(mobileNew);
-        builder.setChannelUserId(ChannelUserId);
-        builder.setMobileAreaCodeNew(MobileAreaCodeNew);
+        builder.setChannelUserId(channelUserId);
+        builder.setMobileAreaCodeNew(mobileAreaCodeNew);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("修改手机号码_"+incomeMessage+builder+ "}");
@@ -135,9 +136,9 @@ public class DataTransfer {
         return bytes;
     }
     //忘记密码
-    public static ByteArrayEntity UserForgetPwdRequest(Integer ChannelId,String loginPwd,String mobile,String mobileareacode){
+    public static ByteArrayEntity UserForgetPwdRequest(Integer channelId,String loginPwd,String mobile,String mobileareacode){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder= UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
-        builder.setChannelId(ChannelId);
+        builder.setChannelId(channelId);
         builder.setLoginPwd(loginPwd);
         builder.setMobile(mobile);
         //builder.setMobileAreaCode(mobileareacode);
@@ -160,10 +161,10 @@ public class DataTransfer {
         return bytes;
     }
     //用户实名认证查询
-    public static ByteArrayEntity UserIdCardStatusQueryRequestConvertBuilder(String ChannelUserId,Integer ChannelId){
+    public static ByteArrayEntity UserIdCardStatusQueryRequestConvertBuilder(String channelUserId,Integer channelId){
         UserIdCardIdentifyServiceProto.UserIdCardStatusQueryRequest.Builder builder=UserIdCardIdentifyServiceProto.UserIdCardStatusQueryRequest.newBuilder();
-        builder.setChannelUserId(ChannelUserId);
-        builder.setChannelId(ChannelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setChannelId(channelId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return bytes;
@@ -188,11 +189,11 @@ public class DataTransfer {
         return bytes;
     }
     //微信绑定
-    public static ByteArrayEntity UserWeChatAuthRequest(String AppId,Integer ChannelId,String ChannelUserId,String openId){
+    public static ByteArrayEntity UserWeChatAuthRequest(String appId,Integer channelId,String channelUserId,String openId){
         UserWeChatAuthServiceProto.UserWeChatAuthRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthRequest.newBuilder();
-        builder.setAppId(AppId);
-        builder.setChannelId(ChannelId);
-        builder.setChannelUserId(ChannelUserId);
+        builder.setAppId(appId);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
         builder.setOpenId(openId);
         //System.out.println("入参 \n："+builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
@@ -212,12 +213,12 @@ public class DataTransfer {
         return bytes;
     }
     //微信一键登录
-    public static ByteArrayEntity UserWeChatOneKeyLoginRequest(Integer ChannelId,String mobile,String inviteChannelUserId,String mobileareacode){
+    public static ByteArrayEntity UserWeChatOneKeyLoginRequest(Integer channelId,String mobile,String inviteChannelUserId,String mobileAreaCode){
         UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.newBuilder();
-        builder.setChannelId(ChannelId);
+        builder.setChannelId(channelId);
         builder.setMobile(mobile);
         builder.setInviteChannelUserId(inviteChannelUserId);
-        builder.setMobileAreaCode(mobileareacode);
+        builder.setMobileAreaCode(mobileAreaCode);
         //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
