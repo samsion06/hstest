@@ -43,6 +43,7 @@ public class ConvertData {
     }
     //用户注册
     public static ByteArrayEntity UserBaseRegisterRequestConvertBuilder(String mobile) {
+
         UserBaseServiceProto.UserBaseRegisterRequest.Builder builder = UserBaseServiceProto.UserBaseRegisterRequest.newBuilder();
         UserBaseServiceProto.UserBaseRegister.Builder  userBaseRegisterBuild = UserBaseServiceProto.UserBaseRegister.newBuilder();
         UserBaseServiceProto.UserLoginRegister.Builder  UserLoginRegister = UserBaseServiceProto.UserLoginRegister.newBuilder();
