@@ -42,6 +42,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
         try {
             httpClient = HttpClients.createDefault();
+
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
             post = new HttpPost(uri);
@@ -52,6 +53,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String result = CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
             String ChannelUserId = DataUtils.substring(result, "userId", 10, ",", 1);
             System.out.println(ChannelUserId);
+
             //修改昵称
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/nick/name/update", "");
             post = new HttpPost(uri);
@@ -62,6 +64,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String nickNameResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS", nickNameResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper, "NickNameUpdate", nickname, ChannelUserId);
+
             //修改头像
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/head/img/update", "");
             post = new HttpPost(uri);
@@ -106,7 +109,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(description = "注册")
-    public void test10() {
+    public void register() {
         //生成手机号码
         String mobile="177"+(int)((Math.random()*9+1)*10000000);
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
@@ -122,37 +125,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-//        try {
-//            //修改手机号
-//            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/mobile/update", "", null);
-//            post = new HttpPost(uri);
-//            byteArrayEntity = ConvertData.UserMobileUpdateRequestConvertBuilder(1, mobile.toString(), channelUserId, "86");
-//            post.setEntity(byteArrayEntity);
-//            post.setHeader("Content-Type", "application/x-protobuf");
-//            response = httpClient.execute(post);
-//            CheckReponseResult.checkResponse(response);
-//            //转换密码成md5
-//
-//            String md5pwd = MD5Util.toMD5(pwd.toString()).toUpperCase();
-//            //修改密码
-//            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/pwd/update", "", null);
-//            post = new HttpPost(uri);
-//            byteArrayEntity = ConvertData.UserPwdUpdateRequestConvertBuilder(channelUserId, 1, md5pwd);
-//            post.setEntity(byteArrayEntity);
-//            post.setHeader("Content-Type", "application/x-protobuf");
-//            response = httpClient.execute(post);
-//            CheckReponseResult.checkResponse(response);
-//            //再次登录
-//            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/info/pd/login", "", null);
-//            post = new HttpPost(uri);
-//            byteArrayEntity = ConvertData.UserInfoPdLoginRequestConvertBuilder(1, mobile.toString(), pwd.toString(), "86");
-//            post.setEntity(byteArrayEntity);
-//            post.setHeader("Content-Type", "application/x-protobuf");
-//            response = httpClient.execute(post);
-//            CheckReponseResult.checkResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
-//        } catch (Exception e) {
-//        }
 //        try{
 //            //用户忘记登录密码
 //            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/user/forget/pwd", "", null);
@@ -167,7 +139,76 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 //            e.printStackTrace();
 //        }
     }
-    public void test11(){ }
+
+    @Test(description = "修改登录密码")
+    public void pwdUpdate(){
+        //4543654756756 将密码转换成MD5加密方式
+        String pwd="123456";
+        String md5pwd = MD5Util.toMD5(pwd.trim().toUpperCase());
+        System.out.println(md5pwd);
+        try{
+            String mobile="177"+(int)((Math.random()*9+1)*10000000); //修改登录得手机号
+            //修改手机号
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/mobile/update", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = ConvertData.UserMobileUpdateRequestConvertBuilder(1, mobile, "178803", "86");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponse(response);
+
+              //修改登录密码
+              httpClient = HttpClients.createDefault();
+              uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/pwd/update", "");
+              post = new HttpPost(uri);
+              byteArrayEntity = ConvertData.UserPwdUpdateRequestConvertBuilder("178803", 1, md5pwd);
+              post.setEntity(byteArrayEntity);
+              post.setHeader("Content-Type", "application/x-protobuf");
+              response = httpClient.execute(post);
+              CheckReponseResult.AssertResponse(response);
+
+              //再次登录
+              uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
+              post = new HttpPost(uri);
+              byteArrayEntity = ConvertData.UserInfoPdLoginRequestConvertBuilder(ChannelId, "4543654756756", pwd, "86");
+              post.setEntity(byteArrayEntity);
+              post.setHeader("Content-Type", "application/x-protobuf");
+              response = httpClient.execute(post);
+              String result = CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void mdfmobile(){
+        String mobile="177"+(int)((Math.random()*9+1)*10000000); //修改登录得手机号
+        try {
+            httpClient = HttpClients.createDefault();
+            //修改手机号
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/mobile/update", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = ConvertData.UserMobileUpdateRequestConvertBuilder(1, mobile, "178803", "86");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponse(response);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+
+        }
+    }
+
+
+
 }
 
 
