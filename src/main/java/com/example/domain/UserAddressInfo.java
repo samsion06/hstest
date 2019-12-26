@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.Date;
+
 public class UserAddressInfo {
     //lowerCamelCase
     private Long id;
@@ -17,6 +19,24 @@ public class UserAddressInfo {
     private Integer addressTag;
     private Integer isDefault;
     private Integer isDelete;
+    private Date creatTime;
+    private Date updateTime;
+
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Long getId() {
         return id;
@@ -156,6 +176,14 @@ public class UserAddressInfo {
                 ", addressTag=" + addressTag +
                 ", isDefault=" + isDefault +
                 ", isDelete=" + isDelete +
+                ", creatTime=" + creatTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
+
+
+
+
+
+
 }
