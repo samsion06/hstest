@@ -77,12 +77,11 @@ public class CheckDatabase {
                 Reporter.log(PartMsg+"nick_name值变更为："+nickname);
                 break;
             case "HeadUrlImg":
-
-
-
+                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
+                String headurlimg=userBaseInfo.getHead_img();
+                Assert.assertEquals(TargetOutPut,headurlimg);
+                Reporter.log(PartMsg+"nick_name值变更为："+headurlimg);
                 break;
-
-
             default:
                 System.out.println("没找到方法");
                 break;

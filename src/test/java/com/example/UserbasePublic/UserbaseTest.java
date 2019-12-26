@@ -41,6 +41,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
              //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
         try {
             httpClient = HttpClients.createDefault();
+
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login","");
             post = new HttpPost(uri);
@@ -61,7 +62,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String nickNameResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",nickNameResponseMsg);
-
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"NickNameUpdate",nickname,ChannelUserId);
 
             //修改头像
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/head/img/update","");
@@ -72,6 +73,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String headUrlImg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",headUrlImg);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"HeadUrlImg",headimgurl,ChannelUserId);
 
         } catch (Exception e) {
             e.printStackTrace();
