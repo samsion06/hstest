@@ -24,7 +24,7 @@ public class ConvertData {
         builder.setChannelId(ChannelId);
         builder.setMobile(Mobile);
         builder.setPwd(Pwd);
-        //builder.setMobileAreaCode(mobileareacode);
+        builder.setMobileAreaCode(mobileareacode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("花生日记用户登录_"+incomeMessage+builder+ "}");
