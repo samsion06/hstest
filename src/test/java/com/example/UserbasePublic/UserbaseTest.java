@@ -51,6 +51,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String result = CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
             String ChannelUserId = DataUtils.substring(result, "userId", 10, ",", 1);
             System.out.println(ChannelUserId);
+
             //修改昵称
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/nick/name/update","");
             post = new HttpPost(uri);

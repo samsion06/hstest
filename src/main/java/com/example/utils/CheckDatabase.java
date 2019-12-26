@@ -2,6 +2,7 @@ package com.example.utils;
 
 import com.example.domain.UserAddressInfo;
 import com.example.domain.UserAliPayInfo;
+import com.example.domain.UserBaseInfo;
 import com.example.domain.UserWeChatInfo;
 import com.example.mapper.UserBaseInfoMapper;
 import org.testng.Assert;
@@ -12,6 +13,7 @@ public class CheckDatabase {
     private static UserAliPayInfo userAliPayInfo;
     private static UserWeChatInfo userWeChatInfos;
     private static UserAddressInfo userAddressInfo;
+    private static UserBaseInfo userBaseInfo;
     private static String AllMsg="数据库全部匹配：";
     private static String PartMsg="数据库部分匹配：";
 
@@ -68,8 +70,17 @@ public class CheckDatabase {
                 Assert.assertEquals(1,address_is_delete);
                 Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
                 break;
-            case "NickNameUpdate":
+            case "NickNameUpdate": //昵称更新
+                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
+                String nickname=userBaseInfo.getNick_name();
+                Assert.assertEquals(TargetOutPut,nickname);
+                Reporter.log(PartMsg+"nick_name值变更为："+nickname);
+                break;
+            case "HeadUrlImg":
 
+
+
+                break;
 
 
             default:
