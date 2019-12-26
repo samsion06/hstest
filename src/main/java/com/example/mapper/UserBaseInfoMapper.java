@@ -1,9 +1,6 @@
 package com.example.mapper;
 
-import com.example.domain.UserAddressInfo;
-import com.example.domain.UserAliPayInfo;
-import com.example.domain.UserWeChatInfo;
-import com.example.domain.UserBaseInfo;
+import com.example.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -23,5 +20,8 @@ public interface UserBaseInfoMapper {
 
     //查询收货地址
     public UserAddressInfo queryUserAddressInfo(String channel_user_id);
+
+    //查询登录信息
+    public UserLoginInfo queryUserLoginInfo(String channel_user_id);
 
 }

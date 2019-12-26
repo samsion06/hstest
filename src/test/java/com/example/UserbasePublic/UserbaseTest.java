@@ -157,7 +157,12 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+            String mobileResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",mobileResponseMsg);
+
+
+
+
 
             //修改登录密码
             httpClient = HttpClients.createDefault();

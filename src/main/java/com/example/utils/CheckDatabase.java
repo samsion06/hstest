@@ -1,9 +1,6 @@
 package com.example.utils;
 
-import com.example.domain.UserAddressInfo;
-import com.example.domain.UserAliPayInfo;
-import com.example.domain.UserBaseInfo;
-import com.example.domain.UserWeChatInfo;
+import com.example.domain.*;
 import com.example.mapper.UserBaseInfoMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -14,6 +11,7 @@ public class CheckDatabase {
     private static UserWeChatInfo userWeChatInfos;
     private static UserAddressInfo userAddressInfo;
     private static UserBaseInfo userBaseInfo;
+    private static UserLoginInfo userLoginInfo;
     private static String AllMsg="数据库全部匹配：";
     private static String PartMsg="数据库部分匹配：";
 
@@ -82,6 +80,17 @@ public class CheckDatabase {
                 Assert.assertEquals(TargetOutPut,headurlimg);
                 Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;
+            case "MobileUpadate":
+                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
+                String mobile=userLoginInfo.getLogin_name();
+                Assert.assertEquals(TargetOutPut,mobile);
+                Reporter.log(PartMsg+"login_name值变更为："+mobile);
+                break;
+            case "PwdUpdate":
+                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
+                String pwd=userLoginInfo.getLogin_name();
+                Assert.assertEquals(TargetOutPut,pwd);
+                Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
             default:
                 System.out.println("没找到方法");
                 break;
