@@ -4,7 +4,7 @@
 
 
 <head>
-	<meta charset='utf-8' /> 
+	<meta charset='gbk' /> 
 	<meta name='description' content='' />
 	<meta name='robots' content='noodp, noydir' />
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -34,8 +34,7 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
-			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
 		<!-- report name -->
@@ -48,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Dec 26, 2019 02:13:45 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Dec 26, 2019 02:20:34 PM</span>
 				</a>
 			</li>
 			<li>
@@ -74,7 +73,6 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
-						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -125,10 +123,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>2</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>3</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -140,10 +138,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>2</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>3</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -158,17 +156,17 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>pwdUpdate</span>
-						<span class='test-time'>Dec 26, 2019 02:13:47 PM</span>
-						<span class='test-status right fail'>fail</span>
+						<span class='test-name'>LoginAndUpdate</span>
+						<span class='test-time'>Dec 26, 2019 02:20:34 PM</span>
+						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:13:47 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:13:49 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+266ms</span>
+	<span class='label start-time'>Dec 26, 2019 02:20:34 PM</span>
+	<span class='label end-time'>Dec 26, 2019 02:20:35 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+737ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -182,81 +180,58 @@
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>修改手机号码_传入参数: {channelId: 1
-mobileNew: "17755172003"
-ChannelUserId: "178803"
-mobileAreaCodeNew: "86"
-}</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>数据库部分匹配：login_name值变更为：17755172003</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>修改密码_传入参数: {channelUserId: "178803"
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>花生日记用户登录_传入参数: {mobile: "17720130632"
+mobileAreaCode: "86"
 channelId: 1
-loginPwdNew: "e10adc3949ba59abbe56e057f20f883e"
+pwd: "123456"
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [{"userId": "3692091","nickName": "vYOx54fJm","headerImg": "0WWpiWEZu0fiZ8C","mobile": "17720130632","qq": "1","createTime": 1516497433000,"activateTime": 1516497433000,"pushNo": "r88vcmo","appWxOpenId": "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","cardNo": "ox-FY1f0_ub3FnM_v9n7ITb1q-f0","ifAuth": -1,"updateTime": 1577341210000,"status": 1,"role": 1,"operator": 2382280,"grandfatherId": 2738511,"fatherId": 3692091,"isSecret": -1,"companyId": 1576,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>修改昵称_传入参数: {channelId: 1
+nickName: "sLPQWFtsr"
+ChannelUserId: "3692091"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
 					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
 				</tr>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'><pre>java.lang.AssertionError: expected [e10adc3949ba59abbe56e057f20f883e] but found [17755172003]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:513)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
-	at org.testng.Assert.assertEquals(Assert.java:116)
-	at org.testng.Assert.assertEquals(Assert.java:190)
-	at org.testng.Assert.assertEquals(Assert.java:200)
-	at com.example.utils.CheckDatabase.CheckDatabaseInfo(CheckDatabase.java:94)
-	at com.example.UserbasePublic.UserbaseTest.pwdUpdate(UserbaseTest.java:142)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:104)
-	at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:205)
-	at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:181)
-	at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:217)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:641)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:851)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1177)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:756)
-	at org.testng.TestRunner.run(TestRunner.java:610)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:387)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:382)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1293)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1218)
-	at org.testng.TestNG.runSuites(TestNG.java:1133)
-	at org.testng.TestNG.run(TestNG.java:1104)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:373)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:334)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:119)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:407)
-</pre></td>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>数据库部分匹配：nick_name值变更为：sLPQWFtsr</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>修改头像_传入参数: {channelId: 1
+headImageUrl: "33RCI1PF0YmMRZu"
+ChannelUserId: "3692091"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>数据库部分匹配：head_img值变更为：33RCI1PF0YmMRZu</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>Test passed</td>
 				</tr>
 			</tbody>
 		</table>
@@ -267,15 +242,15 @@ loginPwdNew: "e10adc3949ba59abbe56e057f20f883e"
 				
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
 					<div class='test-heading'>
-						<span class='test-name'>LoginAndUpdate</span>
-						<span class='test-time'>Dec 26, 2019 02:13:45 PM</span>
+						<span class='test-name'>getInfoByInviteCode</span>
+						<span class='test-time'>Dec 26, 2019 02:20:35 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:13:45 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:13:47 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+760ms</span>
+	<span class='label start-time'>Dec 26, 2019 02:20:35 PM</span>
+	<span class='label end-time'>Dec 26, 2019 02:20:35 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+60ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -289,57 +264,19 @@ loginPwdNew: "e10adc3949ba59abbe56e057f20f883e"
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>花生日记用户登录_传入参数: {mobile: "17756244776"
-mobileAreaCode: "86"
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>邀请码获取用户信息_传入参数: {inviteCode: "p88vcdo"
 channelId: 1
-pwd: "123456"
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>返回值: [{"userId": "178803","nickName": "QnqGQhJWi","name": "程成","headerImg": "W9vlezMp0at4oh9","mobile": "17756244776","qq": "1","aliNo": "doudousmimi@163.com","createTime": 1501592092000,"sex": 2,"activateTime": 1501592216000,"pushNo": "nah2xoh","appWxOpenId": "oBrt31RJksETS7FWsakEes61W38k","cardNo": "ox-FY1dRO31w9tcGLFh9YiBQQOy8","ifAuth": -1,"updateTime": 1577339176000,"status": 1,"role": 1,"operator": 176700,"grandfatherId": 177814,"fatherId": 178803,"isSecret": -1,"companyId": 1632,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>修改昵称_传入参数: {channelId: 1
-nickName: "PvkGkUCAc"
-ChannelUserId: "178803"
-}</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>数据库部分匹配：nick_name值变更为：PvkGkUCAc</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>修改头像_传入参数: {channelId: 1
-headImageUrl: "dca1Jm61UGGSDhW"
-ChannelUserId: "178803"
-}</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>数据库部分匹配：head_img值变更为：dca1Jm61UGGSDhW</td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [{"userBaseInfo": {"mobile": "17702015334","nickName": "abc","realName": "xiongxin","headImageUrl": "http://images.huasheng100.com/public/1565334681520252.jpg","source": 1,"channelUserId": "3692080","mobileAreaCode": "86"},"inviteCode": "p88vcdo"}]</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
+					<td class='timestamp'>2:20:36 PM</td>
 					<td class='step-details'>Test passed</td>
 				</tr>
 			</tbody>
@@ -351,15 +288,15 @@ ChannelUserId: "178803"
 				
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
 					<div class='test-heading'>
-						<span class='test-name'>getInfoByInviteCode</span>
-						<span class='test-time'>Dec 26, 2019 02:13:47 PM</span>
+						<span class='test-name'>pwdUpdate</span>
+						<span class='test-time'>Dec 26, 2019 02:20:35 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:13:47 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:13:47 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+80ms</span>
+	<span class='label start-time'>Dec 26, 2019 02:20:35 PM</span>
+	<span class='label end-time'>Dec 26, 2019 02:20:36 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+860ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -373,19 +310,58 @@ ChannelUserId: "178803"
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>邀请码获取用户信息_传入参数: {inviteCode: "p88vcdo"
-channelId: 1
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>修改手机号码_传入参数: {channelId: 1
+mobileNew: "17794720545"
+ChannelUserId: "178803"
+mobileAreaCodeNew: "86"
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
-					<td class='step-details'>返回值: [{"userBaseInfo": {"mobile": "17702015334","nickName": "abc","realName": "xiongxin","headImageUrl": "http://images.huasheng100.com/public/1565334681520252.jpg","source": 1,"channelUserId": "3692080","mobileAreaCode": "86"},"inviteCode": "p88vcdo"}]</td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>数据库部分匹配：login_name值变更为：17794720545</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>修改密码_传入参数: {channelUserId: "178803"
+channelId: 1
+loginPwdNew: "e10adc3949ba59abbe56e057f20f883e"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>数据库部分匹配：login_pwd值变更为：e10adc3949ba59abbe56e057f20f883e</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>花生日记用户登录_传入参数: {mobile: "17794720545"
+mobileAreaCode: "86"
+channelId: 1
+pwd: "123456"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>2:20:36 PM</td>
+					<td class='step-details'>返回值: [{"userId": "178803","nickName": "PvkGkUCAc","name": "程成","headerImg": "dca1Jm61UGGSDhW","mobile": "17794720545","qq": "1","aliNo": "doudousmimi@163.com","createTime": 1501592092000,"sex": 2,"activateTime": 1501592216000,"pushNo": "nah2xoh","appWxOpenId": "oBrt31RJksETS7FWsakEes61W38k","cardNo": "ox-FY1dRO31w9tcGLFh9YiBQQOy8","ifAuth": -1,"updateTime": 1577341239000,"status": 1,"role": 1,"operator": 176700,"grandfatherId": 177814,"fatherId": 178803,"isSecret": -1,"companyId": 1632,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>2:13:49 PM</td>
+					<td class='timestamp'>2:20:36 PM</td>
 					<td class='step-details'>Test passed</td>
 				</tr>
 			</tbody>
@@ -419,108 +395,6 @@ channelId: 1
 </div>
 <!-- test view -->
 <!-- category view -->
-<div id='exception-view' class='view hide'>
-
-    <section id='controls'>
-        <div class='controls grey lighten-4'>
-            <!-- search -->
-            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
-                <a href="#" class='search-div'>
-                    <i class='material-icons'>search</i> Search
-                </a>
-
-                <div class='input-field left hide'>
-                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-                </div>
-
-            </div>
-            <!-- search -->
-        </div>
-    </section>
-
-    <div class='subview-left left'>
-
-        <div class='view-summary'>
-            <h5>Exceptions</h3>
-                <ul id='exception-collection' class='exception-collection'>
-
-                        <li class='exception displayed active'>
-                            <div class='exception-heading'>
-                                <span class='exception-name'>java.lang.AssertionError</span>
-                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-                            </div>
-                            <div class='exception-content hide'>
-                                <div class='exception-tests'>
-                                    <table class='bordered table-results'>
-                                        <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>TestName</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                                    <tr>
-                                                        <td>Dec 26, 2019 02:13:47 PM</td>
-                                                        <td class='linked' test-id='1'>pwdUpdate</td>
-                                                        <td><pre><pre>java.lang.AssertionError: expected [e10adc3949ba59abbe56e057f20f883e] but found [17755172003]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:513)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
-	at org.testng.Assert.assertEquals(Assert.java:116)
-	at org.testng.Assert.assertEquals(Assert.java:190)
-	at org.testng.Assert.assertEquals(Assert.java:200)
-	at com.example.utils.CheckDatabase.CheckDatabaseInfo(CheckDatabase.java:94)
-	at com.example.UserbasePublic.UserbaseTest.pwdUpdate(UserbaseTest.java:142)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:104)
-	at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:205)
-	at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:181)
-	at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:217)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:641)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:851)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1177)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:756)
-	at org.testng.TestRunner.run(TestRunner.java:610)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:387)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:382)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1293)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1218)
-	at org.testng.TestNG.runSuites(TestNG.java:1133)
-	at org.testng.TestNG.run(TestNG.java:1104)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:373)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:334)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:119)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:407)
-</pre></pre></td>
-                                                    </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </li>
-                </ul>
-        </div>
-    </div>
-
-    <div class='subview-right left'>
-        <div class='view-summary'>
-            <h5 class='exception-name'></h5>
-        </div>
-    </div>
-</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -542,19 +416,19 @@ channelId: 1
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Dec 26, 2019 02:13:45 PM</div>
+					<div class='panel-lead'>Dec 26, 2019 02:20:34 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Dec 26, 2019 02:13:47 PM</div>
+			 		<div class='panel-lead'>Dec 26, 2019 02:20:35 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>1,760ms</div>
+					<div class='panel-lead'>1,737ms</div>
 				</div>
 			</div>
 		</div>
@@ -567,22 +441,22 @@ channelId: 1
 
 		<script>
 			var statusGroup = {
-				passParent: 2,
-				failParent: 1,
+				passParent: 3,
+				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 0,
 				
-				passChild: 2,
-				failChild: 1,
+				passChild: 3,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 16,
+				exceptionsChild: 18,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

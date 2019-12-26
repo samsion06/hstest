@@ -35,7 +35,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
                      "   2.修改昵称" +
                      "   3.修改头像")
     public void LoginAndUpdate() {
-        String mobile = "17756244776";
+        String mobile = "17720130632";
         String pwd = "123456";
         String nickname = DataUtils.getRandomString(9);//随机生成用户名
         String headimgurl = DataUtils.getRandomString(15);//随机生成用户名
@@ -109,7 +109,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(description = "修改手机号-修改密码-登录")
-    public void pwdUpdate(){
+    public void LogiNameAndPwdUpdate(){
         String ChannelUserId="178803";
         try{
             httpClient = HttpClients.createDefault();
@@ -139,7 +139,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String pwdResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",pwdResponseMsg);
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"PwdUpdate",mobile,ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"PwdUpdate",md5pwd,ChannelUserId);
 
             //再次登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
