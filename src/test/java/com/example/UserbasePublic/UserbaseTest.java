@@ -11,6 +11,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
+
 import java.io.IOException;
 import java.net.URI;
 
@@ -21,8 +23,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
    private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
 
-   private static Integer ChannelId;
-   private static CloseableHttpClient httpClient = HttpClients.createDefault();
+   private static Integer ChannelId=1;
+   private static CloseableHttpClient httpClient;
    private static ByteArrayEntity byteArrayEntity ;
    private static URI uri ;
    private static HttpPost post;
@@ -36,8 +38,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
              String pwd="123456";
              String nickname=DataUtils.getRandomString(9);//随机生成用户名
              String headimgurl=DataUtils.getRandomString(15);//随机生成用户名
-       //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
+             //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
         try {
+            httpClient = HttpClients.createDefault();
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login","");
             post = new HttpPost(uri);
@@ -55,15 +58,20 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            String s = CheckReponseResult.AssertResponse(response);
+            String nickNameResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",nickNameResponseMsg);
+
+
             //修改头像
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/user/head/img/update", "", null);
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/head/img/update","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserHeadImgUpdateRequestConvertBuilder(ChannelId, ChannelUserId, headimgurl);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            String s1 = CheckReponseResult.AssertResponse(response);
+            String headUrlImg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",headUrlImg);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -126,4 +134,3 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
 
 
-}

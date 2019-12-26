@@ -4,8 +4,8 @@
 
 <mapper namespace="com.example.mapper.UserBaseInfoMapper">
 
-    <select id="queryUserBaseInfo" resultType="com.example.domain.UserBaseInfo">
-         select * from user_base_info where user_id=4662
+    <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
+         select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
 
     <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserWeChatInfo">

@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserBaseInfoMapper {
     //所有接口方法都写在这个接口上
     //查询用户
-    public List<UserBaseInfo> queryUserBaseInfo();
+    public UserBaseInfo queryUserBaseInfo();
 
    //查询微信
    //public List<UserAlipayAuthInfo> queryWeChatInfos(String channel_user_id);

@@ -68,6 +68,10 @@ public class CheckDatabase {
                 Assert.assertEquals(1,address_is_delete);
                 Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
                 break;
+            case "NickNameUpdate":
+
+
+
             default:
                 System.out.println("没找到方法");
                 break;
