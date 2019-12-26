@@ -12,6 +12,7 @@ public class CheckDatabase {
     private static UserAddressInfo userAddressInfo;
     private static UserBaseInfo userBaseInfo;
     private static UserLoginInfo userLoginInfo;
+
     private static String AllMsg="数据库全部匹配：";
     private static String PartMsg="数据库部分匹配：";
 
@@ -26,7 +27,8 @@ public class CheckDatabase {
     public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut,String channel_user_id){
         switch (method){
             //检查的点不同,所以要分开
-            case "WeChatInfoUnbind": //微信解绑
+            //微信解绑
+            case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
                 int wechat_is_delete = userWeChatInfos.getIs_delete(); //比对
                 Assert.assertEquals(1,wechat_is_delete);
@@ -88,7 +90,7 @@ public class CheckDatabase {
                 break;
             case "PwdUpdate":
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
-                String pwd=userLoginInfo.getLogin_name();
+                String pwd=userLoginInfo.getLogin_pwd();
                 Assert.assertEquals(TargetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
             default:

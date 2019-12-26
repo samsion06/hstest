@@ -126,6 +126,7 @@ public class ConvertData {
         builder.setMobileAreaCodeNew(MobileAreaCodeNew);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("修改手机号码_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //修改密码
@@ -136,6 +137,7 @@ public class ConvertData {
         builder.setLoginPwdNew(loginPwdNew);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("修改密码_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户实名认证

@@ -108,7 +108,7 @@ public class ExtentTestNGReporterListener implements IReporter {
         htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
         //htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setResourceCDN(ResourceCDN.EXTENTREPORTS);
-        //htmlReporter.config().setEncoding("gbk");
+        htmlReporter.config().setEncoding("gbk");
         htmlReporter.config().setJS("var script = document.createElement(\"script\");\n" +
                                     "script.type = \"text/javascript\";\n" +
                                     "script.src = \"https://extentreports.com/resx/dist/js/extent.js\";\n" +
