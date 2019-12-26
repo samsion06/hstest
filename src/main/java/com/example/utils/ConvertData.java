@@ -18,7 +18,7 @@ public class ConvertData {
 
     private static String incomeMessage="传入参数:"+" {";
 
-    //花生日记登录用根据手机号,密码
+    //花生日记登录
     public static ByteArrayEntity UserInfoPdLoginRequestConvertBuilder(Integer ChannelId, String Mobile, String Pwd,String mobileareacode ){
         UserBaseServiceProto.UserInfoPdLoginRequest.Builder builder= UserBaseServiceProto.UserInfoPdLoginRequest.newBuilder();
         builder.setChannelId(ChannelId);
@@ -27,6 +27,7 @@ public class ConvertData {
         //builder.setMobileAreaCode(mobileareacode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("花生日记用户登录_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //修改昵称
@@ -37,6 +38,7 @@ public class ConvertData {
         builder.setNickName(NickName);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("修改昵称_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户注册
@@ -59,6 +61,7 @@ public class ConvertData {
         builder.setHeadImageUrl(HeadImageUrl);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("修改头像_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //获取用户信息
@@ -114,13 +117,14 @@ public class ConvertData {
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return bytes;
     }
-    //邀请码注册
+    //邀请码
     public static ByteArrayEntity UserInviteCodeQueryRequest(String inviteCode,Integer channelId){
         UserBaseServiceProto.UserInviteCodeQueryRequest.Builder builder = UserBaseServiceProto.UserInviteCodeQueryRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setInviteCode(inviteCode);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("邀请码获取用户信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户忘记登录密码
@@ -277,6 +281,7 @@ public class ConvertData {
         builder.setPageNum(pageNum);
         builder.setPageSize(pageSize);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("分页查询户收货地址列表_"+incomeMessage+builder+ "}");
         return bytes;
     }
 

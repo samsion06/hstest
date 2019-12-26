@@ -80,7 +80,7 @@ public class CheckDatabase {
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
                 String headurlimg=userBaseInfo.getHead_img();
                 Assert.assertEquals(TargetOutPut,headurlimg);
-                Reporter.log(PartMsg+"nick_name值变更为："+headurlimg);
+                Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;
             default:
                 System.out.println("没找到方法");

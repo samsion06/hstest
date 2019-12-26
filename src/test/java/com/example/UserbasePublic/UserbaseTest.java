@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -30,9 +31,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
    private static HttpPost post;
    private static HttpResponse response;
 
-   @org.testng.annotations.Test(description = "1.用户登录" +
-                    "                      2.修改昵称" +
-                    "                      3.修改头像")
+   @Test(description = "1.用户登录" +
+                    "   2.修改昵称" +
+                    "   3.修改头像")
     public void LoginAndUpdate(){
              String mobile="17702015335";
              String pwd="123456";
@@ -41,7 +42,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
              //注册后user_base_info,user_login_info,hsrj_user_info 三个表都会有数据,user_base_info登录得时候的mobile_area_code有值就要传递
         try {
             httpClient = HttpClients.createDefault();
-
             //登录
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login","");
             post = new HttpPost(uri);
@@ -86,18 +86,25 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @org.testng.annotations.Test(description = "根据邀请码获取用户信息")
-    public void test9(){
+    @Test(description = "根据邀请码获取用户信息")
+    public void getInfoByInviteCode(){
         try{
-            uri = new URI(HttpConfig.scheme, null, HttpConfig.url, HttpConfig.port, "/base/get/by/invite/code", "", null);
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/get/by/invite/code","");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserInviteCodeQueryRequest("p88vcdo",1);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.checkResponseCodeAndObj(response, UserBaseServiceProto.UserInfoInviteCodeResponse.class);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserInfoInviteCodeResponse.class);
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
