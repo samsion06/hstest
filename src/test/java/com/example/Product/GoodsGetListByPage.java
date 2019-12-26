@@ -26,7 +26,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.Servicescheme, null, HttpConfig.Serviceurl, HttpConfig.Serviceport, "/productservice/productapi/hszy/goods/getListByPage", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.GetListByPageRequestDTO(1,10,2);
+            byteArrayEntity = DataTransfer.getListByPageRequestDTO(1,10,2);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -52,7 +52,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.Servicescheme, null, HttpConfig.Serviceurl, HttpConfig.Serviceport, "/productservice/productapi/hszy/goods/getDetailById", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.GetDetailByIdRequestDTO(1910241023325207231L);
+            byteArrayEntity = DataTransfer.getDetailByIdRequestDTO(1910241023325207231L);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -78,7 +78,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.Servicescheme, null, HttpConfig.Serviceurl, HttpConfig.Serviceport, "/productservice/productapi/hszy/goods/getDetailByIdList", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.GetDetailByIdListRequestDTO(1,1910241023325207231L,"1905081410388277622");
+            byteArrayEntity = DataTransfer.getDetailByIdListRequestDTO(1,1910241023325207231L,"1905081410388277622");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -108,7 +108,7 @@ public class GoodsGetListByPage {
             post = new HttpPost(uri);
             String orderid="8e2d3a7066d845318ee128153a7140c2_"+System.currentTimeMillis();
             System.out.println(orderid);
-            byteArrayEntity = DataTransfer.LockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_LOCK_ADD);
+            byteArrayEntity = DataTransfer.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_LOCK_ADD);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -123,7 +123,7 @@ public class GoodsGetListByPage {
                     //扣减库存
                     uri = new URI(HttpConfig.Servicescheme, null, HttpConfig.Serviceurl, HttpConfig.Serviceport, "/productservice/productapi/hszy/goods/lockUserStockByList", "", null);
                     post = new HttpPost(uri);
-                    byteArrayEntity = DataTransfer.LockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_ADD);
+                    byteArrayEntity = DataTransfer.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_ADD);
                     post.setEntity(byteArrayEntity);
                     post.setHeader("Content-Type", "application/x-protobuf");
                     response = httpClient.execute(post);

@@ -47,7 +47,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             //绑定支付宝
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserAliPayBidingRequest(channelUserId,channelId,alipayRealname,alipayAccount,alipayUserId);
+            byteArrayEntity = DataTransfer.userAliPayBidingRequest(channelUserId,channelId,alipayRealname,alipayAccount,alipayUserId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -58,7 +58,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserAliPayAuthRequest(channelUserId,channelId,alipayUserId);
+            byteArrayEntity = DataTransfer.userAliPayAuthRequest(channelUserId,channelId,alipayUserId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -69,7 +69,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserAliPayAuthCancelRequest(channelUserId,channelId);
+            byteArrayEntity = DataTransfer.userAliPayAuthCancelRequest(channelUserId,channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -94,7 +94,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             httpClient= HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/info","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserAliPayAuthInfoRequest(channeluserId, channelId);
+            byteArrayEntity = DataTransfer.userAliPayAuthInfoRequest(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -126,7 +126,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             httpClient= HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/queryStatus","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserIdCardStatusQueryRequestConvertBuilder(channeluserId, channelId);
+            byteArrayEntity = DataTransfer.userIdCardStatusQueryRequestConvertBuilder(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

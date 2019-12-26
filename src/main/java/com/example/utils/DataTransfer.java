@@ -31,7 +31,7 @@ public class DataTransfer {
         return bytes;
     }
     //修改昵称
-    public static ByteArrayEntity UserNickNameUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String nickName){
+    public static ByteArrayEntity userNickNameUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String nickName){
         UserBaseServiceProto.UserNickNameUpdateRequest.Builder builder = UserBaseServiceProto.UserNickNameUpdateRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
@@ -42,7 +42,7 @@ public class DataTransfer {
         return bytes;
     }
     //用户注册
-    public static ByteArrayEntity UserBaseRegisterRequestConvertBuilder(String mobile) {
+    public static ByteArrayEntity userBaseRegisterRequestConvertBuilder(String mobile) {
 
         UserBaseServiceProto.UserBaseRegisterRequest.Builder builder = UserBaseServiceProto.UserBaseRegisterRequest.newBuilder();
         UserBaseServiceProto.UserBaseRegister.Builder  userBaseRegisterBuild = UserBaseServiceProto.UserBaseRegister.newBuilder();
@@ -91,7 +91,7 @@ public class DataTransfer {
     }
 
     //修改头像
-    public static ByteArrayEntity UserHeadImgUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String headImageUrl){
+    public static ByteArrayEntity userHeadImgUpdateRequestConvertBuilder(Integer channelId, String channelUserId, String headImageUrl){
         UserBaseServiceProto.UserHeadImgUpdateRequest.Builder builder= UserBaseServiceProto.UserHeadImgUpdateRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
@@ -102,7 +102,7 @@ public class DataTransfer {
         return bytes;
     }
     //获取用户信息
-    public static ByteArrayEntity UserInfoUnionIdOpenIdRequestConvertBuilder(Integer channelId, String unionId, String openId){
+    public static ByteArrayEntity userInfoUnionIdOpenIdRequestConvertBuilder(Integer channelId, String unionId, String openId){
         UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.Builder builder= UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setOpenId(openId);
@@ -113,7 +113,7 @@ public class DataTransfer {
         return bytes;
     }
     //修改手机号码
-    public static ByteArrayEntity UserMobileUpdateRequestConvertBuilder(Integer channelId,String mobileNew,String channelUserId,String mobileAreaCodeNew){
+    public static ByteArrayEntity userMobileUpdateRequestConvertBuilder(Integer channelId, String mobileNew, String channelUserId, String mobileAreaCodeNew){
         UserBaseServiceProto.UserMobileUpdateRequest.Builder builder=  UserBaseServiceProto.UserMobileUpdateRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobileNew(mobileNew);
@@ -125,7 +125,7 @@ public class DataTransfer {
         return bytes;
     }
     //修改密码
-    public static ByteArrayEntity UserPwdUpdateRequestConvertBuilder(String channelUserId,Integer channelId,String loginPwdNew){
+    public static ByteArrayEntity userPwdUpdateRequestConvertBuilder(String channelUserId, Integer channelId, String loginPwdNew){
         UserLoginInfoServiceProto.UserPwdUpdateRequest.Builder builder=UserLoginInfoServiceProto.UserPwdUpdateRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -136,7 +136,7 @@ public class DataTransfer {
         return bytes;
     }
     //忘记密码
-    public static ByteArrayEntity UserForgetPwdRequest(Integer channelId,String loginPwd,String mobile,String mobileareacode){
+    public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile, String mobileareacode){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder= UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setLoginPwd(loginPwd);
@@ -161,7 +161,7 @@ public class DataTransfer {
         return bytes;
     }
     //用户实名认证查询
-    public static ByteArrayEntity UserIdCardStatusQueryRequestConvertBuilder(String channelUserId,Integer channelId){
+    public static ByteArrayEntity userIdCardStatusQueryRequestConvertBuilder(String channelUserId, Integer channelId){
         UserIdCardIdentifyServiceProto.UserIdCardStatusQueryRequest.Builder builder=UserIdCardIdentifyServiceProto.UserIdCardStatusQueryRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -170,7 +170,7 @@ public class DataTransfer {
         return bytes;
     }
     //邀请码
-    public static ByteArrayEntity UserInviteCodeQueryRequest(String inviteCode,Integer channelId){
+    public static ByteArrayEntity userInviteCodeQueryRequest(String inviteCode, Integer channelId){
         UserBaseServiceProto.UserInviteCodeQueryRequest.Builder builder = UserBaseServiceProto.UserInviteCodeQueryRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setInviteCode(inviteCode);
@@ -180,7 +180,7 @@ public class DataTransfer {
         return bytes;
     }
     //用户忘记登录密码
-    public static ByteArrayEntity UserForgetPwdRequest(Integer channelId,String loginPwd,String mobile){
+    public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder=UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setLoginPwd(loginPwd);
@@ -189,7 +189,7 @@ public class DataTransfer {
         return bytes;
     }
     //微信绑定
-    public static ByteArrayEntity UserWeChatAuthRequest(String appId,Integer channelId,String channelUserId,String openId){
+    public static ByteArrayEntity userWeChatAuthRequest(String appId, Integer channelId, String channelUserId, String openId){
         UserWeChatAuthServiceProto.UserWeChatAuthRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthRequest.newBuilder();
         builder.setAppId(appId);
         builder.setChannelId(channelId);
@@ -201,7 +201,7 @@ public class DataTransfer {
         return bytes;
     }
     //微信解绑
-    public static ByteArrayEntity UserWeChatAuthUnBindRequest(String openId,Integer channelId,String channelUserId,String appId ){
+    public static ByteArrayEntity userWeChatAuthUnBindRequest(String openId, Integer channelId, String channelUserId, String appId ){
         UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.newBuilder();
         builder.setOpenId(openId);
         builder.setChannelId(channelId);
@@ -213,7 +213,7 @@ public class DataTransfer {
         return bytes;
     }
     //微信一键登录
-    public static ByteArrayEntity UserWeChatOneKeyLoginRequest(Integer channelId,String mobile,String inviteChannelUserId,String mobileAreaCode){
+    public static ByteArrayEntity userWeChatOneKeyLoginRequest(Integer channelId, String mobile, String inviteChannelUserId, String mobileAreaCode){
         UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobile(mobile);
@@ -226,7 +226,7 @@ public class DataTransfer {
     }
 
     //绑定支付宝
-    public static ByteArrayEntity  UserAliPayBidingRequest(String channelUserId,Integer channelId,String alipayRealname,String alipayAccount,String  alipayUserId){
+    public static ByteArrayEntity userAliPayBidingRequest(String channelUserId, Integer channelId, String alipayRealname, String alipayAccount, String  alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayBidingRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayBidingRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -239,7 +239,7 @@ public class DataTransfer {
         return bytes;
     }
     //支付宝授权
-    public static ByteArrayEntity UserAliPayAuthRequest(String channelUserId,Integer channelId,String alipayUserId){
+    public static ByteArrayEntity userAliPayAuthRequest(String channelUserId, Integer channelId, String alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayAuthRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayAuthRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -250,7 +250,7 @@ public class DataTransfer {
         return bytes;
     }
     //用户支付宝取消授权
-    public static ByteArrayEntity UserAliPayAuthCancelRequest(String channelUserId,Integer channelId){
+    public static ByteArrayEntity userAliPayAuthCancelRequest(String channelUserId, Integer channelId){
         UserAliPayAuthServiceProto.UserAliPayAuthCancelRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayAuthCancelRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
@@ -260,7 +260,7 @@ public class DataTransfer {
         return bytes;
     }
     //用户支付宝授权查询
-    public static ByteArrayEntity UserAliPayAuthInfoRequest(String channelUserId,Integer channelId){
+    public static ByteArrayEntity userAliPayAuthInfoRequest(String channelUserId, Integer channelId){
         UserAliPayAuthServiceProto.UserAliPayAuthInfoRequest.Builder builder =  UserAliPayAuthServiceProto.UserAliPayAuthInfoRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -271,7 +271,7 @@ public class DataTransfer {
     }
 
     //添加用户收货地址
-    public static ByteArrayEntity UserAddressInfoAddRequest(String channelUserId,Integer channelId,String address){
+    public static ByteArrayEntity userAddressInfoAddRequest(String channelUserId, Integer channelId, String address){
         UserAddressServiceProto.UserAddressInfoAddRequest.Builder builder=UserAddressServiceProto.UserAddressInfoAddRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -281,7 +281,7 @@ public class DataTransfer {
         return bytes;
     }
     //获取用户收货地址
-    public static ByteArrayEntity UserAddressRequest(String channelUserId,Integer channelId,String addressId){
+    public static ByteArrayEntity userAddressRequest(String channelUserId, Integer channelId, String addressId){
         UserAddressServiceProto.UserAddressRequest.Builder builder=UserAddressServiceProto.UserAddressRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -292,7 +292,7 @@ public class DataTransfer {
         return bytes;
     }
     //删除收货地址
-    public static ByteArrayEntity UserAddressDelete(String channelUserId,Integer channelId,String addressId){
+    public static ByteArrayEntity userAddressDelete(String channelUserId, Integer channelId, String addressId){
         UserAddressServiceProto.UserAddressRequest.Builder builder=UserAddressServiceProto.UserAddressRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -304,7 +304,7 @@ public class DataTransfer {
     }
 
     //更新用户收货地址
-    public static ByteArrayEntity UserAddressInfoUpdateRequest(String channelUserId,Integer channelId,String addressId,String username){
+    public static ByteArrayEntity userAddressInfoUpdateRequest(String channelUserId, Integer channelId, String addressId, String username){
         UserAddressServiceProto.UserAddressInfoUpdateRequest.Builder builder=UserAddressServiceProto.UserAddressInfoUpdateRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -326,7 +326,7 @@ public class DataTransfer {
         return bytes;
     }
     //分页查询户收货地址列表
-    public static ByteArrayEntity UserAddressPageRequest(String channelUserId,Integer channelId,Integer pageSize,Integer pageNum){
+    public static ByteArrayEntity userAddressPageRequest(String channelUserId, Integer channelId, Integer pageSize, Integer pageNum){
         UserAddressServiceProto.UserAddressPageRequest.Builder builder=UserAddressServiceProto.UserAddressPageRequest.newBuilder();
         builder.setChannelUserId(channelUserId);
         builder.setChannelId(channelId);
@@ -355,7 +355,7 @@ public class DataTransfer {
      */
 
     //分页查询商品列表
-    public static ByteArrayEntity GetListByPageRequestDTO(Integer currentPage,Integer pageSize,Integer group){
+    public static ByteArrayEntity getListByPageRequestDTO(Integer currentPage, Integer pageSize, Integer group){
         ProductServiceApiGetListByPage.GetListByPageRequestDTO.Builder builder= ProductServiceApiGetListByPage.GetListByPageRequestDTO.newBuilder();
         builder.setCurrentPage(currentPage);
         builder.setPageSize(pageSize);
@@ -366,7 +366,7 @@ public class DataTransfer {
     }
 
     //根据ID获取商品详情
-    public static ByteArrayEntity GetDetailByIdRequestDTO(Long id){
+    public static ByteArrayEntity getDetailByIdRequestDTO(Long id){
         ProductServiceApiGetDetailById.GetDetailByIdRequestDTO.Builder builder= ProductServiceApiGetDetailById.GetDetailByIdRequestDTO.newBuilder();
         builder.setId(id);
         System.out.println(builder);
@@ -375,7 +375,7 @@ public class DataTransfer {
     }
 
     //根据ID集合获取商品详情
-    public static ByteArrayEntity GetDetailByIdListRequestDTO(Integer mode,Long id,String StoreId){
+    public static ByteArrayEntity getDetailByIdListRequestDTO(Integer mode, Long id, String StoreId){
         ProductServiceApiGetDetailByIdList.GetDetailByIdListRequestDTO.Builder builder=ProductServiceApiGetDetailByIdList.GetDetailByIdListRequestDTO.newBuilder();
         List<ProductServiceApiGetDetailByIdList.GoodIdDTO> goodIdDTOList = Lists.newArrayList();
         ProductServiceApiGetDetailByIdList.GoodIdDTO.Builder goodIdDTOBuilder = ProductServiceApiGetDetailByIdList.GoodIdDTO.newBuilder();
@@ -396,7 +396,7 @@ public class DataTransfer {
     }
 
     //库存增-减-锁
-    public static ByteArrayEntity LockStockByListRequestDto(String PorderId,Long GoodId,Long SkuId,ProductServiceApiStockService.GoodStockOperateEnum Enum){
+    public static ByteArrayEntity lockStockByListRequestDto(String PorderId, Long GoodId, Long SkuId, ProductServiceApiStockService.GoodStockOperateEnum Enum){
         System.out.println(Enum);
         ProductServiceApiStockService.LockStockByListRequestDto.Builder builder = ProductServiceApiStockService.LockStockByListRequestDto.newBuilder();
         builder.setOrderId(PorderId);

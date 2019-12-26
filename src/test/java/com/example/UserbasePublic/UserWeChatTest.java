@@ -42,7 +42,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             //微信绑定
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/binding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
+            byteArrayEntity = DataTransfer.userWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -53,7 +53,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             //解除绑定
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
+            byteArrayEntity = DataTransfer.userWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -80,7 +80,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
+            byteArrayEntity = DataTransfer.userWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -105,7 +105,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
             System.out.println(uri);
             post = new HttpPost(uri);;
-            byteArrayEntity = DataTransfer.UserInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            byteArrayEntity = DataTransfer.userInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

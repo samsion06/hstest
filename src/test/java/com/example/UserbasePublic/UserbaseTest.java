@@ -57,7 +57,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             //修改昵称
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/nick/name/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserNickNameUpdateRequestConvertBuilder(ChannelId, ChannelUserId, nickname);
+            byteArrayEntity = DataTransfer.userNickNameUpdateRequestConvertBuilder(ChannelId, ChannelUserId, nickname);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -68,7 +68,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             //修改头像
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/head/img/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserHeadImgUpdateRequestConvertBuilder(ChannelId, ChannelUserId, headimgurl);
+            byteArrayEntity = DataTransfer.userHeadImgUpdateRequestConvertBuilder(ChannelId, ChannelUserId, headimgurl);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -93,7 +93,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/get/by/invite/code", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserInviteCodeQueryRequest("p88vcdo", 1);
+            byteArrayEntity = DataTransfer.userInviteCodeQueryRequest("p88vcdo", 1);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -119,7 +119,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             //修改手机号
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/mobile/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserMobileUpdateRequestConvertBuilder(1, mobile, ChannelUserId, "86");
+            byteArrayEntity = DataTransfer.userMobileUpdateRequestConvertBuilder(1, mobile, ChannelUserId, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -135,7 +135,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/pwd/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserPwdUpdateRequestConvertBuilder(ChannelUserId, 1, md5pwd);
+            byteArrayEntity = DataTransfer.userPwdUpdateRequestConvertBuilder(ChannelUserId, 1, md5pwd);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -171,7 +171,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.UserForgetPwdRequest(ChannelId,"123456","17720130632","86");
+            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,"123456","17720130632","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -192,7 +192,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/register", "");
             post = new HttpPost(uri);
-            DataTransfer.UserBaseRegisterRequestConvertBuilder(mobile);
+            DataTransfer.userBaseRegisterRequestConvertBuilder(mobile);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
