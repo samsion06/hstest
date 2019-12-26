@@ -48,9 +48,10 @@ public class ConvertData {
         userBaseRegisterBuilder.setChannelId(ChannelId);
         userBaseRegisterBuilder.setChannelUserId(ChannelUserId);
         userBaseRegisterBuilder.setMobile(mobile);
+        userBaseRegisterBuilder.setMobileAreaCode("86");
         builder.setUserBaseRegister(userBaseRegisterBuilder);
-        System.out.println(builder);
         ByteArrayEntity bytes = new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
         return bytes;
     }
     //修改头像
