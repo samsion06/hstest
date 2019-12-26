@@ -54,6 +54,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg);//expected  actual
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
+
             //用户支付宝授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
             post = new HttpPost(uri);
@@ -64,6 +65,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             String authResponse = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",authResponse);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
+
             //用户取消授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
@@ -74,6 +76,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",unbindResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayCancel","1",channelUserId);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
