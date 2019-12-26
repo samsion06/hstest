@@ -40,6 +40,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayAccount="177"+(int)((Math.random()*9+1)*10000000); //生成手机号
+
         //生成随机字符串
         String alipayRealname= DataUtils.getRandomString(9);
         try {
