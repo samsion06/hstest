@@ -46,11 +46,10 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
-            //返回值验证
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
-            //数据库再次验证
             Assert.assertEquals(bindResponseMsg,"RESP_CODE_SUCCESS");
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",ChannelUserId,ChannelUserId);
+
             //解除绑定
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
@@ -61,6 +60,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals(unbindResponseMsg,"RESP_CODE_SUCCESS");
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","null",ChannelUserId);
+
         }catch(Exception e){
             e.printStackTrace();
         }finally {
@@ -72,9 +72,10 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-    @Test  //用户微信一键登录
+    @Test(description = "用户一键登录微信")
     public void loginByOneKey(){ ;
         try{
+
             //微信绑定
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/loginByOneKey","");
@@ -84,6 +85,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
+
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -95,9 +97,10 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-    @Test //根据微信ID和OPENID获取用户信息
+    @Test(description = "根据微信ID和OPENID获取用户信息")
     public void getByOpenId() {
         try {
+
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
             System.out.println(uri);
@@ -107,6 +110,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

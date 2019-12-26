@@ -89,6 +89,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     @Test(description = "根据邀请码获取用户信息")
     public void getInfoByInviteCode() {
         try {
+
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/get/by/invite/code", "");
             post = new HttpPost(uri);
@@ -97,6 +98,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserInfoInviteCodeResponse.class);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -164,8 +166,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     //@Test(description = "忘记密码")
     public void forgetPassword(){
         try{
-            httpClient = HttpClients.createDefault();
+
             //用户忘记登录密码
+            httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
             post = new HttpPost(uri);
             byteArrayEntity = ConvertData.UserForgetPwdRequest(ChannelId,"123456","17720130632","86");
@@ -174,6 +177,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             //校验结果
             CheckReponseResult.AssertResponse(response);
+
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -52,6 +52,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
             String addaddressResponseMsg = CheckReponseResult.AssertResponses(response, UserAddressServiceProto.UserAddressInfoResponse.class);
             //截取addressId传入下一个接口
             String addressId = DataUtils.substring(addaddressResponseMsg, "addressId:\"", 16, "\",", 0);
+
             //获取收货地址
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/getByAddressId","");
@@ -61,6 +62,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserAddressServiceProto.UserAddressInfoResponse.class);
+
             //更新收货地址
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/update","");
             post = new HttpPost(uri);
@@ -71,6 +73,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
             String updateResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",updateResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AddressUpadate",name,ChannelUserId);
+
             //删除收货地址
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/address/delete","");
             post = new HttpPost(uri);
@@ -86,7 +89,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @org.testng.annotations.Test(description ="分页查询用户收货地址列表")
+    @Test(description ="分页查询用户收货地址列表")
     public void addressQuery(){
         try{
             httpClient = HttpClients.createDefault();
