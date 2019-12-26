@@ -27,16 +27,39 @@
         select * from user_receive_address where channel_user_id=#{channel_user_id}
     </select>
 
+    <!--映射支付宝中心字段-->
+    <resultMap id="AddressInfoMap" type="com.example.domain.UserAddressInfo">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="channel_user_id" property="channelUserId"/>
+        <result column="alipay_user_id" property="alipayUserId"/>
+        <result column="alipay_realname" property="alipayRealName"/>
+        <result column="alipay_account" property="alipayAccount"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="head_img" property="headImg"/>
+        <result column="identity_card" property="identityCard"/>
+        <result column="sex" property="sex"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="status" property="status"/>
+        <result column="is_certified" property="isCertified"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="is_student_certified" property="isStudentCertified"/>
+        <result column="user_type" property="userType"/>
+        <result column="user_status" property="userStatus"/>
+    </resultMap>
+
+    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfo">
+        select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
+    </select>
+
     <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
 
     <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserWeChatInfo">
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
-    </select>
-
-    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfo">
-        select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
     <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">
