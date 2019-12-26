@@ -180,4 +180,8 @@ public class UserAddressInfo {
                 ", updateTime=" + updateTime +
                 '}';
     }
+
+
+
+
 }

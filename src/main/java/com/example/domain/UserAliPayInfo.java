@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.Date;
+
 public class UserAliPayInfo {
 
     private Long id;
@@ -21,6 +23,24 @@ public class UserAliPayInfo {
     private String isStudentCertified;
     private String userType;
     private String userStatus;
+    private Date creatTime;
+    private Date updateTime;
+
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Long getId() {
         return id;
@@ -196,6 +216,8 @@ public class UserAliPayInfo {
                 ", isStudentCertified='" + isStudentCertified + '\'' +
                 ", userType='" + userType + '\'' +
                 ", userStatus='" + userStatus + '\'' +
+                ", creatTime=" + creatTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }
