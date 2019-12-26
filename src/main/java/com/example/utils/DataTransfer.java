@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ConvertData {
+public class DataTransfer {
 
     private static String incomeMessage="传入参数:"+" {";
 
