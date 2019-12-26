@@ -1,8 +1,7 @@
 package com.example.domain;
 
 public class UserAddressInfo {
-
-    private Long Id;
+    private Long id;
     private Long userId;
     private Long channelId;
     private String channelUserId;
@@ -19,11 +18,11 @@ public class UserAddressInfo {
     private Integer isDelete;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public Long getUserId() {
@@ -141,7 +140,7 @@ public class UserAddressInfo {
     @Override
     public String toString() {
         return "UserAddressInfo{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", userId=" + userId +
                 ", channelId=" + channelId +
                 ", channelUserId='" + channelUserId + '\'' +

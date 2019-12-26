@@ -66,7 +66,8 @@ public class CheckDatabase {
                 break;
             case "AddressDelete"://删除收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
-                int address_is_delete = userAddressInfo.getIs_delete(); //比对
+                System.out.println(userAddressInfo);
+                int address_is_delete = userAddressInfo.getIsDelete(); //比对
                 Assert.assertEquals(1,address_is_delete);
                 Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
                 break;

@@ -34,8 +34,7 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
-			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
 		<!-- report name -->
@@ -48,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Dec 26, 2019 02:38:48 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Dec 26, 2019 03:22:02 PM</span>
 				</a>
 			</li>
 			<li>
@@ -81,20 +80,6 @@
 			<!-- test toggle -->
 
 			<!-- category toggle -->
-			<div class='chip transparent'>
-				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
-					<i class='material-icons'>local_offer</i> Category
-				</a>
-				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>Suite</a></li>
-					<li><a href='#'>支付宝中心</a></li>
-					<li><a href='#'>微信中心</a></li>
-					<li><a href='#'>收货地址</a></li>
-					<li><a href='#'>用户中心</a></li>
-					<li class='divider'></li>
-					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
-				</ul>
-			</div>
 			<!-- category toggle -->
 
 			<!-- clear filters -->
@@ -138,7 +123,7 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>10</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
 					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
@@ -153,7 +138,7 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>10</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
 					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
@@ -171,761 +156,142 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Suite : 支付宝中心</span>
-						<span class='test-time'>Dec 26, 2019 02:38:48 PM</span>
+						<span class='test-name'>addressCURD</span>
+						<span class='test-time'>Dec 26, 2019 03:22:02 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:38:48 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:38:53 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+295ms</span>
+	<span class='label start-time'>Dec 26, 2019 03:22:02 PM</span>
+	<span class='label end-time'>Dec 26, 2019 03:22:03 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+315ms</span>
 </div>
-	<div class='test-desc'>Pass: 2 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>Suite</span>
-				<span class='category label white-text'>支付宝中心</span>
-			</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>添加用户收货地址_传入参数: {channelUserId: "8714"
+channelId: 1
+address: "hgXSSysXA"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>返回值: [{"addressId": "2db119a2da4d450b9e2a1570b4af3311","channelUserId": "8714","channelId": 1,"address": "hgXSSysXA","createTime": 1577344925889}]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>获取用户收货地址_传入参数: {addressId: "2db119a2da4d450b9e2a1570b4af3311"
+channelId: 1
+channelUserId: "8714"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>返回值: [{"addressId": "2db119a2da4d450b9e2a1570b4af3311","channelUserId": "8714","channelId": 1,"address": "hgXSSysXA"}]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>更新用户收货地址_传入参数: {channelUserId: "8714"
+channelId: 1
+userName: "eoYB1OIfm"
+addressId: "2db119a2da4d450b9e2a1570b4af3311"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>数据库部分匹配：name值变更为：eoYB1OIfm</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>删除用户收货地址_传入参数: {addressId: "2db119a2da4d450b9e2a1570b4af3311"
+channelId: 1
+channelUserId: "8714"
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='2'>
-					<div class='collapsible-header'>
-						<div class='node-name'>BindAndAuthAndCancel</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:50 PM</span>
-						<span class='node-duration'>0h 0m 11s+382ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>支付宝中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>绑定支付宝_传入参数: {channelUserId: "9893"
-channelId: 1
-alipayRealname: "A2mJmmiBx"
-alipayAccount: "17782833906"
-alipayUserId: "8328"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库全部匹配：UserAliPayInfo{id=27948203, user_id=0, channel_id=1, channel_user_id='9893', alipay_user_id='8328', alipay_realname='A2mJmmiBx', alipay_account='17782833906', nick_name='null', head_img='null', identity_card='', sex=0, province='null', city='', status=0, is_certified=0, is_delete=0, is_student_certified='null', user_type='null', user_status='null'}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>支付宝授权_传入参数: {channelUserId: "9893"
-channelId: 1
-alipayUserId: "8328"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：Status值变更为：1</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>取消支付宝授权_传入参数: {channelUserId: "9893"
-channelId: 1
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：Status值变更为：2</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='3'>
-					<div class='collapsible-header'>
-						<div class='node-name'>authGetInfo</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:53 PM</span>
-						<span class='node-duration'>0h 0m 8s+4ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>支付宝中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>支付宝授权查询_传入参数: {channelUserId: "2571"
-channelId: 1
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值：[userAliPayAuth {
-  channelUserId: "2571"
-  channelId: 1
-  alipayRealname: "1aWrTwdxb"
-  alipayAccount: "17716278689"
-  alipayUserId: "6824"
-  status: 2
-  createTime: 1577067860000
-  updateTime: 1577067869000
-}
-responseCode {
-  msg: "RESP_CODE_SUCCESS"
-}
-]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
 					</div>
 				</li>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='4'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
 					<div class='test-heading'>
-						<span class='test-name'>Suite : 微信中心</span>
-						<span class='test-time'>Dec 26, 2019 02:38:54 PM</span>
+						<span class='test-name'>addressQuery</span>
+						<span class='test-time'>Dec 26, 2019 03:22:03 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:38:54 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:38:57 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+77ms</span>
+	<span class='label start-time'>Dec 26, 2019 03:22:03 PM</span>
+	<span class='label end-time'>Dec 26, 2019 03:22:03 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+67ms</span>
 </div>
-	<div class='test-desc'>Pass: 3 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>Suite</span>
-				<span class='category label white-text'>微信中心</span>
-			</div>
-	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='5'>
-					<div class='collapsible-header'>
-						<div class='node-name'>bindingAndunBinding</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:54 PM</span>
-						<span class='node-duration'>0h 0m 7s+720ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>微信中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>微信绑定_传入参数: {openId: "HDMkYnUue"
-channelId: 1
-channelUserId: "4092"
-appId: "Appid01"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库全部匹配：UserAlipayAuthInfo{id=44407526, user_id=1577342337464, channel_id=1, channel_user_id='4092', open_id='HDMkYnUue', union_id='', wx_no='null', nick_name='', sex=0, province='', city='', country='', head_img='', is_delete='0'}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>微信绑定解绑_传入参数: {openId: "HDMkYnUue"
-channelId: 1
-channelUserId: "4092"
-appId: "Appid01"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库全部匹配：is_delete值变更为：1</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='6'>
-					<div class='collapsible-header'>
-						<div class='node-name'>getByOpenId</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:56 PM</span>
-						<span class='node-duration'>0h 0m 5s+653ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>微信中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>获取用户信息_传入参数: {channelId: 1
-unionId: "ox-FY1f0_ub3FnM_v9n7ITb1q-f0"
-openId: "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"userId": "3692091","nickName": "BRglij1yj","headerImg": "Mm1Q8Ut5MepfAPg","mobile": "17720130632","qq": "1","createTime": 1516497433000,"activateTime": 1516497433000,"pushNo": "r88vcmo","appWxOpenId": "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","cardNo": "ox-FY1f0_ub3FnM_v9n7ITb1q-f0","ifAuth": -1,"updateTime": 1577341348000,"status": 1,"role": 1,"operator": 2382280,"grandfatherId": 2738511,"fatherId": 3692091,"isSecret": -1,"companyId": 1576,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='7'>
-					<div class='collapsible-header'>
-						<div class='node-name'>loginByOneKey</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:56 PM</span>
-						<span class='node-duration'>0h 0m 4s+964ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>微信中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>微信一键登录_传入参数: {channelId: 1
-mobile: "17702015334"
-inviteChannelUserId: "177417"
-mobileAreaCode: "86"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"channelUserId": "46957962"}]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='8'>
-					<div class='test-heading'>
-						<span class='test-name'>Suite : 收货地址</span>
-						<span class='test-time'>Dec 26, 2019 02:38:57 PM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:38:57 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:38:59 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+999ms</span>
-</div>
-	<div class='test-desc'>Pass: 2 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>Suite</span>
-				<span class='category label white-text'>收货地址</span>
-			</div>
-	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='9'>
-					<div class='collapsible-header'>
-						<div class='node-name'>addressCURD</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:57 PM</span>
-						<span class='node-duration'>0h 0m 4s+643ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>收货地址</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>添加用户收货地址_传入参数: {channelUserId: "8927"
-channelId: 1
-address: "xRYeZ8oGN"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"addressId": "305df0aabd394c8186052289ef3a6d39","channelUserId": "8927","channelId": 1,"address": "xRYeZ8oGN","createTime": 1577342340175}]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>获取用户收货地址_传入参数: {addressId: "305df0aabd394c8186052289ef3a6d39"
-channelId: 1
-channelUserId: "8927"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"addressId": "305df0aabd394c8186052289ef3a6d39","channelUserId": "8927","channelId": 1,"address": "xRYeZ8oGN"}]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>更新用户收货地址_传入参数: {channelUserId: "8927"
-channelId: 1
-userName: "Ltx8nMALV"
-addressId: "305df0aabd394c8186052289ef3a6d39"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：name值变更为：Ltx8nMALV</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>删除用户收货地址_传入参数: {addressId: "305df0aabd394c8186052289ef3a6d39"
-channelId: 1
-channelUserId: "8927"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：is_delete值变更为：1</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='10'>
-					<div class='collapsible-header'>
-						<div class='node-name'>addressQuery</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:59 PM</span>
-						<span class='node-duration'>0h 0m 2s+707ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>收货地址</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>分页查询户收货地址列表_传入参数: {channelUserId: "17702015334"
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>分页查询户收货地址列表_传入参数: {channelUserId: "17702015334"
 channelId: 1
 pageSize: 1
 pageNum: 1
 }</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"total": 1,"pageSize": 1,"pageNum": 1,"pages": 1,"list": [{"addressId": "774195ceb7ce455b95c69d2beb1f5723","userName": "xiaoming","address": "广州海珠区你老母2号","createTime": 1575447369000,"updateTime": 1575531730000}]}]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='11'>
-					<div class='test-heading'>
-						<span class='test-name'>Suite : 用户中心</span>
-						<span class='test-time'>Dec 26, 2019 02:38:59 PM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 02:38:59 PM</span>
-	<span class='label end-time'>Dec 26, 2019 02:39:01 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 2s+498ms</span>
-</div>
-	<div class='test-desc'>Pass: 3 ; Fail: 0 ; Skip: 0 ; </div>
-	<div class='test-attributes'>
-			<div class='category-list'>
-				<span class='category label white-text'>Suite</span>
-				<span class='category label white-text'>用户中心</span>
-			</div>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>返回值: [{"total": 1,"pageSize": 1,"pageNum": 1,"pages": 1,"list": [{"addressId": "774195ceb7ce455b95c69d2beb1f5723","userName": "xiaoming","address": "广州海珠区你老母2号","createTime": 1575447369000,"updateTime": 1575531730000}]}]</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:03 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<ul class='collapsible node-list' data-collapsible='accordion'>
-		
-				<li class='node level-1 leaf pass' status='pass' test-id='12'>
-					<div class='collapsible-header'>
-						<div class='node-name'>LogiNameAndPwdUpdate</div>						
-						<span class='node-time'>Dec 26, 2019 02:38:59 PM</span>
-						<span class='node-duration'>0h 0m 2s+643ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>用户中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>修改手机号码_传入参数: {channelId: 1
-mobileNew: "17742269031"
-ChannelUserId: "178803"
-mobileAreaCodeNew: "86"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：login_name值变更为：17742269031</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>修改密码_传入参数: {channelUserId: "178803"
-channelId: 1
-loginPwdNew: "e10adc3949ba59abbe56e057f20f883e"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：login_pwd值变更为：e10adc3949ba59abbe56e057f20f883e</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>花生日记用户登录_传入参数: {mobile: "17742269031"
-mobileAreaCode: "86"
-channelId: 1
-pwd: "123456"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"userId": "178803","nickName": "PvkGkUCAc","name": "程成","headerImg": "dca1Jm61UGGSDhW","mobile": "17742269031","qq": "1","aliNo": "doudousmimi@163.com","createTime": 1501592092000,"sex": 2,"activateTime": 1501592216000,"pushNo": "nah2xoh","appWxOpenId": "oBrt31RJksETS7FWsakEes61W38k","cardNo": "ox-FY1dRO31w9tcGLFh9YiBQQOy8","ifAuth": -1,"updateTime": 1577342343000,"status": 1,"role": 1,"operator": 176700,"grandfatherId": 177814,"fatherId": 178803,"isSecret": -1,"companyId": 1632,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='13'>
-					<div class='collapsible-header'>
-						<div class='node-name'>LoginAndUpdate</div>						
-						<span class='node-time'>Dec 26, 2019 02:39:00 PM</span>
-						<span class='node-duration'>0h 0m 0s+857ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>用户中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>花生日记用户登录_传入参数: {mobile: "17720130632"
-mobileAreaCode: "86"
-channelId: 1
-pwd: "123456"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"userId": "3692091","nickName": "BRglij1yj","headerImg": "Mm1Q8Ut5MepfAPg","mobile": "17720130632","qq": "1","createTime": 1516497433000,"activateTime": 1516497433000,"pushNo": "r88vcmo","appWxOpenId": "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","cardNo": "ox-FY1f0_ub3FnM_v9n7ITb1q-f0","ifAuth": -1,"updateTime": 1577341348000,"status": 1,"role": 1,"operator": 2382280,"grandfatherId": 2738511,"fatherId": 3692091,"isSecret": -1,"companyId": 1576,"userTagStatus": 2,"mobileAreaCode": "86"}]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>修改昵称_传入参数: {channelId: 1
-nickName: "P0TsSrIMG"
-ChannelUserId: "3692091"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：nick_name值变更为：P0TsSrIMG</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>修改头像_传入参数: {channelId: 1
-headImageUrl: "KSWLz40TYIarYUp"
-ChannelUserId: "3692091"
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>数据库部分匹配：head_img值变更为：KSWLz40TYIarYUp</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-				<li class='node level-1 leaf pass' status='pass' test-id='14'>
-					<div class='collapsible-header'>
-						<div class='node-name'>getInfoByInviteCode</div>						
-						<span class='node-time'>Dec 26, 2019 02:39:01 PM</span>
-						<span class='node-duration'>0h 0m 0s+262ms</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-						<div class='collapsible-body'>
-									<div class='category-list right'>
-											<span class='category label white-text'>Suite</span>
-											<span class='category label white-text'>用户中心</span>
-									</div>
-								<div class='node-steps'>
-									<table class='bordered table-results'>
-										<thead>
-											<tr>
-												<th>Status</th>
-												<th>Timestamp</th>
-												<th>Details</th>
-											</tr>
-										</thead>
-										<tbody>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>邀请码获取用户信息_传入参数: {inviteCode: "p88vcdo"
-channelId: 1
-}</td>
-												</tr>
-												<tr class='log' status='debug'>
-													<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>返回值: [{"userBaseInfo": {"mobile": "17702015334","nickName": "abc","realName": "xiongxin","headImageUrl": "http://images.huasheng100.com/public/1565334681520252.jpg","source": 1,"channelUserId": "3692080","mobileAreaCode": "86"},"inviteCode": "p88vcdo"}]</td>
-												</tr>
-												<tr class='log' status='pass'>
-													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>2:39:01 PM</td>
-													<td class='step-details'>Test passed</td>
-												</tr>
-										</tbody>
-									</table>
-								</div>
-						</div>
-				</li>
-	</ul>
 					</div>
 				</li>
 			</ul>
@@ -953,327 +319,6 @@ channelId: 1
 
 </div>
 <!-- test view -->
-<div id='category-view' class='view hide'>
-
-	<section id='controls'>
-		<div class='controls grey lighten-4'>
-			<!-- search -->
-			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
-				<a href="#" class='search-div'>
-					<i class='material-icons'>search</i> Search
-				</a>
-				
-				<div class='input-field left hide'>
-					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-				</div>
-				
-			</div>
-			<!-- search -->
-		</div>
-	</section>
-
-	<div class='subview-left left'>
-		
-		<div class='view-summary'>
-			<h5>Categories</h3>
-			<ul id='category-collection' class='category-collection'>
-				
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>Suite</span>
-						<span class='category-status right'>
-							<span class='label pass'>14</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 14</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dec 26, 2019 02:38:48 PM</td>
-										<td class='linked' test-id='1'>支付宝中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:50 PM</td>
-										<td class='linked' test-id='2'>支付宝中心.BindAndAuthAndCancel</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:53 PM</td>
-										<td class='linked' test-id='3'>支付宝中心.authGetInfo</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:54 PM</td>
-										<td class='linked' test-id='4'>微信中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:54 PM</td>
-										<td class='linked' test-id='5'>微信中心.bindingAndunBinding</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:56 PM</td>
-										<td class='linked' test-id='6'>微信中心.getByOpenId</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:56 PM</td>
-										<td class='linked' test-id='7'>微信中心.loginByOneKey</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:57 PM</td>
-										<td class='linked' test-id='8'>收货地址</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:57 PM</td>
-										<td class='linked' test-id='9'>收货地址.addressCURD</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='10'>收货地址.addressQuery</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='11'>用户中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='12'>用户中心.LogiNameAndPwdUpdate</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:39:00 PM</td>
-										<td class='linked' test-id='13'>用户中心.LoginAndUpdate</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:39:01 PM</td>
-										<td class='linked' test-id='14'>用户中心.getInfoByInviteCode</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>支付宝中心</span>
-						<span class='category-status right'>
-							<span class='label pass'>3</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 3</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dec 26, 2019 02:38:48 PM</td>
-										<td class='linked' test-id='1'>支付宝中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:50 PM</td>
-										<td class='linked' test-id='2'>支付宝中心.BindAndAuthAndCancel</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:53 PM</td>
-										<td class='linked' test-id='3'>支付宝中心.authGetInfo</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>微信中心</span>
-						<span class='category-status right'>
-							<span class='label pass'>4</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 4</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dec 26, 2019 02:38:54 PM</td>
-										<td class='linked' test-id='4'>微信中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:54 PM</td>
-										<td class='linked' test-id='5'>微信中心.bindingAndunBinding</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:56 PM</td>
-										<td class='linked' test-id='6'>微信中心.getByOpenId</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:56 PM</td>
-										<td class='linked' test-id='7'>微信中心.loginByOneKey</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>收货地址</span>
-						<span class='category-status right'>
-							<span class='label pass'>3</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 3</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dec 26, 2019 02:38:57 PM</td>
-										<td class='linked' test-id='8'>收货地址</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:57 PM</td>
-										<td class='linked' test-id='9'>收货地址.addressCURD</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='10'>收货地址.addressQuery</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>用户中心</span>
-						<span class='category-status right'>
-							<span class='label pass'>4</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 4</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='11'>用户中心</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:38:59 PM</td>
-										<td class='linked' test-id='12'>用户中心.LogiNameAndPwdUpdate</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:39:00 PM</td>
-										<td class='linked' test-id='13'>用户中心.LoginAndUpdate</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Dec 26, 2019 02:39:01 PM</td>
-										<td class='linked' test-id='14'>用户中心.getInfoByInviteCode</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-
-			</ul>
-		</div>
-	</div>
-
-	<div class='subview-right left'>
-		<div class='view-summary'>
-			<h5 class='category-name'></h5>
-		</div>
-	</div>
-</div>
 <!-- category view -->
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
@@ -1284,75 +329,31 @@ channelId: 1
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>10</div>
+					<div class='panel-lead'>2</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>10</div>
+					<div class='panel-lead'>2</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Dec 26, 2019 02:38:48 PM</div>
+					<div class='panel-lead'>Dec 26, 2019 03:22:02 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Dec 26, 2019 02:38:53 PM</div>
+			 		<div class='panel-lead'>Dec 26, 2019 03:22:03 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>5,295ms</div>
-				</div>
-			</div>
-			<div class='col s4'>
-				<div class='card-panel'>
-					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
-					
-					<table>
-						<tr>
-							<th>Name</th>
-							<th>Passed</th>
-							<th>Failed</th>
-							<th>Others</th>
-						</tr>
-						<tr>
-							<td>Suite</td>
-							<td>14</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>支付宝中心</td>
-							<td>3</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>微信中心</td>
-							<td>4</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>收货地址</td>
-							<td>3</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>用户中心</td>
-							<td>4</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-					</table>
+					<div class='panel-lead'>1,315ms</div>
 				</div>
 			</div>
 		</div>
@@ -1365,7 +366,7 @@ channelId: 1
 
 		<script>
 			var statusGroup = {
-				passParent: 10,
+				passParent: 2,
 				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
@@ -1373,14 +374,14 @@ channelId: 1
 				skipParent: 0,
 				exceptionsParent: 0,
 				
-				passChild: 10,
+				passChild: 2,
 				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 51,
+				exceptionsChild: 11,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

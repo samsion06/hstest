@@ -4,6 +4,25 @@
 
 <mapper namespace="com.example.mapper.UserBaseInfoMapper">
 
+    <!--映射收货地址字段-->
+    <resultMap id="AddressInfoMap" type="com.example.domain.UserAddressInfo">
+        <id column="id" property="id"/>
+        <result column="address_id" property="addressId"/>
+        <result column="user_id" property="userId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="channel_user_id" property="channelUserId"/>
+        <result column="name" property="name"/>
+        <result column="mobile" property="mobile"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="street" property="street"/>
+        <result column="address" property="address"/>
+        <result column="address_tag" property="addressTag"/>
+        <result column="is_default" property="isDefault"/>
+        <result column="is_delete" property="isDelete"/>
+    </resultMap>
+
     <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
@@ -16,12 +35,15 @@
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
-    <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAddressInfo">
+    <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultMap="AddressInfoMap">
         select * from user_receive_address where channel_user_id=#{channel_user_id}
     </select>
 
     <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">
         select * from user_login_info where channel_user_id=#{channel_user_id}
     </select>
+
+
+
 
 </mapper>
