@@ -146,6 +146,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         String pwd="123456";
         String md5pwd = MD5Util.toMD5(pwd.trim().toUpperCase());
         System.out.println(md5pwd);
+
         try{
             String mobile="177"+(int)((Math.random()*9+1)*10000000); //修改登录得手机号
             //修改手机号
@@ -170,7 +171,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
               //再次登录
               uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
               post = new HttpPost(uri);
-              byteArrayEntity = ConvertData.UserInfoPdLoginRequestConvertBuilder(ChannelId, "4543654756756", pwd, "86");
+              System.out.println("mobile"+mobile+"pwd"+pwd);
+              byteArrayEntity = ConvertData.UserInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
               post.setEntity(byteArrayEntity);
               post.setHeader("Content-Type", "application/x-protobuf");
               response = httpClient.execute(post);
