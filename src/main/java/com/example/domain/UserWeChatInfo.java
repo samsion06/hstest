@@ -18,9 +18,9 @@ public class UserWeChatInfo {
     private String city;
     private String country;
     private String headImg;
+    private Integer isDelete;
     private Date creatTime;
     private Date updateTime;
-    private Integer isDelete;
 
     public Long getId() {
         return id;

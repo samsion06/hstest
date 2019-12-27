@@ -116,6 +116,10 @@
 
 
 
+
+
+
+
     <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">
         select * from user_login_info where channel_user_id=#{channel_user_id}
     </select>
