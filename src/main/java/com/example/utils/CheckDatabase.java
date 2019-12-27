@@ -73,13 +73,13 @@ public class CheckDatabase {
                 break;
             case "NickNameUpdate": //昵称更新
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
-                String nickname=userBaseInfo.getNick_name();
+                String nickname=userBaseInfo.getNickName();
                 Assert.assertEquals(TargetOutPut,nickname);
                 Reporter.log(PartMsg+"nick_name值变更为："+nickname);
                 break;
             case "HeadUrlImg":
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
-                String headurlimg=userBaseInfo.getHead_img();
+                String headurlimg=userBaseInfo.getHeadImg();
                 Assert.assertEquals(TargetOutPut,headurlimg);
                 Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;

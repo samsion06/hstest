@@ -48,9 +48,11 @@
         <result column="is_student_certified" property="isStudentCertified"/>
         <result column="user_type" property="userType"/>
         <result column="user_status" property="userStatus"/>
+        <result column="create_time" property="creatTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultMap="com.example.domain.UserAliPayInfoMap">
+    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultMap="UserAliPayInfoMap">
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
@@ -81,16 +83,40 @@
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
 
+    <!--映射微信中心-->
+    <resultMap id="UserWeChatInfoMap" type="com.example.domain.UserWeChatInfo">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="channel_user_id" property="channelUserId"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="real_name" property="realName"/>
+        <result column="mobile_area_code" property="mobileAreaCode"/>
+        <result column="mobile" property="mobile"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="head_img" property="headImg"/>
+        <result column="identity_card" property="identityCard"/>
+        <result column="user_role" property="userRole"/>
+        <result column="source" property="source"/>
+        <result column="register_recommend_user_id" property="registerRecommendUserId"/>
+        <result column="user_status" property="userStatus"/>
+        <result column="create_time" property="creatTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_delete" property="isDelete"/>
+    </resultMap>
 
-
-
-
-
-
-
-    <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserWeChatInfo">
+    <select id="queryWeChatInfo"  parameterType="java.lang.String" resultMap="UserWeChatInfoMap">
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
     </select>
+
+
+
+
+
+
+
+
 
     <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">
         select * from user_login_info where channel_user_id=#{channel_user_id}

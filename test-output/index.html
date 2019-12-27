@@ -4,7 +4,7 @@
 
 
 <head>
-	<meta charset='gbk' /> 
+	<meta charset='utf-8' /> 
 	<meta name='description' content='' />
 	<meta name='robots' content='noodp, noydir' />
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Dec 26, 2019 03:22:02 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Dec 27, 2019 09:56:50 AM</span>
 				</a>
 			</li>
 			<li>
@@ -158,15 +158,15 @@
 				
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>addressCURD</span>
-						<span class='test-time'>Dec 26, 2019 03:22:02 PM</span>
+						<span class='test-name'>BindAndAuthAndCancel</span>
+						<span class='test-time'>Dec 27, 2019 09:56:50 AM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 03:22:02 PM</span>
-	<span class='label end-time'>Dec 26, 2019 03:22:03 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+315ms</span>
+	<span class='label start-time'>Dec 27, 2019 09:56:50 AM</span>
+	<span class='label end-time'>Dec 27, 2019 09:56:53 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+15ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -180,65 +180,62 @@
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>添加用户收货地址_传入参数: {channelUserId: "8714"
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>绑定支付宝_传入参数: {channelUserId: "1377"
 channelId: 1
-address: "hgXSSysXA"
+alipayRealname: "X0tidw59s"
+alipayAccount: "17763190022"
+alipayUserId: "6240"
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>返回值: [{"addressId": "2db119a2da4d450b9e2a1570b4af3311","channelUserId": "8714","channelId": 1,"address": "hgXSSysXA","createTime": 1577344925889}]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>获取用户收货地址_传入参数: {addressId: "2db119a2da4d450b9e2a1570b4af3311"
-channelId: 1
-channelUserId: "8714"
-}</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>返回值: [{"addressId": "2db119a2da4d450b9e2a1570b4af3311","channelUserId": "8714","channelId": 1,"address": "hgXSSysXA"}]</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>更新用户收货地址_传入参数: {channelUserId: "8714"
-channelId: 1
-userName: "eoYB1OIfm"
-addressId: "2db119a2da4d450b9e2a1570b4af3311"
-}</td>
-				</tr>
-				<tr class='log' status='debug'>
-					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
+					<td class='timestamp'>9:56:54 AM</td>
 					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>数据库部分匹配：name值变更为：eoYB1OIfm</td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>数据库全部匹配：UserAliPayInfo{id=27948205, userId=0, channelId=1, channelUserId='1377', alipayUserId='6240', alipayRealName='X0tidw59s', alipayAccount='17763190022', nickName='null', headImg='null', identityCard='', sex=0, province='null', city='', status=0, isCertified=0, isDelete=0, isStudentCertified='null', userType='null', userStatus='null', creatTime=Fri Dec 27 09:56:53 CST 2019, updateTime=Fri Dec 27 09:56:52 CST 2019}</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>删除用户收货地址_传入参数: {addressId: "2db119a2da4d450b9e2a1570b4af3311"
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>支付宝授权_传入参数: {channelUserId: "1377"
 channelId: 1
-channelUserId: "8714"
+alipayUserId: "6240"
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
+					<td class='timestamp'>9:56:54 AM</td>
 					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>数据库部分匹配：Status值变更为：1</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>取消支付宝授权_传入参数: {channelUserId: "1377"
+channelId: 1
+}</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>返回值: [RESP_CODE_SUCCESS]</td>
+				</tr>
+				<tr class='log' status='debug'>
+					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>数据库部分匹配：Status值变更为：2</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
+					<td class='timestamp'>9:56:54 AM</td>
 					<td class='step-details'>Test passed</td>
 				</tr>
 			</tbody>
@@ -250,15 +247,15 @@ channelUserId: "8714"
 				
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
 					<div class='test-heading'>
-						<span class='test-name'>addressQuery</span>
-						<span class='test-time'>Dec 26, 2019 03:22:03 PM</span>
+						<span class='test-name'>authGetInfo</span>
+						<span class='test-time'>Dec 27, 2019 09:56:53 AM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 26, 2019 03:22:03 PM</span>
-	<span class='label end-time'>Dec 26, 2019 03:22:03 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+67ms</span>
+	<span class='label start-time'>Dec 27, 2019 09:56:53 AM</span>
+	<span class='label end-time'>Dec 27, 2019 09:56:53 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+180ms</span>
 </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
@@ -272,21 +269,32 @@ channelUserId: "8714"
 			<tbody>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>分页查询户收货地址列表_传入参数: {channelUserId: "17702015334"
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>支付宝授权查询_传入参数: {channelUserId: "2571"
 channelId: 1
-pageSize: 1
-pageNum: 1
 }</td>
 				</tr>
 				<tr class='log' status='debug'>
 					<td class='status debug' title='debug' alt='debug'><i class='material-icons'>low_priority</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
-					<td class='step-details'>返回值: [{"total": 1,"pageSize": 1,"pageNum": 1,"pages": 1,"list": [{"addressId": "774195ceb7ce455b95c69d2beb1f5723","userName": "xiaoming","address": "广州海珠区你老母2号","createTime": 1575447369000,"updateTime": 1575531730000}]}]</td>
+					<td class='timestamp'>9:56:54 AM</td>
+					<td class='step-details'>返回值：[userAliPayAuth {
+  channelUserId: "2571"
+  channelId: 1
+  alipayRealname: "1aWrTwdxb"
+  alipayAccount: "17716278689"
+  alipayUserId: "6824"
+  status: 2
+  createTime: 1577067860000
+  updateTime: 1577067869000
+}
+responseCode {
+  msg: "RESP_CODE_SUCCESS"
+}
+]</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:22:03 PM</td>
+					<td class='timestamp'>9:56:54 AM</td>
 					<td class='step-details'>Test passed</td>
 				</tr>
 			</tbody>
@@ -341,19 +349,19 @@ pageNum: 1
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Dec 26, 2019 03:22:02 PM</div>
+					<div class='panel-lead'>Dec 27, 2019 09:56:50 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Dec 26, 2019 03:22:03 PM</div>
+			 		<div class='panel-lead'>Dec 27, 2019 09:56:53 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>1,315ms</div>
+					<div class='panel-lead'>3,015ms</div>
 				</div>
 			</div>
 		</div>

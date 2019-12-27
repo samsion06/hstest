@@ -12,9 +12,9 @@ public class HttpConfig {
     public static final String priScheme="http";
 
     //Product-Service
-    //public static final  String Serviceurl="172.18.0.149";
-    //public static final  Integer Serviceport=80;
-    //public static final String Servicescheme="http";
+    public static final  String Serviceurl="172.18.0.149";
+    public static final  Integer Serviceport=80;
+    public static final String Servicescheme="http";
 
 
 
