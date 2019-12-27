@@ -28,7 +28,7 @@
     </select>
 
     <!--映射支付宝中心字段-->
-    <resultMap id="AddressInfoMap" type="com.example.domain.UserAddressInfo">
+    <resultMap id="UserAliPayInfoMap" type="com.example.domain.UserAliPayInfo">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="channel_id" property="channelId"/>
@@ -50,9 +50,20 @@
         <result column="user_status" property="userStatus"/>
     </resultMap>
 
-    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfo">
+    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfoMap">
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
+
+    <!--映射用户中心字段-->
+
+
+
+
+
+
+
+
+
 
     <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
          select * from user_base_info where channel_user_id=#{channel_user_id}
