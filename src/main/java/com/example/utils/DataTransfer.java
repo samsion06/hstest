@@ -226,19 +226,16 @@ public class DataTransfer {
     }
 
     //根据渠道用户Id查询用户微信列表信息(
-    public static ByteArrayEntity   getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
+    public static ByteArrayEntity  getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
         builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
+        System.out.println(builder);
+        Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
-
-
-
 
     //绑定支付宝
     public static ByteArrayEntity userAliPayBidingRequest(String channelUserId, Integer channelId, String alipayRealname, String alipayAccount, String  alipayUserId){
