@@ -1,23 +1,93 @@
 package com.example.domain;
 
+import java.util.Date;
+
 public class UserBaseInfo {
 
     private Long id;
-    private Long user_id;
-    private Long channel_id;
-    private String  channel_user_id;
-    private String nick_name;
-    private String real_name;
-    private String mobile_area_code;
+    private Long userId;
+    private Long channelId;
+    private String channelUserId;
+    private String nickName;
+    private String realName;
+    private String mobileAreaCode;
+    private String mobile;
     private Integer sex;
     private String  birthday;
-    private String head_img;
-    private String identity_card;
-    private Integer user_role;
+    private String headImg;
+    private String identityCard;
+    private Integer userRole;
     private Integer source;
-    private String register_recommend_user_id;
-    private Integer user_status;
-    private Integer is_delete;
+    private String registerRecommendUserId;
+    private Integer userStatus;
+    private Integer isDelete;
+    private Date creatTime;
+    private Date updateTime;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Long channelId) {
+        this.channelId = channelId;
+    }
+
+    public String getChannelUserId() {
+        return channelUserId;
+    }
+
+    public void setChannelUserId(String channelUserId) {
+        this.channelUserId = channelUserId;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getMobileAreaCode() {
+        return mobileAreaCode;
+    }
+
+    public void setMobileAreaCode(String mobileAreaCode) {
+        this.mobileAreaCode = mobileAreaCode;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public Integer getSex() {
         return sex;
@@ -35,28 +105,28 @@ public class UserBaseInfo {
         this.birthday = birthday;
     }
 
-    public String getHead_img() {
-        return head_img;
+    public String getHeadImg() {
+        return headImg;
     }
 
-    public void setHead_img(String head_img) {
-        this.head_img = head_img;
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 
-    public String getIdentity_card() {
-        return identity_card;
+    public String getIdentityCard() {
+        return identityCard;
     }
 
-    public void setIdentity_card(String identity_card) {
-        this.identity_card = identity_card;
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
     }
 
-    public Integer getUser_role() {
-        return user_role;
+    public Integer getUserRole() {
+        return userRole;
     }
 
-    public void setUser_role(Integer user_role) {
-        this.user_role = user_role;
+    public void setUserRole(Integer userRole) {
+        this.userRole = userRole;
     }
 
     public Integer getSource() {
@@ -67,101 +137,68 @@ public class UserBaseInfo {
         this.source = source;
     }
 
-    public String getRegister_recommend_user_id() {
-        return register_recommend_user_id;
+    public String getRegisterRecommendUserId() {
+        return registerRecommendUserId;
     }
 
-    public void setRegister_recommend_user_id(String register_recommend_user_id) {
-        this.register_recommend_user_id = register_recommend_user_id;
+    public void setRegisterRecommendUserId(String registerRecommendUserId) {
+        this.registerRecommendUserId = registerRecommendUserId;
     }
 
-    public Integer getUser_status() {
-        return user_status;
+    public Integer getUserStatus() {
+        return userStatus;
     }
 
-    public void setUser_status(Integer user_status) {
-        this.user_status = user_status;
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
     }
 
-    public Integer getIs_delete() { return is_delete; }
-
-    public void setIs_delete(Integer is_delete) { this.is_delete = is_delete; }
-
-    public Long getId() {
-        return id;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 
-    public String getChannel_user_id() {
-        return channel_user_id;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setChannel_user_id(String channel_user_id) {
-        this.channel_user_id = channel_user_id;
-    }
-
-    public Long getChannel_id() {
-        return channel_id;
-    }
-
-    public void setChannel_id(Long channel_id) {
-        this.channel_id = channel_id;
-    }
-
-    public String getNick_name() {
-        return nick_name;
-    }
-
-    public void setNick_name(String nick_name) {
-        this.nick_name = nick_name;
-    }
-
-    public String getReal_name() {
-        return real_name;
-    }
-
-    public void setReal_name(String real_name) {
-        this.real_name = real_name;
-    }
-
-    public String getMobile_area_code() {
-        return mobile_area_code;
-    }
-
-    public void setMobile_area_code(String mobile_area_code) {
-        this.mobile_area_code = mobile_area_code;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
         return "UserBaseInfo{" +
                 "id=" + id +
-                ", user_id=" + user_id +
-                ", channel_id=" + channel_id +
-                ", channel_user_id='" + channel_user_id + '\'' +
-                ", nick_name='" + nick_name + '\'' +
-                ", real_name='" + real_name + '\'' +
-                ", mobile_area_code='" + mobile_area_code + '\'' +
+                ", userId=" + userId +
+                ", channelId=" + channelId +
+                ", channelUserId='" + channelUserId + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", realName='" + realName + '\'' +
+                ", mobileAreaCode='" + mobileAreaCode + '\'' +
+                ", mobile='" + mobile + '\'' +
                 ", sex=" + sex +
                 ", birthday='" + birthday + '\'' +
-                ", head_img='" + head_img + '\'' +
-                ", identity_card='" + identity_card + '\'' +
-                ", user_role=" + user_role +
+                ", headImg='" + headImg + '\'' +
+                ", identityCard='" + identityCard + '\'' +
+                ", userRole=" + userRole +
                 ", source=" + source +
-                ", register_recommend_user_id='" + register_recommend_user_id + '\'' +
-                ", user_status=" + user_status +
-                ", is_delete=" + is_delete +
+                ", registerRecommendUserId='" + registerRecommendUserId + '\'' +
+                ", userStatus=" + userStatus +
+                ", isDelete=" + isDelete +
+                ", creatTime=" + creatTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

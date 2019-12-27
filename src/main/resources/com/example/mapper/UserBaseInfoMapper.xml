@@ -50,24 +50,43 @@
         <result column="user_status" property="userStatus"/>
     </resultMap>
 
-    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserAliPayInfoMap">
+    <select id="queryAliPayInfo"  parameterType="java.lang.String" resultMap="com.example.domain.UserAliPayInfoMap">
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
     <!--映射用户中心字段-->
+    <resultMap id="UserBaseInfoMap" type="com.example.domain.UserBaseInfo">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="channel_user_id" property="channelUserId"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="real_name" property="realName"/>
+        <result column="mobile_area_code" property="mobileAreaCode"/>
+        <result column="mobile" property="mobile"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="head_img" property="headImg"/>
+        <result column="identity_card" property="identityCard"/>
+        <result column="user_role" property="userRole"/>
+        <result column="source" property="source"/>
+        <result column="register_recommend_user_id" property="registerRecommendUserId"/>
+        <result column="user_status" property="userStatus"/>
+        <result column="create_time" property="creatTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_delete" property="isDelete"/>
+    </resultMap>
 
-
-
-
-
-
-
-
-
-
-    <select id="queryUserBaseInfo" parameterType="java.lang.String" resultType="com.example.domain.UserBaseInfo">
+    <select id="queryUserBaseInfo" parameterType="java.lang.String" resultMap="UserBaseInfoMap">
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
+
+
+
+
+
+
+
 
     <select id="queryWeChatInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserWeChatInfo">
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
