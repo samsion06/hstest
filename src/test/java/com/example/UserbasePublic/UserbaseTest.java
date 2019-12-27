@@ -75,6 +75,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String headUrlImg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS", headUrlImg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper, "HeadUrlImg", headimgurl, ChannelUserId);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -163,7 +164,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
-    //@Test(description = "忘记密码")
+
+
+    @Test(description = "忘记密码")
     public void forgetPassword(){
         try{
 

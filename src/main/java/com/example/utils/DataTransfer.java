@@ -225,6 +225,13 @@ public class DataTransfer {
         return bytes;
     }
 
+    //根据渠道用户Id查询用户微信列表信息
+
+
+
+
+
+
     //绑定支付宝
     public static ByteArrayEntity userAliPayBidingRequest(String channelUserId, Integer channelId, String alipayRealname, String alipayAccount, String  alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayBidingRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayBidingRequest.newBuilder();
