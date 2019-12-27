@@ -30,13 +30,13 @@ public class CheckDatabase {
             //微信解绑
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                int wechat_is_delete = userWeChatInfos.getIs_delete(); //比对
+                int wechat_is_delete = userWeChatInfos.getIsDelete(); //比对
                 Assert.assertEquals(1,wechat_is_delete);
                 Reporter.log(AllMsg+"is_delete值变更为："+wechat_is_delete);
                 break;
             case "WeChatInfoBind": //微信绑定
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                Assert.assertEquals(channel_user_id,userWeChatInfos.getChannel_user_id());
+                Assert.assertEquals(channel_user_id,userWeChatInfos.getChannelUserId());
                 System.out.println(userWeChatInfos);
                 Reporter.log(AllMsg+userWeChatInfos);
                 break;
@@ -85,13 +85,13 @@ public class CheckDatabase {
                 break;
             case "MobileUpadate":
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
-                String mobile=userLoginInfo.getLogin_name();
+                String mobile=userLoginInfo.getLoginName();
                 Assert.assertEquals(TargetOutPut,mobile);
                 Reporter.log(PartMsg+"login_name值变更为："+mobile);
                 break;
             case "PwdUpdate":
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
-                String pwd=userLoginInfo.getLogin_pwd();
+                String pwd=userLoginInfo.getLoginPwd();
                 Assert.assertEquals(TargetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
             default:
