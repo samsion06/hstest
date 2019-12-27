@@ -111,16 +111,43 @@
     </select>
 
     <!--映射用户登录-->
+    <resultMap id="UserLoginInfoMap" type="com.example.domain.UserLoginInfo">
+        <id column="id" property="id"/>
+        <result column="app_id" property="appId"/>
+        <result column="user_id" property="userId"/>
+        <result column="channel_user_id" property="channelUserId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="open_id" property="openId"/>
+        <result column="union_id" property="unionId"/>
+        <result column="wx_no" property="wxNo"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="sex" property="sex"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="country" property="country"/>
+        <result column="head_img" property="headImg"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="create_time" property="creatTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
 
 
 
 
 
 
+    <!--private Long id;-->
+    <!--private Long userId;-->
+    <!--private Long channelId;-->
+    <!--private String channelUserId;-->
+    <!--private String loginName;-->
+    <!--private String loginPwd;-->
+    <!--private String loginSalt;-->
+    <!--private String isDelete;-->
+    <!--private Date creatTime;-->
+    <!--private Date updateTime;-->
 
-
-
-    <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="com.example.domain.UserLoginInfo">
+    <select id="queryUserLoginInfo"  parameterType="java.lang.String" resultType="UserLoginInfo">
         select * from user_login_info where channel_user_id=#{channel_user_id}
     </select>
 
