@@ -135,13 +135,13 @@ public class DataTransfer {
         Reporter.log("修改密码_"+incomeMessage+builder+ "}");
         return bytes;
     }
-    //忘记密码
+    //忘记密码 index 表要看有没有区号映射
     public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile, String mobileareacode){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder= UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setLoginPwd(loginPwd);
         builder.setMobile(mobile);
-        //builder.setMobileAreaCode(mobileareacode);
+        builder.setMobileAreaCode(mobileareacode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("忘记密码_"+incomeMessage+builder+ "}");
@@ -225,8 +225,16 @@ public class DataTransfer {
         return bytes;
     }
 
-    //根据渠道用户Id查询用户微信列表信息
-
+    //根据渠道用户Id查询用户微信列表信息(
+    public static ByteArrayEntity   getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
+        UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
 
 
 
