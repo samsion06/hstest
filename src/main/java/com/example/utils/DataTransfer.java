@@ -230,7 +230,7 @@ public class DataTransfer {
         UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
-        builder.setAppId(appId);
+       // builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
