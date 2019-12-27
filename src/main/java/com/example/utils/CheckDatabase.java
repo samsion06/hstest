@@ -20,77 +20,77 @@ public class CheckDatabase {
      * @param userBaseInfoMapper 查询数据库
      * @param method  用于区分查询那个表
      * @param TargetOutPut  目标值
-     * @param channel_user_id 通过channel_user_id查询
+     * @param channelUserId 通过channel_user_id查询
      */
 
     //数据库检查
-    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut,String channel_user_id){
+    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut,String channelUserId){
         switch (method){
             //检查的点不同,所以要分开
             //微信解绑
             case "WeChatInfoUnbind":
-                userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
+                userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channelUserId);
                 int wechat_is_delete = userWeChatInfos.getIsDelete(); //比对
                 Assert.assertEquals(1,wechat_is_delete);
                 Reporter.log(AllMsg+"is_delete值变更为："+wechat_is_delete);
                 break;
             case "WeChatInfoBind": //微信绑定
-                userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channel_user_id);
-                Assert.assertEquals(channel_user_id,userWeChatInfos.getChannelUserId());
+                userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channelUserId);
+                Assert.assertEquals(channelUserId,userWeChatInfos.getChannelUserId());
                 System.out.println(userWeChatInfos);
                 Reporter.log(AllMsg+userWeChatInfos);
                 break;
             case "AliPayBind"://支付宝绑定
-                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
-                //Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channel_user_id);
+                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channelUserId);
+                //Assert.assertEquals(userWeChatInfos.getChannel_user_id(),channelUserId);
                 System.out.println(userAliPayInfo);
                 Reporter.log(AllMsg+userAliPayInfo);
                 break;
             case "AliPayAuth"://支付宝授权
-                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
+                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channelUserId);
                 int bindStatus=userAliPayInfo.getStatus();
                 Assert.assertEquals(1,bindStatus);
                 Reporter.log(PartMsg+"Status值变更为："+bindStatus);
                 break;
             case "AliPayCancel"://取消授权
-                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channel_user_id);
+                userAliPayInfo=userBaseInfoMapper.queryAliPayInfo(channelUserId);
                 int unbindStatus=userAliPayInfo.getStatus();
                 Assert.assertEquals(2,unbindStatus);
                 Reporter.log(PartMsg+"Status值变更为："+unbindStatus);
                 break;
             case "AddressUpadate"://更新收货地址
-                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
+                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channelUserId);
                 String name=userAddressInfo.getName();
                 Assert.assertEquals(TargetOutPut,name); //名称是否有更新
                 Reporter.log(PartMsg+"name值变更为："+name);
                 break;
             case "AddressDelete"://删除收货地址
-                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channel_user_id);
+                userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channelUserId);
                 System.out.println(userAddressInfo);
                 int address_is_delete = userAddressInfo.getIsDelete(); //比对
                 Assert.assertEquals(1,address_is_delete);
                 Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
                 break;
             case "NickNameUpdate": //昵称更新
-                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
+                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channelUserId);
                 String nickname=userBaseInfo.getNickName();
                 Assert.assertEquals(TargetOutPut,nickname);
                 Reporter.log(PartMsg+"nick_name值变更为："+nickname);
                 break;
             case "HeadUrlImg":
-                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channel_user_id);
+                userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channelUserId);
                 String headurlimg=userBaseInfo.getHeadImg();
                 Assert.assertEquals(TargetOutPut,headurlimg);
                 Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;
             case "MobileUpadate":
-                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
+                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String mobile=userLoginInfo.getLoginName();
                 Assert.assertEquals(TargetOutPut,mobile);
                 Reporter.log(PartMsg+"login_name值变更为："+mobile);
                 break;
             case "PwdUpdate":
-                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channel_user_id);
+                userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String pwd=userLoginInfo.getLoginPwd();
                 Assert.assertEquals(TargetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);

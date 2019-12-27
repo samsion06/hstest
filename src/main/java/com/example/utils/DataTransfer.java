@@ -396,16 +396,16 @@ public class DataTransfer {
     }
 
     //库存增-减-锁
-    public static ByteArrayEntity lockStockByListRequestDto(String PorderId, Long GoodId, Long SkuId, ProductServiceApiStockService.GoodStockOperateEnum Enum){
+    public static ByteArrayEntity lockStockByListRequestDto(String porderId, Long GoodId, Long skuId, ProductServiceApiStockService.GoodStockOperateEnum Enum){
         System.out.println(Enum);
         ProductServiceApiStockService.LockStockByListRequestDto.Builder builder = ProductServiceApiStockService.LockStockByListRequestDto.newBuilder();
-        builder.setOrderId(PorderId);
+        builder.setOrderId(porderId);
         ProductServiceApiStockService.LockUserStockDTO.Builder userstockdto = ProductServiceApiStockService.LockUserStockDTO.newBuilder();
         userstockdto.setGoodId(GoodId);
-        userstockdto.setSkuId(SkuId);
+        userstockdto.setSkuId(skuId);
         userstockdto.setNum(1);
         userstockdto.setIsRemoveAdd(false);
-        userstockdto.setOrderId(PorderId);
+        userstockdto.setOrderId(porderId);
         userstockdto.setStockOperate(Enum);
         ProductServiceApiStockService.LockUserStockDTO dto = userstockdto.build();
         //将对象放进集合
