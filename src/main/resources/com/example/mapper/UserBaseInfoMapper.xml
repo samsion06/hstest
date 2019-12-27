@@ -56,7 +56,7 @@
         select * from user_alipay_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
-    <!--映射用户中心字段-->
+    <!--映射用户中心字段 19-->
     <resultMap id="UserBaseInfoMap" type="com.example.domain.UserBaseInfo">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
@@ -83,24 +83,22 @@
          select * from user_base_info where channel_user_id=#{channel_user_id}
     </select>
 
-    <!--映射微信中心-->
+    <!--映射微信中心 17-->
     <resultMap id="UserWeChatInfoMap" type="com.example.domain.UserWeChatInfo">
         <id column="id" property="id"/>
+        <result column="app_id" property="appId"/>
         <result column="user_id" property="userId"/>
-        <result column="channel_id" property="channelId"/>
         <result column="channel_user_id" property="channelUserId"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="open_id" property="openId"/>
+        <result column="union_id" property="unionId"/>
+        <result column="wx_no" property="wxNo"/>
         <result column="nick_name" property="nickName"/>
-        <result column="real_name" property="realName"/>
-        <result column="mobile_area_code" property="mobileAreaCode"/>
-        <result column="mobile" property="mobile"/>
         <result column="sex" property="sex"/>
-        <result column="birthday" property="birthday"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="country" property="country"/>
         <result column="head_img" property="headImg"/>
-        <result column="identity_card" property="identityCard"/>
-        <result column="user_role" property="userRole"/>
-        <result column="source" property="source"/>
-        <result column="register_recommend_user_id" property="registerRecommendUserId"/>
-        <result column="user_status" property="userStatus"/>
         <result column="create_time" property="creatTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="is_delete" property="isDelete"/>
@@ -110,6 +108,23 @@
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
+    private Long id;
+    private String appId;
+    private Long userId;
+    private String channelUserId;
+    private Long channelId;
+    private String openId;
+    private String unionId;
+    private String wxNo;
+    private String nickName;
+    private Integer sex;
+    private String province;
+    private String city;
+    private String country;
+    private String headImg;
+    private Date creatTime;
+    private Date updateTime;
+    private Integer isDelete;
 
 
 

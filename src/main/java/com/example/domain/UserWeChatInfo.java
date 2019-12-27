@@ -1,22 +1,26 @@
 package com.example.domain;
 
+import java.util.Date;
+
 public class UserWeChatInfo {
 
     private Long id;
-    private Long user_id;
-    private Long channel_id;
-    private String  channel_user_id;
-    private String open_id;
-    private String union_id;
-    private String wx_no;
-    private String nick_name;
+    private String appId;
+    private Long userId;
+    private String channelUserId;
+    private Long channelId;
+    private String openId;
+    private String unionId;
+    private String wxNo;
+    private String nickName;
     private Integer sex;
     private String province;
     private String city;
     private String country;
-    private String head_img;
-    private Integer is_delete;
-
+    private String headImg;
+    private Date creatTime;
+    private Date updateTime;
+    private Integer isDelete;
 
     public Long getId() {
         return id;
@@ -26,60 +30,68 @@ public class UserWeChatInfo {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
-    public Long getChannel_id() {
-        return channel_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setChannel_id(Long channel_id) {
-        this.channel_id = channel_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getChannel_user_id() {
-        return channel_user_id;
+    public String getChannelUserId() {
+        return channelUserId;
     }
 
-    public void setChannel_user_id(String channel_user_id) {
-        this.channel_user_id = channel_user_id;
+    public void setChannelUserId(String channelUserId) {
+        this.channelUserId = channelUserId;
     }
 
-    public String getOpen_id() {
-        return open_id;
+    public Long getChannelId() {
+        return channelId;
     }
 
-    public void setOpen_id(String open_id) {
-        this.open_id = open_id;
+    public void setChannelId(Long channelId) {
+        this.channelId = channelId;
     }
 
-    public String getUnion_id() {
-        return union_id;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setUnion_id(String union_id) {
-        this.union_id = union_id;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
-    public String getWx_no() {
-        return wx_no;
+    public String getUnionId() {
+        return unionId;
     }
 
-    public void setWx_no(String wx_no) {
-        this.wx_no = wx_no;
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
     }
 
-    public String getNick_name() {
-        return nick_name;
+    public String getWxNo() {
+        return wxNo;
     }
 
-    public void setNick_name(String nick_name) {
-        this.nick_name = nick_name;
+    public void setWxNo(String wxNo) {
+        this.wxNo = wxNo;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public Integer getSex() {
@@ -114,39 +126,58 @@ public class UserWeChatInfo {
         this.country = country;
     }
 
-    public String getHead_img() {
-        return head_img;
+    public String getHeadImg() {
+        return headImg;
     }
 
-    public void setHead_img(String head_img) {
-        this.head_img = head_img;
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 
-    public Integer getIs_delete() {
-        return is_delete;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public void setIs_delete(Integer is_delete) {
-        this.is_delete = is_delete;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     @Override
     public String toString() {
-        return "UserAlipayAuthInfo{" +
+        return "UserWeChatInfo{" +
                 "id=" + id +
-                ", user_id=" + user_id +
-                ", channel_id=" + channel_id +
-                ", channel_user_id='" + channel_user_id + '\'' +
-                ", open_id='" + open_id + '\'' +
-                ", union_id='" + union_id + '\'' +
-                ", wx_no='" + wx_no + '\'' +
-                ", nick_name='" + nick_name + '\'' +
+                ", appId='" + appId + '\'' +
+                ", userId=" + userId +
+                ", channelUserId='" + channelUserId + '\'' +
+                ", channelId=" + channelId +
+                ", openId='" + openId + '\'' +
+                ", unionId='" + unionId + '\'' +
+                ", wxNo='" + wxNo + '\'' +
+                ", nickName='" + nickName + '\'' +
                 ", sex=" + sex +
                 ", province='" + province + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
-                ", head_img='" + head_img + '\'' +
-                ", is_delete='" + is_delete + '\'' +
+                ", headImg='" + headImg + '\'' +
+                ", creatTime=" + creatTime +
+                ", updateTime=" + updateTime +
+                ", isDelete=" + isDelete +
                 '}';
     }
 }
