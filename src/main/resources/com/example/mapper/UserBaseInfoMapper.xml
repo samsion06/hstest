@@ -4,7 +4,7 @@
 
 <mapper namespace="com.example.mapper.UserBaseInfoMapper">
 
-    <!--映射收货地址字段-->
+    <!--映射收货地址字段 17-->
     <resultMap id="AddressInfoMap" type="com.example.domain.UserAddressInfo">
         <id column="id" property="id"/>
         <result column="address_id" property="addressId"/>
@@ -21,13 +21,15 @@
         <result column="address_tag" property="addressTag"/>
         <result column="is_default" property="isDefault"/>
         <result column="is_delete" property="isDelete"/>
+        <result column="create_time" property="creatTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <select id="queryUserAddressInfo"  parameterType="java.lang.String" resultMap="AddressInfoMap">
         select * from user_receive_address where channel_user_id=#{channel_user_id}
     </select>
 
-    <!--映射支付宝中心字段-->
+    <!--映射支付宝中心字段 21-->
     <resultMap id="UserAliPayInfoMap" type="com.example.domain.UserAliPayInfo">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
@@ -74,9 +76,9 @@
         <result column="source" property="source"/>
         <result column="register_recommend_user_id" property="registerRecommendUserId"/>
         <result column="user_status" property="userStatus"/>
+        <result column="is_delete" property="isDelete"/>
         <result column="create_time" property="creatTime"/>
         <result column="update_time" property="updateTime"/>
-        <result column="is_delete" property="isDelete"/>
     </resultMap>
 
     <select id="queryUserBaseInfo" parameterType="java.lang.String" resultMap="UserBaseInfoMap">
@@ -99,35 +101,16 @@
         <result column="city" property="city"/>
         <result column="country" property="country"/>
         <result column="head_img" property="headImg"/>
+        <result column="is_delete" property="isDelete"/>
         <result column="create_time" property="creatTime"/>
         <result column="update_time" property="updateTime"/>
-        <result column="is_delete" property="isDelete"/>
     </resultMap>
 
     <select id="queryWeChatInfo"  parameterType="java.lang.String" resultMap="UserWeChatInfoMap">
         select * from user_weixin_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
-    private Long id;
-    private String appId;
-    private Long userId;
-    private String channelUserId;
-    private Long channelId;
-    private String openId;
-    private String unionId;
-    private String wxNo;
-    private String nickName;
-    private Integer sex;
-    private String province;
-    private String city;
-    private String country;
-    private String headImg;
-    private Date creatTime;
-    private Date updateTime;
-    private Integer isDelete;
-
-
-
+    <!--映射用户登录-->
 
 
 
