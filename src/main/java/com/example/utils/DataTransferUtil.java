@@ -236,6 +236,7 @@ public class DataTransferUtil {
         Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
     //根据openId获取用户微信信息
     public static ByteArrayEntity getUserWeChatAuthByOpenIdRequest(Integer channelId,String openId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.newBuilder();
