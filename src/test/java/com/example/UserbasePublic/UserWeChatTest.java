@@ -33,7 +33,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static HttpResponse response;
 
     @Test(description = "1.微信绑定" +
-            "          2.微信解绑 ")
+            "            2.微信解绑 ")
     public void bindingAndunBinding(){
         String openId= DataUtils.getRandomString(9);    //随机生成openId
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000)); //随机生成ChannelUserId
@@ -122,7 +122,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-    @Test(description = "根据渠道用户Id查询用户微信列表信息 X")
+    //@Test(description = "根据渠道用户Id查询用户微信列表信息 X")
     public void getWeChatByChannelUserId(){
         try{
 

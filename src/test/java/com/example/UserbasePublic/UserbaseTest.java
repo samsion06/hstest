@@ -35,7 +35,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
                      "   2.修改昵称" +
                      "   3.修改头像")
     public void LoginAndUpdate() {
-        String mobile = "17720130632";
+        String mobile = "17720130632"; //3692091
         String pwd = "123456";
         String nickname = DataUtils.getRandomString(9);//随机生成用户名
         String headimgurl = DataUtils.getRandomString(15);//随机生成用户名
@@ -166,15 +166,16 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     }
 
 
-    @Test(description = "忘记密码")
+    @Test(description = "忘记密码(修改密码)")
     public void forgetPassword(){
         try{
-
+            String loginPwd="123456";
+            String md5pwd = MD5Util.toMD5(loginPwd.trim().toUpperCase());
             //用户忘记登录密码
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,"123456","17720130632","86");
+            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,md5pwd,"17720130632","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

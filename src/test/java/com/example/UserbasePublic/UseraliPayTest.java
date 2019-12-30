@@ -33,8 +33,8 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     private static ByteArrayEntity byteArrayEntity ;
 
     @org.testng.annotations.Test(description = "1.绑定支付宝" +
-            "                              2.用户支付宝授权" +
-            "                              3.用户支付宝取消授权 OK")
+            "                                   2.用户支付宝授权" +
+            "                                   3.用户支付宝取消授权 OK")
     public void BindAndAuthAndCancel(){
         //生成随机数
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
