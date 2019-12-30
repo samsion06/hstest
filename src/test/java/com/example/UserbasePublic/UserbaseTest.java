@@ -44,9 +44,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
 
             //登录
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/login", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
+            byteArrayEntity = DataTransferUtil.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -55,9 +55,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             System.out.println(ChannelUserId);
 
             //修改昵称
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/nick/name/update", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/nick/name/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userNickNameUpdateRequestConvertBuilder(ChannelId, ChannelUserId, nickname);
+            byteArrayEntity = DataTransferUtil.userNickNameUpdateRequestConvertBuilder(ChannelId, ChannelUserId, nickname);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -66,9 +66,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper, "NickNameUpdate", nickname, ChannelUserId);
 
             //修改头像
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/head/img/update", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/head/img/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userHeadImgUpdateRequestConvertBuilder(ChannelId, ChannelUserId, headimgurl);
+            byteArrayEntity = DataTransferUtil.userHeadImgUpdateRequestConvertBuilder(ChannelId, ChannelUserId, headimgurl);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -92,9 +92,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         try {
 
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/get/by/invite/code", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/get/by/invite/code", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userInviteCodeQueryRequest("p88vcdo", 1);
+            byteArrayEntity = DataTransferUtil.userInviteCodeQueryRequest("p88vcdo", 1);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -118,9 +118,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             String mobile="177"+(int)((Math.random()*9+1)*10000000); //修改登录得手机号
             //修改手机号
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/mobile/update", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/mobile/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userMobileUpdateRequestConvertBuilder(1, mobile, ChannelUserId, "86");
+            byteArrayEntity = DataTransferUtil.userMobileUpdateRequestConvertBuilder(1, mobile, ChannelUserId, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -134,9 +134,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             System.out.println(md5pwd);
             //修改登录密码
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/pwd/update", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/user/pwd/update", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userPwdUpdateRequestConvertBuilder(ChannelUserId, 1, md5pwd);
+            byteArrayEntity = DataTransferUtil.userPwdUpdateRequestConvertBuilder(ChannelUserId, 1, md5pwd);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -145,10 +145,10 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"PwdUpdate",md5pwd,ChannelUserId);
 
             //再次登录
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/login", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/login", "");
             post = new HttpPost(uri);
             System.out.println("mobile"+mobile+"pwd"+pwd);
-            byteArrayEntity = DataTransfer.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
+            byteArrayEntity = DataTransferUtil.userInfoPdLoginRequestConvertBuilder(ChannelId, mobile, pwd, "86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -173,9 +173,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String md5pwd = MD5Util.toMD5(loginPwd.trim().toUpperCase());
             //用户忘记登录密码
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/user/forget/pwd", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,md5pwd,"15053755782","86");
+            byteArrayEntity = DataTransferUtil.userForgetPwdRequest(ChannelId,md5pwd,"15053755782","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -194,9 +194,9 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         try{
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/register", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/register", "");
             post = new HttpPost(uri);
-            DataTransfer.userBaseRegisterRequestConvertBuilder(mobile);
+            DataTransferUtil.userBaseRegisterRequestConvertBuilder(mobile);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

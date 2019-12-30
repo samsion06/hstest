@@ -1,6 +1,6 @@
 package com.example.utils;
 
-public class HttpConfig {
+public class HttpConfigUtil {
     //阿里云环境
     public static final String url="platform.huasheng100.com/user-base";
     //public static final Integer port=8080;

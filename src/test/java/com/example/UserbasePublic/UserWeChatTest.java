@@ -40,9 +40,9 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/binding","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/binding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
+            byteArrayEntity = DataTransferUtil.userWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -51,9 +51,9 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",ChannelUserId,ChannelUserId);
 
             //解除绑定
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/unBinding","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
+            byteArrayEntity = DataTransferUtil.userWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -78,9 +78,9 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
 
             //微信绑定
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/loginByOneKey","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
+            byteArrayEntity = DataTransferUtil.userWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -102,10 +102,10 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         try {
 
             httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/base/user/info/pd/get/by/unionId/openId","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/get/by/unionId/openId","");
             System.out.println(uri);
             post = new HttpPost(uri);;
-            byteArrayEntity = DataTransfer.userInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            byteArrayEntity = DataTransferUtil.userInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -127,9 +127,9 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         try{
 
             httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/weChat/getWeChatByChannelUserId","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByChannelUserId","");
             post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransfer.getUserWeChatAuthByChannelUserIdRequest(ChannelId,"9692091","123");
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByChannelUserIdRequest(ChannelId,"9692091","123");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

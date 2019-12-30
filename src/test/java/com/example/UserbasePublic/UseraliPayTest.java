@@ -46,9 +46,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         try {
             httpClient= HttpClients.createDefault();
             //绑定支付宝
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/binding","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/aliPay/binding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userAliPayBidingRequest(channelUserId,channelId,alipayRealname,alipayAccount,alipayUserId);
+            byteArrayEntity = DataTransferUtil.userAliPayBidingRequest(channelUserId,channelId,alipayRealname,alipayAccount,alipayUserId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -57,9 +57,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayBind","1",channelUserId);
 
             //用户支付宝授权
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/aliPay/auth","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userAliPayAuthRequest(channelUserId,channelId,alipayUserId);
+            byteArrayEntity = DataTransferUtil.userAliPayAuthRequest(channelUserId,channelId,alipayUserId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -68,9 +68,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"AliPayAuth","1",channelUserId);
 
             //用户取消授权
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/cancel","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/aliPay/auth/cancel","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userAliPayAuthCancelRequest(channelUserId,channelId);
+            byteArrayEntity = DataTransferUtil.userAliPayAuthCancelRequest(channelUserId,channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -93,9 +93,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
         String channeluserId="2571";
         try {
             httpClient= HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/aliPay/auth/info","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/aliPay/auth/info","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userAliPayAuthInfoRequest(channeluserId, channelId);
+            byteArrayEntity = DataTransferUtil.userAliPayAuthInfoRequest(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -125,9 +125,9 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
 //            response = httpClient.execute(post);
 //            CheckReponseResult.AssertResponse(response);
             httpClient= HttpClients.createDefault();
-            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/idCard/queryStatus","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/user/idCard/queryStatus","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userIdCardStatusQueryRequestConvertBuilder(channeluserId, channelId);
+            byteArrayEntity = DataTransferUtil.userIdCardStatusQueryRequestConvertBuilder(channeluserId, channelId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
