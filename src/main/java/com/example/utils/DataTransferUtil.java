@@ -147,7 +147,6 @@ public class DataTransferUtil {
         Reporter.log("忘记密码_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //用户实名认证
     public static ByteArrayEntity UserIdCardIdentifyRequestConvertBuilder(String channelUserId, Integer channelId, String realName, String idCardNum, String attachmentUrl){
         UserIdCardIdentifyServiceProto.UserIdCardIdentifyRequest.Builder builder = UserIdCardIdentifyServiceProto.UserIdCardIdentifyRequest.newBuilder();
@@ -224,7 +223,6 @@ public class DataTransferUtil {
         Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //根据渠道用户Id查询用户微信列表信息(
     public static ByteArrayEntity  getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
@@ -236,7 +234,6 @@ public class DataTransferUtil {
         Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //根据openId获取用户微信信息
     public static ByteArrayEntity getUserWeChatAuthByOpenIdRequest(Integer channelId,String openId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.newBuilder();
@@ -248,7 +245,6 @@ public class DataTransferUtil {
         Reporter.log("根据openId获取用户微信信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //绑定支付宝
     public static ByteArrayEntity userAliPayBidingRequest(String channelUserId, Integer channelId, String alipayRealname, String alipayAccount, String  alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayBidingRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayBidingRequest.newBuilder();
@@ -293,7 +289,6 @@ public class DataTransferUtil {
         Reporter.log("支付宝授权查询_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //添加用户收货地址
     public static ByteArrayEntity userAddressInfoAddRequest(String channelUserId, Integer channelId, String address){
         UserAddressServiceProto.UserAddressInfoAddRequest.Builder builder=UserAddressServiceProto.UserAddressInfoAddRequest.newBuilder();
@@ -326,7 +321,6 @@ public class DataTransferUtil {
         Reporter.log("删除用户收货地址_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //更新用户收货地址
     public static ByteArrayEntity userAddressInfoUpdateRequest(String channelUserId, Integer channelId, String addressId, String username){
         UserAddressServiceProto.UserAddressInfoUpdateRequest.Builder builder=UserAddressServiceProto.UserAddressInfoUpdateRequest.newBuilder();
@@ -347,6 +341,7 @@ public class DataTransferUtil {
         builder.setAddressId(addressId);
         builder.setAddressTag(addressTag);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("更新用户收货地址标签_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //分页查询户收货地址列表
@@ -360,7 +355,6 @@ public class DataTransferUtil {
         Reporter.log("分页查询户收货地址列表_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //获取省市区域树
     public static ByteArrayEntity UserSysSubAreaRequest(String parentId){
         UserAddressServiceProto.UserSysSubAreaRequest.Builder builder=UserAddressServiceProto.UserSysSubAreaRequest.newBuilder();
@@ -369,7 +363,6 @@ public class DataTransferUtil {
         Reporter.log("获取省市区域树_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
     //淘宝授权
     public static ByteArrayEntity HsrjUserTaobaoAuthRequest(String channelUserId,Long relationId,Long specialId,Long companyId,Long tbAccountId,String tbAccount){
         HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.Builder builder = HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.newBuilder();
@@ -384,7 +377,6 @@ public class DataTransferUtil {
         Reporter.log("淘宝授权_"+incomeMessage+builder+ "}");
         return  bytes;
     }
-
     //用户淘宝取消授权
     public static ByteArrayEntity HsrjUserTaobaoAuthCancelRequest(String channelUserId){
         HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthCancelRequest.Builder builder= HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthCancelRequest.newBuilder();
@@ -394,7 +386,6 @@ public class DataTransferUtil {
         Reporter.log("用户淘宝取消授权_"+incomeMessage+builder+ "}");
         return  bytes;
     }
-
     //用户淘宝授权信息查询(
     public static ByteArrayEntity HsrjUserTaobaoAuthQueryRequest(String channelUserId,String tbAccount,Long companyId,Long tbAccountId){
         HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthQueryRequest.Builder builder=HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthQueryRequest.newBuilder();
