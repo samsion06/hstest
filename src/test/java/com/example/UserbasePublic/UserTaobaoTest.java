@@ -30,9 +30,9 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
     private static HttpPost post;
     private static HttpResponse response;
 
-    @Test(description = "1.淘宝授权" +
-            "            2.授权查询" +
-            "            3.取消授权")
+    @Test(description = "1.淘宝授权 6个参数齐" +
+            "            2.授权查询 4个参数齐" +
+            "            3.取消授权 1个参数齐")
     public void authAndCancel(){
         try {
             String channelUserId="184003";
@@ -84,7 +84,30 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
 
     }
 
+    @Test
+    public void test1(){
+        String channelUserId="184003";
+        String tbAccount="327420130";
+        Long companyId=1642L;
+        Long tbAccountId=327420130L;
 
+        try{
+            httpClient = HttpClients.createDefault();
+            //取消收授权
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/taobao/auth/cancel", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.HsrjUserTaobaoAuthCancelRequest(channelUserId);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            String cancelResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",cancelResponseMsg);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"TaoBaoCancel","1",channelUserId);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 
