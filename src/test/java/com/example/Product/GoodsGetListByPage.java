@@ -1,6 +1,7 @@
 package com.example.Product;
 import com.example.utils.DataTransferUtil;
 import com.example.utils.HttpConfigUtil;
+import com.example.utils.JmeterTransferUtil;
 import com.hs.productservice.api.proto.getdetailbyid.ProductServiceApiGetDetailById;
 import com.hs.productservice.api.proto.getdetailbyidlist.ProductServiceApiGetDetailByIdList;
 import com.hs.productservice.api.proto.getlistbypage.ProductServiceApiGetListByPage;
@@ -26,7 +27,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.Servicescheme, null, HttpConfigUtil.Serviceurl, HttpConfigUtil.Serviceport, "/productservice/productapi/hszy/goods/getListByPage", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.getListByPageRequestDTO(1,10,2);
+            byteArrayEntity = JmeterTransferUtil.getListByPageRequestDTO(1,10,2);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -52,7 +53,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.Servicescheme, null, HttpConfigUtil.Serviceurl, HttpConfigUtil.Serviceport, "/productservice/productapi/hszy/goods/getDetailById", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.getDetailByIdRequestDTO(1910241023325207231L);
+            byteArrayEntity = JmeterTransferUtil.getDetailByIdRequestDTO(1910241023325207231L);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -78,7 +79,7 @@ public class GoodsGetListByPage {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.Servicescheme, null, HttpConfigUtil.Serviceurl, HttpConfigUtil.Serviceport, "/productservice/productapi/hszy/goods/getDetailByIdList", "", null);
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.getDetailByIdListRequestDTO(1,1910241023325207231L,"1905081410388277622");
+            byteArrayEntity = JmeterTransferUtil.getDetailByIdListRequestDTO(1,1910241023325207231L,"1905081410388277622");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -108,7 +109,7 @@ public class GoodsGetListByPage {
             post = new HttpPost(uri);
             String orderid="8e2d3a7066d845318ee128153a7140c2_"+System.currentTimeMillis();
             System.out.println(orderid);
-            byteArrayEntity = DataTransferUtil.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_LOCK_ADD);
+            byteArrayEntity = JmeterTransferUtil.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_LOCK_ADD);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -123,7 +124,7 @@ public class GoodsGetListByPage {
                     //扣减库存
                     uri = new URI(HttpConfigUtil.Servicescheme, null, HttpConfigUtil.Serviceurl, HttpConfigUtil.Serviceport, "/productservice/productapi/hszy/goods/lockUserStockByList", "", null);
                     post = new HttpPost(uri);
-                    byteArrayEntity = DataTransferUtil.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_ADD);
+                    byteArrayEntity = JmeterTransferUtil.lockStockByListRequestDto(orderid,1910241023325207231L,1910241023325207231L,ProductServiceApiStockService.GoodStockOperateEnum.USER_ADD);
                     post.setEntity(byteArrayEntity);
                     post.setHeader("Content-Type", "application/x-protobuf");
                     response = httpClient.execute(post);
