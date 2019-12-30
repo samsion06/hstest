@@ -12,7 +12,7 @@ public class UserTaobaoInfo {
     private Integer companyId;
     private  Integer tbAccountId;
     private String tbAccount;
-    private  Integer isDelete;
+    private Integer isDelete;
     private Date createTime;
     private Date updateTime;
 
