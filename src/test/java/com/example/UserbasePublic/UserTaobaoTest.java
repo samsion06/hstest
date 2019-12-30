@@ -43,7 +43,9 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+            String authResponseMsg = CheckReponseResult.AssertResponse(response);
+
+
 
             //授权查询
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/info", "");

@@ -456,6 +456,7 @@ public class DataTransfer {
         builder.setTbAccount(tbAccount);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("淘宝授权_"+incomeMessage+builder+ "}");
         return  bytes;
     }
 
@@ -465,6 +466,7 @@ public class DataTransfer {
         builder.setChannelUserId(channelUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("用户淘宝取消授权_"+incomeMessage+builder+ "}");
         return  bytes;
     }
 
@@ -477,6 +479,7 @@ public class DataTransfer {
         builder.setTbAccountId(tbAccountId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
+        Reporter.log("用户淘宝授权信息查询_"+incomeMessage+builder+ "}");
         return  bytes;
     }
 }

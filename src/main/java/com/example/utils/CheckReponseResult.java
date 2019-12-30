@@ -57,7 +57,7 @@ public class CheckReponseResult {
         ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
         Assert.assertEquals(resp.getCode(),ResultResponse.ResponseCode.RESP_CODE_SUCCESS );
         resultContent=resp.getMsg();
-        System.out.println(result+resultContent+"}");
+        System.out.println(result+resultContent+"]");
         Reporter.log(result+resultContent+"]");
         return resultContent;
     }
