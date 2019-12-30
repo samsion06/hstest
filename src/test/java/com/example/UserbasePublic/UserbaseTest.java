@@ -126,7 +126,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String mobileResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",mobileResponseMsg);
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"MobileUpadate",mobile,ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"MobileUpdate",mobile,ChannelUserId);
 
             //178803 将密码转换成MD5加密方式
             String pwd="123456";
