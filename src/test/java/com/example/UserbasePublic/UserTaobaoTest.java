@@ -3,8 +3,6 @@ package com.example.UserbasePublic;
 import com.example.utils.CheckReponseResult;
 import com.example.utils.DataTransfer;
 import com.example.utils.HttpConfig;
-import com.hs.user.base.proto.HsrjUserTaobaoAuthInfoServiceProto;
-import com.hs.user.base.proto.UserBaseServiceProto;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
@@ -37,7 +35,6 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             Long companyId=1642L;
             Long tbAccountId=327420130L;
 
-
             //淘宝授权
             httpClient = HttpClients.createDefault(); //184003
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth", "");
@@ -47,6 +44,7 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
+
             //授权查询
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/info", "");
             post = new HttpPost(uri);
@@ -55,6 +53,7 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
+
             //取消收授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/cancel", "");
             post = new HttpPost(uri);
@@ -63,10 +62,6 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
-            //取消授权
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
