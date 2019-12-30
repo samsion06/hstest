@@ -447,6 +447,8 @@ public class DataTransfer {
 
     //淘宝授权
     public static ByteArrayEntity HsrjUserTaobaoAuthRequest(){
+
+        HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.Builder builder = HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.newBuilder();
         return  null;
     }
 }

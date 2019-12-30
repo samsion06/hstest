@@ -30,9 +30,9 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
     private static HttpResponse response;
 
     @Test(description = "1.添加收货地址" +
-            "          2.获取收货地址" +
-            "          3.更新收货地址"+
-            "          4.删除收货地址" )
+            "            2.获取收货地址" +
+            "            3.更新收货地址"+
+            "            4.删除收货地址" )
     public void addressCURD(){
         httpClient=HttpClients.createDefault();
         String address= DataUtils.getRandomString(9);//随机地址
