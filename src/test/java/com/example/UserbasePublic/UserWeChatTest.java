@@ -122,7 +122,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-    //@Test(description = "根据渠道用户Id查询用户微信列表信息 X")
+    @Test(description = "根据渠道用户Id查询用户微信列表信息 X")
     public void getWeChatByChannelUserId(){
         try{
 

@@ -446,9 +446,26 @@ public class DataTransfer {
 //    }
 
     //淘宝授权
-    public static ByteArrayEntity HsrjUserTaobaoAuthRequest(){
-
+    public static ByteArrayEntity HsrjUserTaobaoAuthRequest(String channelUserId,Long relationId,Long specialId,Long companyId,Long tbAccountId,String tbAccount){
         HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.Builder builder = HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.newBuilder();
-        return  null;
+        builder.setChannelUserId(channelUserId);
+        builder.setRelationId(relationId);
+        builder.setSpecialId(specialId);
+        builder.setCompanyId(companyId);
+        builder.setTbAccountId(tbAccountId);
+        builder.setTbAccount(tbAccount);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        return  bytes;
     }
+    //用户淘宝取消授权
+    public static ByteArrayEntity HsrjUserTaobaoAuthCancelRequest(){
+        HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthCancelRequest.Builder builder= HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthCancelRequest.newBuilder();
+
+
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        return  bytes;
+
+    }
+
 }
