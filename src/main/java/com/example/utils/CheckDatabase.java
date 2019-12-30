@@ -20,20 +20,20 @@ public class CheckDatabase {
     /**
      * @param userBaseInfoMapper 查询数据库
      * @param method  用于区分查询那个表
-     * @param TargetOutPut  目标值
+     * @param targetOutPut  目标值
      * @param channelUserId 通过channel_user_id查询
      */
 
     //数据库检查
-    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method, String TargetOutPut,String channelUserId){
+    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method, String targetOutPut,String channelUserId){
         switch (method){
             //检查的点不同,所以要分开
             //微信解绑
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channelUserId);
-                int wechat_is_delete = userWeChatInfos.getIsDelete(); //比对
-                Assert.assertEquals(1,wechat_is_delete);
-                Reporter.log(AllMsg+"is_delete值变更为："+wechat_is_delete);
+                int wechatIsDelete = userWeChatInfos.getIsDelete(); //比对
+                Assert.assertEquals(1,wechatIsDelete);
+                Reporter.log(AllMsg+"is_delete值变更为："+wechatIsDelete);
                 break;
             case "WeChatInfoBind": //微信绑定
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channelUserId);
@@ -62,38 +62,38 @@ public class CheckDatabase {
             case "AddressUpadate"://更新收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channelUserId);
                 String name=userAddressInfo.getName();
-                Assert.assertEquals(TargetOutPut,name); //名称是否有更新
+                Assert.assertEquals(targetOutPut,name); //名称是否有更新
                 Reporter.log(PartMsg+"name值变更为："+name);
                 break;
             case "AddressDelete"://删除收货地址
                 userAddressInfo=userBaseInfoMapper.queryUserAddressInfo(channelUserId);
                 System.out.println(userAddressInfo);
-                int address_is_delete = userAddressInfo.getIsDelete(); //比对
-                Assert.assertEquals(1,address_is_delete);
-                Reporter.log(PartMsg+"is_delete值变更为："+address_is_delete);
+                int addressIsDelete = userAddressInfo.getIsDelete(); //比对
+                Assert.assertEquals(1,addressIsDelete);
+                Reporter.log(PartMsg+"is_delete值变更为："+addressIsDelete);
                 break;
             case "NickNameUpdate": //昵称更新
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channelUserId);
                 String nickname=userBaseInfo.getNickName();
-                Assert.assertEquals(TargetOutPut,nickname);
+                Assert.assertEquals(targetOutPut,nickname);
                 Reporter.log(PartMsg+"nick_name值变更为："+nickname);
                 break;
             case "HeadUrlImg": //修改头像
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channelUserId);
                 String headurlimg=userBaseInfo.getHeadImg();
-                Assert.assertEquals(TargetOutPut,headurlimg);
+                Assert.assertEquals(targetOutPut,headurlimg);
                 Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;
             case "MobileUpadate"://修改手机
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String mobile=userLoginInfo.getLoginName();
-                Assert.assertEquals(TargetOutPut,mobile);
+                Assert.assertEquals(targetOutPut,mobile);
                 Reporter.log(PartMsg+"login_name值变更为："+mobile);
                 break;
             case "PwdUpdate"://修改密码
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String pwd=userLoginInfo.getLoginPwd();
-                Assert.assertEquals(TargetOutPut,pwd);
+                Assert.assertEquals(targetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
             case "TaoBaoAuth"://淘宝授权
                 userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
