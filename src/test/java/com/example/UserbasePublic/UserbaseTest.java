@@ -169,6 +169,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     @Test(description = "忘记密码(修改密码)")
     public void forgetPassword(){
         try{
+
             String loginPwd="123456";
             String md5pwd = MD5Util.toMD5(loginPwd.trim().toUpperCase());
             //用户忘记登录密码
@@ -193,6 +194,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         String mobile="177"+(int)((Math.random()*9+1)*10000000);
         String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         try{
+
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/register", "");
             post = new HttpPost(uri);
@@ -201,6 +203,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+
         }catch (Exception e){
             e.printStackTrace();
         }
