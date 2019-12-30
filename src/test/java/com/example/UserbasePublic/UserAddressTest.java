@@ -88,7 +88,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(description ="分页查询用户收货地址列表")
-    public void addressQuery(){
+    public void queryUserAddressByPageTest(){
         try{
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/address/query", null);
@@ -102,6 +102,24 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
             e.printStackTrace();
         }
     }
+
+    @Test(description ="获取省市区域树")
+    public void  getSysAreaTreeTest(){
+        try{
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/address/sys/area/tree", null);
+            post = new HttpPost(uri);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserAddressServiceProto.SysAreaNodeTreeResponse.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     }
 
 
