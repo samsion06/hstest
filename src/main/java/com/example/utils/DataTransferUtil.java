@@ -240,6 +240,9 @@ public class DataTransferUtil {
     //根据openId获取用户微信信息
     public static ByteArrayEntity getUserWeChatAuthByOpenIdRequest(Integer channelId,String openId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setOpenId(openId);
+        builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("根据openId获取用户微信信息_"+incomeMessage+builder+ "}");

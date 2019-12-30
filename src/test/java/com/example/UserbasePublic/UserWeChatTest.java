@@ -145,6 +145,31 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
+    @Test(description = "根据openId查询用户微信列表信息")
+    public void getWeChatByOpenId(){
+        try{
+
+            httpClient=HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat//getWeChatByOpenId","");
+            post = new HttpPost(uri);;
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(ChannelId,"3692091","Appid01");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
 
 
