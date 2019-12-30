@@ -104,6 +104,22 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(description ="获取省市区域树")
+    public void  getSysSubAreaTest(){
+        try{
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/address/sys/sub/area", null);
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.UserSysSubAreaRequest("123");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserAddressServiceProto.SysAreaNodeTreeResponse.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test(description ="获取省市区域树")
     public void  getSysAreaTreeTest(){
         try{
             httpClient = HttpClients.createDefault();
@@ -116,6 +132,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
             e.printStackTrace();
         }
     }
+
 
 
 
