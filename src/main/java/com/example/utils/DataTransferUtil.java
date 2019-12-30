@@ -366,6 +366,7 @@ public class DataTransferUtil {
         UserAddressServiceProto.UserSysSubAreaRequest.Builder builder=UserAddressServiceProto.UserSysSubAreaRequest.newBuilder();
         builder.setParentId(parentId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("获取省市区域树_"+incomeMessage+builder+ "}");
         return bytes;
     }
 

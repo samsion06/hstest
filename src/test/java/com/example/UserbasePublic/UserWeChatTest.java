@@ -24,7 +24,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
 
     private static String AppId="Appid01";
-    private static Integer ChannelId=1;
+    private static Integer channelId =1;
     private static CloseableHttpClient httpClient;
     private static ByteArrayEntity byteArrayEntity;
     private static URI uri;
@@ -36,30 +36,30 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             "            2.微信解绑 ")
     public void bindingAndunBinding(){
         String openId= DataUtils.getRandomString(9);    //随机生成openId
-        String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000)); //随机生成ChannelUserId
+        String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000)); //随机生成ChannelUserId
         try {
             httpClient = HttpClients.createDefault();
             //微信绑定
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/binding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.userWeChatAuthRequest(AppId,ChannelId,ChannelUserId,openId);
+            byteArrayEntity = DataTransferUtil.userWeChatAuthRequest(AppId, channelId,channelUserId,openId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg,);
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",ChannelUserId,ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",channelUserId,channelUserId);
 
             //解除绑定
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/unBinding","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.userWeChatAuthUnBindRequest(openId,ChannelId,ChannelUserId,AppId);
+            byteArrayEntity = DataTransferUtil.userWeChatAuthUnBindRequest(openId, channelId,channelUserId,AppId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String unbindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",unbindResponseMsg);
-            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","null",ChannelUserId);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoUnbind","null",channelUserId);
 
         }catch(Exception e){
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.userWeChatOneKeyLoginRequest(ChannelId,"17702015334","177417","86");
+            byteArrayEntity = DataTransferUtil.userWeChatOneKeyLoginRequest(channelId,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
@@ -105,7 +105,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/get/by/unionId/openId","");
             System.out.println(uri);
             post = new HttpPost(uri);;
-            byteArrayEntity = DataTransferUtil.userInfoUnionIdOpenIdRequestConvertBuilder(ChannelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            byteArrayEntity = DataTransferUtil.userInfoUnionIdOpenIdRequestConvertBuilder(channelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -129,7 +129,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByChannelUserId","");
             post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByChannelUserIdRequest(ChannelId,"9692091","123");
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByChannelUserIdRequest(channelId,"9692091","123");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -153,7 +153,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByOpenId","");
             post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(ChannelId,"oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","Appid01");
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(channelId,"oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","Appid01");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
