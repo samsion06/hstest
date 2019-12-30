@@ -24,6 +24,12 @@
         </classes>
     </test>
 
+    <test name="淘宝中心">
+        <classes>
+            <class name="com.example.UserbasePublic.UserTaobaoTest"/>
+        </classes>
+    </test>
+
     <!--testng执行方式：https://www.cnblogs.com/926xiuxiu/p/9055846.html-->
     <!--testng传递参数方式：https://blog.csdn.net/xueningyang555/article/details/88871426-->
     <listeners>
