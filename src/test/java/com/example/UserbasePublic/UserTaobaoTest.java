@@ -31,17 +31,31 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             "            3.取消授权")
     public void authAndCancel(){
         try {
+
             String channelUserId="184003";
+            String tbAccount="327420130";
+            Long companyId=1642L;
+            Long tbAccountId=327420130L;
+
+
             //淘宝授权
             httpClient = HttpClients.createDefault(); //184003
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.HsrjUserTaobaoAuthRequest(channelUserId, 528467632L,528467634L,1642L,1L,"327420130");
+            byteArrayEntity = DataTransfer.HsrjUserTaobaoAuthRequest(channelUserId, 528467632L,528467634L,companyId,tbAccountId,tbAccount);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponse(response);
             //授权查询
+            uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/info", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransfer.HsrjUserTaobaoAuthQueryRequest(channelUserId,tbAccount,companyId,tbAccountId);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponse(response);
+            //取消收授权
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/cancel", "");
             post = new HttpPost(uri);
             byteArrayEntity = DataTransfer.HsrjUserTaobaoAuthCancelRequest(channelUserId);
