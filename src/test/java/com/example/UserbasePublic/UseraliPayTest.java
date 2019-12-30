@@ -89,7 +89,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
     }
 
    @Test(description = "用户支付宝授权信息查询")
-    public void authGetInfo(){
+    public void aliPayAuthInfoTest(){
         String channeluserId="2571";
         try {
             httpClient= HttpClients.createDefault();
