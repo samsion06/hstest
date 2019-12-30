@@ -51,6 +51,27 @@ public class CheckReponseResult {
         }
     }
 
+    //返回对象和字符串
+    public static Map<String, Object> checkResponseCodeAndObj(HttpResponse response, Class<? extends Message> clazz) throws Exception {
+        System.out.println(clazz);
+        if (response.getStatusLine().getStatusCode() == 200) {
+            //ResultResponse.ResultSet.parseFrom这种格式转换返回内容
+            ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
+            //判断返回内容
+            if (resp.getCode() == ResultResponse.ResponseCode.RESP_CODE_SUCCESS && resp.getData().is(clazz)) {
+                resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
+                System.out.println("resultContent:" + resultContent);
+                map.put("resultContent", resultContent);
+                map.put("resultObject", resp);
+            } else {
+                System.out.println(resp.getCode());
+            }
+        } else {
+            System.out.println(response.getStatusLine().getStatusCode());
+        }
+        return map;
+    }
+
     //框架断言
     public static String AssertResponse(HttpResponse response) throws IOException {
         Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
@@ -75,24 +96,5 @@ public class CheckReponseResult {
         return  resultContent;
     }
 
-    //返回对象和字符串
-    public static Map<String, Object> checkResponseCodeAndObj(HttpResponse response, Class<? extends Message> clazz) throws Exception {
-        System.out.println(clazz);
-        if (response.getStatusLine().getStatusCode() == 200) {
-            //ResultResponse.ResultSet.parseFrom这种格式转换返回内容
-            ResultResponse.ResultSet resp = ResultResponse.ResultSet.parseFrom(response.getEntity().getContent());
-            //判断返回内容
-            if (resp.getCode() == ResultResponse.ResponseCode.RESP_CODE_SUCCESS && resp.getData().is(clazz)) {
-                resultContent = jsonFormat.printToString(resp.getData().unpack(clazz));
-                System.out.println("resultContent:" + resultContent);
-                map.put("resultContent", resultContent);
-                map.put("resultObject", resp);
-            } else {
-                System.out.println(resp.getCode());
-            }
-        } else {
-            System.out.println(response.getStatusLine().getStatusCode());
-        }
-        return map;
-    }
+
 }
