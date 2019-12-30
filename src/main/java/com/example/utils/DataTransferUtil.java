@@ -357,14 +357,7 @@ public class DataTransferUtil {
         return bytes;
     }
 
-    /**
-     * 商品服务
-     * @param currentPage
-     * @param pageSize
-     * @param group  1-社区团购 2.直邮 3.课代表
-     * @param group  1-普通商品 2-秒杀商品 3-新人专属 4-团长专属
-     * @return
-     */
+    //商品服务
 
     //分页查询商品列表
     public static ByteArrayEntity getListByPageRequestDTO(Integer currentPage, Integer pageSize, Integer group){
@@ -431,19 +424,16 @@ public class DataTransferUtil {
     }
 
     /**
-     * @param
-     * //用户关系
+     * 用户关系（接口压力测试）
      */
-//    public static ByteArrayEntity MyFansQueryRequest(String ChannelUserId,Integer ChannelId,Integer FansType,SampleResult sr){
-//        UserRelationProto.MyFansQueryRequest.Builder builder = UserRelationProto.MyFansQueryRequest.newBuilder();
-//        builder.setChannelUserId(ChannelUserId);
-//        builder.setChannelId(ChannelId);
-//        builder.setFansType(2);
-//        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-//        sr.setSamplerData("data:\n"+builder.toString());
-//        sr.setDataType(SampleResult.TEXT);
-//        return  bytes;
-//    }
+    public static ByteArrayEntity MyFansQueryRequest(String ChannelUserId,Integer ChannelId,Integer FansType){
+        UserRelationProto.MyFansQueryRequest.Builder builder = UserRelationProto.MyFansQueryRequest.newBuilder();
+        builder.setChannelUserId(ChannelUserId);
+        builder.setChannelId(ChannelId);
+        builder.setFansType(2);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        return  bytes;
+    }
 
     //淘宝授权
     public static ByteArrayEntity HsrjUserTaobaoAuthRequest(String channelUserId,Long relationId,Long specialId,Long companyId,Long tbAccountId,String tbAccount){
