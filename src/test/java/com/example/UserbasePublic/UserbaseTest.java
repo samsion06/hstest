@@ -112,7 +112,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(description = "修改手机号-修改密码-登录")
-    public void LogiNameAndPwdUpdate(){
+    public void mdfMobileAndPwdUpdate(){
         String ChannelUserId="178803"; //17786709004
         try{
             httpClient = HttpClients.createDefault();

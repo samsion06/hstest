@@ -98,12 +98,12 @@ public class CheckDatabase {
             case "TaoBaoAuth"://淘宝授权
                 userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
                 System.out.println(userTaobaoInfo);
-                Reporter.log(AllMsg+userAliPayInfo);
+                Reporter.log(AllMsg+userTaobaoInfo);
                 break;
             case "TaoBaoCancel"://取消授权
                 userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
                 System.out.println(userTaobaoInfo);
-                Reporter.log(AllMsg+userAliPayInfo);
+                Reporter.log(AllMsg+userTaobaoInfo);
                 break;
             default:
                 System.out.println("没找到方法");
