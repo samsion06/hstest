@@ -24,4 +24,7 @@ public interface UserBaseInfoMapper {
     //查询登录信息
     public UserLoginInfo queryUserLoginInfo(String channelUserId);
 
+    //查询淘宝信息
+    public UserTaobaoInfo queryUserTaobaoInfo(String channelUserId);
+
 }

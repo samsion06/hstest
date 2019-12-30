@@ -144,15 +144,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
                 e.printStackTrace();
             }
         }
-
-
-
-
-
-
-
-
-
     }
 
 

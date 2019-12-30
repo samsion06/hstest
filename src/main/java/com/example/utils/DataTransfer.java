@@ -444,4 +444,9 @@ public class DataTransfer {
 //        sr.setDataType(SampleResult.TEXT);
 //        return  bytes;
 //    }
+
+    //淘宝授权
+    public static ByteArrayEntity HsrjUserTaobaoAuthRequest(){
+        return  null;
+    }
 }
