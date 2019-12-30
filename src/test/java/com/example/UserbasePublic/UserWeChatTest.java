@@ -150,9 +150,9 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         try{
 
             httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat//getWeChatByOpenId","");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByOpenId","");
             post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(ChannelId,"3692091","Appid01");
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(ChannelId,"oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","Appid01");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
