@@ -68,7 +68,8 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponse(response);
+            String cancelResponseMsg = CheckReponseResult.AssertResponse(response);
+            Assert.assertEquals("RESP_CODE_SUCCESS",cancelResponseMsg);
 
         } catch (Exception e) {
             e.printStackTrace();
