@@ -144,7 +144,7 @@
     </resultMap>
 
     <select id="queryUserTaobaoInfo"  parameterType="java.lang.String" resultMap="UserTaobaoInfoMap">
-        select * from user_login_info where channel_user_id=#{channel_user_id}
+        select * from hsrj_user_taobao_auth_info where channel_user_id=#{channel_user_id}
     </select>
 
 </mapper>
