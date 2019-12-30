@@ -1,5 +1,7 @@
 package com.example.UserbasePublic;
 
+import com.example.mapper.UserBaseInfoMapper;
+import com.example.utils.CheckDatabase;
 import com.example.utils.CheckReponseResult;
 import com.example.utils.DataTransfer;
 import com.example.utils.HttpConfig;
@@ -8,8 +10,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
 import java.net.URI;
@@ -17,6 +21,8 @@ import java.net.URI;
 @SpringBootTest
 public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
 
+    @Autowired
+    private UserBaseInfoMapper userBaseInfoMapper;
     private static Integer channelId=1;
     private static CloseableHttpClient httpClient;
     private static ByteArrayEntity byteArrayEntity;
@@ -44,8 +50,8 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             String authResponseMsg = CheckReponseResult.AssertResponse(response);
-
-
+            Assert.assertEquals("RESP_CODE_SUCCESS",authResponseMsg);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"TaoBaoAuth","1",channelUserId);
 
             //授权查询
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/taobao/auth/info", "");
