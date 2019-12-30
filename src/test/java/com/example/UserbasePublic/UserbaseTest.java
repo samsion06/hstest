@@ -113,7 +113,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
     @Test(description = "修改手机号-修改密码-登录")
     public void LogiNameAndPwdUpdate(){
-        String ChannelUserId="178803";
+        String ChannelUserId="178803"; //17786709004
         try{
             httpClient = HttpClients.createDefault();
             String mobile="177"+(int)((Math.random()*9+1)*10000000); //修改登录得手机号
@@ -175,7 +175,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfig.scheme, HttpConfig.url, "/user/forget/pwd", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,md5pwd,"17720130632","86");
+            byteArrayEntity = DataTransfer.userForgetPwdRequest(ChannelId,md5pwd,"15053755782","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
