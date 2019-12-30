@@ -12,6 +12,7 @@ public class CheckDatabase {
     private static UserAddressInfo userAddressInfo;
     private static UserBaseInfo userBaseInfo;
     private static UserLoginInfo userLoginInfo;
+    private static UserTaobaoInfo userTaobaoInfo;
 
     private static String AllMsg="数据库全部匹配：";
     private static String PartMsg="数据库部分匹配：";
@@ -24,7 +25,7 @@ public class CheckDatabase {
      */
 
     //数据库检查
-    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper, String method, String TargetOutPut,String channelUserId){
+    public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method, String TargetOutPut,String channelUserId){
         switch (method){
             //检查的点不同,所以要分开
             //微信解绑
@@ -77,23 +78,33 @@ public class CheckDatabase {
                 Assert.assertEquals(TargetOutPut,nickname);
                 Reporter.log(PartMsg+"nick_name值变更为："+nickname);
                 break;
-            case "HeadUrlImg":
+            case "HeadUrlImg": //修改头像
                 userBaseInfo=userBaseInfoMapper.queryUserBaseInfo(channelUserId);
                 String headurlimg=userBaseInfo.getHeadImg();
                 Assert.assertEquals(TargetOutPut,headurlimg);
                 Reporter.log(PartMsg+"head_img值变更为："+headurlimg);
                 break;
-            case "MobileUpadate":
+            case "MobileUpadate"://修改手机
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String mobile=userLoginInfo.getLoginName();
                 Assert.assertEquals(TargetOutPut,mobile);
                 Reporter.log(PartMsg+"login_name值变更为："+mobile);
                 break;
-            case "PwdUpdate":
+            case "PwdUpdate"://修改密码
                 userLoginInfo=userBaseInfoMapper.queryUserLoginInfo(channelUserId);
                 String pwd=userLoginInfo.getLoginPwd();
                 Assert.assertEquals(TargetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
+            case "TaoBaoAuth"://淘宝授权
+                userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
+                System.out.println(userTaobaoInfo);
+                Reporter.log(AllMsg+userAliPayInfo);
+            case "TaoBaoCancel"://淘宝查询
+                userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
+
+
+
+
             default:
                 System.out.println("没找到方法");
                 break;
