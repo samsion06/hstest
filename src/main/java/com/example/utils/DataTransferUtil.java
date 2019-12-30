@@ -157,6 +157,7 @@ public class DataTransferUtil {
         builder.setAttachmentUrl(attachmentUrl);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("用户实名认证_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //用户实名认证查询
@@ -166,6 +167,7 @@ public class DataTransferUtil {
         builder.setChannelId(channelId);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("用户实名认证查询_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //邀请码
