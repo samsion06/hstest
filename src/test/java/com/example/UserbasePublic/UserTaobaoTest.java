@@ -70,6 +70,7 @@ public class UserTaobaoTest extends AbstractTestNGSpringContextTests {
             response = httpClient.execute(post);
             String cancelResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",cancelResponseMsg);
+            CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"TaoBaoCancel","1",channelUserId);
 
         } catch (Exception e) {
             e.printStackTrace();

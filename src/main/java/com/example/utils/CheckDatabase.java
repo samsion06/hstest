@@ -19,7 +19,7 @@ public class CheckDatabase {
 
     /**
      * @param userBaseInfoMapper 查询数据库
-     * @param method  用于区分查询那个表
+     * @param method  用于区分查询那个表 （检查的点不同,所以要分开）
      * @param targetOutPut  目标值
      * @param channelUserId 通过channel_user_id查询
      */
@@ -27,7 +27,6 @@ public class CheckDatabase {
     //数据库检查
     public static void CheckDatabaseInfo(UserBaseInfoMapper userBaseInfoMapper,String method, String targetOutPut,String channelUserId){
         switch (method){
-            //检查的点不同,所以要分开
             //微信解绑
             case "WeChatInfoUnbind":
                 userWeChatInfos = userBaseInfoMapper.queryWeChatInfo(channelUserId);
@@ -95,16 +94,17 @@ public class CheckDatabase {
                 String pwd=userLoginInfo.getLoginPwd();
                 Assert.assertEquals(targetOutPut,pwd);
                 Reporter.log(PartMsg+"login_pwd值变更为："+pwd);
+                break;
             case "TaoBaoAuth"://淘宝授权
                 userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
                 System.out.println(userTaobaoInfo);
                 Reporter.log(AllMsg+userAliPayInfo);
-            case "TaoBaoCancel"://淘宝查询
+                break;
+            case "TaoBaoCancel"://取消授权
                 userTaobaoInfo=userBaseInfoMapper.queryUserTaobaoInfo(channelUserId);
-
-
-
-
+                System.out.println(userTaobaoInfo);
+                Reporter.log(AllMsg+userAliPayInfo);
+                break;
             default:
                 System.out.println("没找到方法");
                 break;
