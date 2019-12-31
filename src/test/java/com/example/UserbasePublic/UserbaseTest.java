@@ -237,6 +237,32 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
+    @Test(description = "根据微信ID和OPENID获取用户信息")
+    public void getByOpenIdAndUnionldId() {
+        try {
+
+            httpClient=HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/get/by/unionId/openId","");
+            System.out.println(uri);
+            post = new HttpPost(uri);;
+            byteArrayEntity = DataTransferUtil.userInfoUnionIdOpenIdRequestConvertBuilder(channelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
 
 }
