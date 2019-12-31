@@ -165,12 +165,12 @@ public class DataTransferUtil {
         return bytes;
     }
     //忘记密码 index 表要看有没有区号映射
-    public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile, String mobileareacode){
+    public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile, String mobileAreaCode){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder= UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setLoginPwd(loginPwd);
         builder.setMobile(mobile);
-        builder.setMobileAreaCode(mobileareacode);
+        builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         Reporter.log("忘记密码_"+incomeMessage+builder+ "}");
