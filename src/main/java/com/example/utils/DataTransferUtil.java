@@ -101,7 +101,7 @@ public class DataTransferUtil {
         Reporter.log("修改头像_"+incomeMessage+builder+ "}");
         return bytes;
     }
-    //获取用户信息
+    //根据微信ID和OPENID获取用户信息
     public static ByteArrayEntity userInfoUnionIdOpenIdRequestConvertBuilder(Integer channelId, String unionId, String openId){
         UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.Builder builder= UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.newBuilder();
         builder.setChannelId(channelId);
@@ -110,6 +110,16 @@ public class DataTransferUtil {
         //System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("获取用户信息_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //获取用户基础信息
+    public static ByteArrayEntity UserInfoRequest(Integer channelId,String channelUserId){
+        UserBaseServiceProto.UserInfoRequest.Builder builder=UserBaseServiceProto.UserInfoRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("获取用户基础信息_"+incomeMessage+builder+ "}");
+        System.out.println(builder);
         return bytes;
     }
     //根据手机号获取用户信息

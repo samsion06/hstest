@@ -263,6 +263,13 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     }
 
 
+    @Test(description = "获取用户基础信息(幂等)")
+    public void getUserBaseInfoTest(){
+
+
+
+    }
+
 
 
 
