@@ -86,16 +86,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             HttpResponse response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
 
-            //根据openId查询用户微信列表信息
-            httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByOpenId","");
-            post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(channelId,"oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4","Appid01");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response, UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
-
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -107,19 +97,31 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
         }
     }
 
-    @Test(description = "用户微信登录(幂等)")
-    public void weChatLogin(){
+    @Test(description = "用户微信登录(幂等)" +
+                        "根据openId查询用户微信列表信息 ")
+    public void weChatLoginAndGetInfoByOpenId(){
         try{
-
+            String openId="oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4";
+            String appId="Appid01";
             //用户微信登录(幂等)
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/login","");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserWeChatAuthLoginRequest(channelId,"3692091","oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            byteArrayEntity = DataTransferUtil.UserWeChatAuthLoginRequest(channelId,"3692091",openId,appId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthLoginResponse.class);
+
+            //根据openId查询用户微信列表信息
+            httpClient=HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByOpenId","");
+            post = new HttpPost(uri);;
+            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByOpenIdRequest(channelId,openId,appId);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
 
         }catch (Exception e){
             e.printStackTrace();

@@ -232,17 +232,16 @@ public class DataTransferUtil {
         return bytes;
     }
     //用户微信登录(幂等)
-    public static ByteArrayEntity UserWeChatAuthLoginRequest(Integer channelId,String channelUserId,String openId){
+    public static ByteArrayEntity UserWeChatAuthLoginRequest(Integer channelId,String channelUserId,String openId,String appId){
         UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.Builder builder =UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
         builder.setOpenId(openId);
+        builder.setAppId(appId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         Reporter.log("用户微信登录(幂等)_"+incomeMessage+builder+ "}");
         return bytes;
     }
-
-
     //根据渠道用户Id查询用户微信列表信息(
     public static ByteArrayEntity  getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
         UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
