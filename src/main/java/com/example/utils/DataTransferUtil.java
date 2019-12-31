@@ -18,6 +18,10 @@ public class DataTransferUtil {
 
     private static String incomeMessage="传入参数:"+" {";
 
+    /**
+     * 用户中心
+     */
+
     //花生日记登录
     public static ByteArrayEntity userInfoPdLoginRequestConvertBuilder(Integer channelId, String mobile, String pwd, String mobileAreaCode ){
         UserBaseServiceProto.UserInfoPdLoginRequest.Builder builder= UserBaseServiceProto.UserInfoPdLoginRequest.newBuilder();
@@ -219,84 +223,6 @@ public class DataTransferUtil {
         return bytes;
     }
 
-    /**
-     * 用户微信中心
-     */
-
-    //微信绑定
-    public static ByteArrayEntity userWeChatAuthRequest(String appId, Integer channelId, String channelUserId, String openId){
-        UserWeChatAuthServiceProto.UserWeChatAuthRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthRequest.newBuilder();
-        builder.setAppId(appId);
-        builder.setChannelId(channelId);
-        builder.setChannelUserId(channelUserId);
-        builder.setOpenId(openId);
-        //System.out.println("入参 \n："+builder);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("微信绑定_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-    //微信解绑
-    public static ByteArrayEntity userWeChatAuthUnBindRequest(String openId, Integer channelId, String channelUserId, String appId ){
-        UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.newBuilder();
-        builder.setOpenId(openId);
-        builder.setChannelId(channelId);
-        builder.setChannelUserId(channelUserId);
-        builder.setAppId(appId);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        System.out.println(builder);
-        Reporter.log("微信绑定解绑_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-    //微信一键登录
-    public static ByteArrayEntity userWeChatOneKeyLoginRequest(Integer channelId, String mobile, String inviteChannelUserId, String mobileAreaCode){
-        UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.newBuilder();
-        builder.setChannelId(channelId);
-        builder.setMobile(mobile);
-        builder.setInviteChannelUserId(inviteChannelUserId);
-        builder.setMobileAreaCode(mobileAreaCode);
-        //System.out.println(builder);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-    //用户微信登录(幂等)
-    public static ByteArrayEntity UserWeChatAuthLoginRequest(Integer channelId,String channelUserId,String openId,String appId){
-        UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.Builder builder =UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.newBuilder();
-        builder.setChannelId(channelId);
-        builder.setChannelUserId(channelUserId);
-        builder.setOpenId(openId);
-        builder.setAppId(appId);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("用户微信登录(幂等)_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-    //根据渠道用户Id查询用户微信列表信息(
-    public static ByteArrayEntity  getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
-        UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
-        builder.setChannelId(channelId);
-        builder.setChannelUserId(channelUserId);
-       // builder.setAppId(appId);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        System.out.println(builder);
-        Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-    //根据openId获取用户微信信息
-    public static ByteArrayEntity getUserWeChatAuthByOpenIdRequest(Integer channelId,String openId,String appId){
-        UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.newBuilder();
-        builder.setChannelId(channelId);
-        builder.setOpenId(openId);
-        builder.setAppId(appId);
-        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        System.out.println(builder);
-        Reporter.log("根据openId获取用户微信信息_"+incomeMessage+builder+ "}");
-        return bytes;
-    }
-
-
-
-
-
     //根据查询条件查询用户列表
     public static ByteArrayEntity UserBaseInfoByConditionRequest(String channelUserId,Integer channelId){
         UserBaseServiceProto.UserBaseInfoByConditionRequest.Builder builder= UserBaseServiceProto.UserBaseInfoByConditionRequest.newBuilder();
@@ -308,6 +234,11 @@ public class DataTransferUtil {
         return bytes;
     }
 
+
+
+    /**
+     * 支付宝中心
+     */
     //绑定支付宝
     public static ByteArrayEntity userAliPayBidingRequest(String channelUserId, Integer channelId, String alipayRealname, String alipayAccount, String  alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayBidingRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayBidingRequest.newBuilder();
@@ -321,6 +252,7 @@ public class DataTransferUtil {
         Reporter.log("绑定支付宝_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
     //支付宝授权
     public static ByteArrayEntity userAliPayAuthRequest(String channelUserId, Integer channelId, String alipayUserId){
         UserAliPayAuthServiceProto.UserAliPayAuthRequest.Builder builder=UserAliPayAuthServiceProto.UserAliPayAuthRequest.newBuilder();
@@ -352,6 +284,11 @@ public class DataTransferUtil {
         Reporter.log("支付宝授权查询_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
+    /**
+     * 用户收货地址
+     */
+
     //添加用户收货地址
     public static ByteArrayEntity userAddressInfoAddRequest(String channelUserId, Integer channelId, String address){
         UserAddressServiceProto.UserAddressInfoAddRequest.Builder builder=UserAddressServiceProto.UserAddressInfoAddRequest.newBuilder();
@@ -426,6 +363,11 @@ public class DataTransferUtil {
         Reporter.log("获取省市区域树_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
+    /**
+     *  淘宝中心
+     */
+
     //淘宝授权
     public static ByteArrayEntity HsrjUserTaobaoAuthRequest(String channelUserId,Long relationId,Long specialId,Long companyId,Long tbAccountId,String tbAccount){
         HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.Builder builder = HsrjUserTaobaoAuthInfoServiceProto.HsrjUserTaobaoAuthRequest.newBuilder();
@@ -461,4 +403,80 @@ public class DataTransferUtil {
         Reporter.log("用户淘宝授权信息查询_"+incomeMessage+builder+ "}");
         return  bytes;
     }
+
+    /**
+     * 用户微信中心
+     */
+
+    //微信绑定
+    public static ByteArrayEntity userWeChatAuthRequest(String appId, Integer channelId, String channelUserId, String openId){
+        UserWeChatAuthServiceProto.UserWeChatAuthRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthRequest.newBuilder();
+        builder.setAppId(appId);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setOpenId(openId);
+        //System.out.println("入参 \n："+builder);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("微信绑定_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //微信解绑
+    public static ByteArrayEntity userWeChatAuthUnBindRequest(String openId, Integer channelId, String channelUserId, String appId ){
+        UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthUnBindRequest.newBuilder();
+        builder.setOpenId(openId);
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("微信绑定解绑_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //微信一键登录
+    public static ByteArrayEntity userWeChatOneKeyLoginRequest(Integer channelId, String mobile, String inviteChannelUserId, String mobileAreaCode){
+        UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatOneKeyLoginRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setMobile(mobile);
+        builder.setInviteChannelUserId(inviteChannelUserId);
+        builder.setMobileAreaCode(mobileAreaCode);
+        //System.out.println(builder);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("微信一键登录_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //用户微信登录(幂等)
+    public static ByteArrayEntity UserWeChatAuthLoginRequest(Integer channelId,String channelUserId,String openId,String appId){
+        UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.Builder builder =UserWeChatAuthServiceProto.UserWeChatAuthLoginRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        builder.setOpenId(openId);
+        builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("用户微信登录(幂等)_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //根据渠道用户Id查询用户微信列表信息(
+    public static ByteArrayEntity  getUserWeChatAuthByChannelUserIdRequest(Integer channelId,String channelUserId,String appId){
+        UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByChannelUserIdRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setChannelUserId(channelUserId);
+        // builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("根据渠道用户Id查询用户微信列表信息_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+    //根据openId获取用户微信信息
+    public static ByteArrayEntity getUserWeChatAuthByOpenIdRequest(Integer channelId,String openId,String appId){
+        UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.Builder builder= UserWeChatAuthServiceProto.getUserWeChatAuthByOpenIdRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setOpenId(openId);
+        builder.setAppId(appId);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
+        Reporter.log("根据openId获取用户微信信息_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+
+
 }
