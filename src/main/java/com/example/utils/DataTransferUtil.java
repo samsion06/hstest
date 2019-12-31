@@ -118,8 +118,8 @@ public class DataTransferUtil {
         builder.setChannelId(channelId);
         builder.setChannelUserId(channelUserId);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("获取用户基础信息_"+incomeMessage+builder+ "}");
         System.out.println(builder);
+        Reporter.log("获取用户基础信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
     //根据手机号获取用户信息
