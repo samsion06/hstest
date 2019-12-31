@@ -207,6 +207,27 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             e.printStackTrace();
         }
     }
+
+    @Test(description = "根据查询条件查询用户列表")
+    public void getUsersByConditionTest(){
+        try{
+
+            //根据查询条件查询用户列表
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUsersByCondition", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.UserBaseInfoByConditionRequest("3693070",channelId);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            //校验结果
+            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfoByConditionPage.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
 

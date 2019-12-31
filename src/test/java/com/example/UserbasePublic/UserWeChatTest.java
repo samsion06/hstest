@@ -47,7 +47,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             HttpResponse response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
-            Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg,);
+            Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",channelUserId,channelUserId);
 
             //解除绑定
