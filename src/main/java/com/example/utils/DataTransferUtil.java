@@ -127,7 +127,6 @@ public class DataTransferUtil {
         return bytes;
     }
 
-
     //修改手机号码
     public static ByteArrayEntity userMobileUpdateRequestConvertBuilder(Integer channelId, String mobileNew, String channelUserId, String mobileAreaCodeNew){
         UserBaseServiceProto.UserMobileUpdateRequest.Builder builder=  UserBaseServiceProto.UserMobileUpdateRequest.newBuilder();
