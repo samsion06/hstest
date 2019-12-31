@@ -113,15 +113,21 @@ public class DataTransferUtil {
         return bytes;
     }
     //根据手机号获取用户信息
-    public static ByteArrayEntity UserInfoByMobileRequest(String mobile,String mobileAreaCode,Integer channelId){
+    public static ByteArrayEntity UserInfoByMobileRequest(String mobile,String mobileAreaCode,Integer channelId,String pd){
         UserBaseServiceProto.UserInfoByMobileRequest.Builder builder=UserBaseServiceProto.UserInfoByMobileRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobile(mobile);
         builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("根据手机号获取用户信息"+incomeMessage+builder+ "}");
+        if(pd.equals("userInfoPdCombine")){
+            Reporter.log("根据手机号获取用户信息(聚合)"+incomeMessage+builder+ "}");
+        }else{
+            Reporter.log("根据手机号获取用户信息"+incomeMessage+builder+ "}");
+        }
         return bytes;
     }
+
+
     //修改手机号码
     public static ByteArrayEntity userMobileUpdateRequestConvertBuilder(Integer channelId, String mobileNew, String channelUserId, String mobileAreaCodeNew){
         UserBaseServiceProto.UserMobileUpdateRequest.Builder builder=  UserBaseServiceProto.UserMobileUpdateRequest.newBuilder();
