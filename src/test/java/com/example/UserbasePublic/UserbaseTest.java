@@ -1,5 +1,4 @@
 package com.example.UserbasePublic;
-
 import com.example.mapper.UserBaseInfoMapper;
 import com.example.utils.*;
 import com.hs.user.base.proto.UserBaseServiceProto;
