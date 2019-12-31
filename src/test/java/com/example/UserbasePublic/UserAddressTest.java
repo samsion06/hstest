@@ -103,7 +103,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description ="获取省市区域树")
+    @Test(description ="获取省市区域树area")
     public void  getSysSubAreaTest(){
         try{
             httpClient = HttpClients.createDefault();
@@ -119,7 +119,7 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description ="获取省市区域树")
+    @Test(description ="获取省市区域树tree")
     public void  getSysAreaTreeTest(){
         try{
             httpClient = HttpClients.createDefault();
