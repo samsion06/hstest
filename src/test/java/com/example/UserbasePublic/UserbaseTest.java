@@ -120,7 +120,28 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description = "修改手机号-修改密码-登录")
+    @Test(description = "1.根据手机号码获取用户信息" +
+                        "2.根据手机号码获取用户信息（聚合）")
+    public void test1(){
+        try{
+            //用户忘记登录密码
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("17702015334","86",channelId,"UserBaseInfo");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            //校验结果
+            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test(description = "1.修改手机号" +
+                        "2.修改密码" +
+                        "3.登录")
     public void mdfMobileAndPwdUpdate(){
         String ChannelUserId="178803"; //17786709004
         try{
@@ -197,27 +218,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    //@Test(description = "注册")
-    public void register() {
-        //生成手机号码
-        String mobile="177"+(int)((Math.random()*9+1)*10000000);
-        String ChannelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
-        try{
-
-            httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/register", "");
-            post = new HttpPost(uri);
-            DataTransferUtil.userBaseRegisterRequestConvertBuilder(mobile);
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Test(description = "根据查询条件查询用户列表")
     public void getUsersByConditionTest(){
         try{
@@ -264,25 +264,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
 
 
-    @Test(description = "1.根据手机号码获取用户信息" +
-                        "2.根据手机号码获取用户信息（聚合）")
-    public void test1(){
-        try{
-            //用户忘记登录密码
-            httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
-            post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("17702015334","86",channelId,"UserBaseInfo");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            //校验结果
-            CheckReponseResult.AssertResponse(response);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
 }
