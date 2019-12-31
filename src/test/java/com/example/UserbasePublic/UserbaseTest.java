@@ -124,7 +124,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
                         "2.根据手机号码获取用户信息（聚合）")
     public void test1(){
         try{
-            //用户忘记登录密码
+            //根据手机号码获取用户信息
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
             post = new HttpPost(uri);
@@ -133,7 +133,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             //校验结果
-            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+            CheckReponseResult.AssertResponse(response);
         }catch (Exception e){
             e.printStackTrace();
         }

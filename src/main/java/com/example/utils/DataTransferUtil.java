@@ -119,6 +119,7 @@ public class DataTransferUtil {
         builder.setMobile(mobile);
         builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        System.out.println(builder);
         if(responseClass.equals("userInfoPdCombine")){
             Reporter.log("根据手机号获取用户信息(聚合)_"+incomeMessage+builder+ "}");
         }else{
