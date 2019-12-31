@@ -120,13 +120,12 @@ public class DataTransferUtil {
         builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         if(pd.equals("userInfoPdCombine")){
-            Reporter.log("根据手机号获取用户信息(聚合)"+incomeMessage+builder+ "}");
+            Reporter.log("根据手机号获取用户信息(聚合)_"+incomeMessage+builder+ "}");
         }else{
-            Reporter.log("根据手机号获取用户信息"+incomeMessage+builder+ "}");
+            Reporter.log("根据手机号获取用户信息_"+incomeMessage+builder+ "}");
         }
         return bytes;
     }
-
     //修改手机号码
     public static ByteArrayEntity userMobileUpdateRequestConvertBuilder(Integer channelId, String mobileNew, String channelUserId, String mobileAreaCodeNew){
         UserBaseServiceProto.UserMobileUpdateRequest.Builder builder=  UserBaseServiceProto.UserMobileUpdateRequest.newBuilder();
