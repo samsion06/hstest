@@ -128,12 +128,12 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("17702015334","86",channelId,"UserBaseInfo");
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("13486667245","86",channelId,"UserBaseInfo");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             //校验结果
-            CheckReponseResult.AssertResponse(response);
+            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
         }catch (Exception e){
             e.printStackTrace();
         }
