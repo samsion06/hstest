@@ -265,7 +265,27 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
     @Test(description = "获取用户基础信息(幂等)")
     public void getUserBaseInfoTest(){
+        try {
 
+            httpClient=HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/getUserBaseInfo","");
+            System.out.println(uri);
+            post = new HttpPost(uri);;
+            byteArrayEntity = DataTransferUtil.UserInfoRequest(channelId, "3692080");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
     }
