@@ -86,18 +86,28 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description = "根据邀请码获取用户信息")
+    @Test(description = "根据邀请码获取用户信息" +
+                        "根据邀请码获取用户信息(幂等)")
     public void getInfoByInviteCode() {
         try {
 
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/get/by/invite/code", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.userInviteCodeQueryRequest("p88vcdo", channelId);
+            byteArrayEntity = DataTransferUtil.userInviteCodeQueryRequest("p88vcdo", channelId,"UserInfoInviteCodeResponse");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserInfoInviteCodeResponse.class);
+
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/get/by/invite/code", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.userInviteCodeQueryRequest("p88vcdo", channelId,"userInfoPdCombine");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,6 +236,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             e.printStackTrace();
         }
     }
+
 
 
 }

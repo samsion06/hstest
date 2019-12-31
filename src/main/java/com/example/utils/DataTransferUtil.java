@@ -170,16 +170,22 @@ public class DataTransferUtil {
         Reporter.log("用户实名认证查询_"+incomeMessage+builder+ "}");
         return bytes;
     }
-    //邀请码
-    public static ByteArrayEntity userInviteCodeQueryRequest(String inviteCode, Integer channelId){
+    //根据邀请码获取用户信息
+    public static ByteArrayEntity userInviteCodeQueryRequest(String inviteCode, Integer channelId,String responseClass){
         UserBaseServiceProto.UserInviteCodeQueryRequest.Builder builder = UserBaseServiceProto.UserInviteCodeQueryRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setInviteCode(inviteCode);
         System.out.println(builder);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        Reporter.log("邀请码获取用户信息_"+incomeMessage+builder+ "}");
+        if(responseClass.equals("userInfoPdCombine")){
+            Reporter.log("邀请码获取用户信息(幂等)_"+incomeMessage+builder+ "}");
+        }else{
+            Reporter.log("邀请码获取用户信息_"+incomeMessage+builder+ "}");
+        }
         return bytes;
     }
+
+
     //用户忘记登录密码
     public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder=UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
