@@ -268,13 +268,11 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
                         "2.根据手机号码获取用户信息（聚合）")
     public void test1(){
         try{
-            String loginPwd="123456";
-            String md5pwd = MD5Util.toMD5(loginPwd.trim().toUpperCase());
             //用户忘记登录密码
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.userForgetPwdRequest(channelId,md5pwd,"15053755782","86");
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("17702015334","86",channelId,"UserBaseInfo");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);

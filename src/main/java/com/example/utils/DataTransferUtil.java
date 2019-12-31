@@ -113,13 +113,13 @@ public class DataTransferUtil {
         return bytes;
     }
     //根据手机号获取用户信息
-    public static ByteArrayEntity UserInfoByMobileRequest(String mobile,String mobileAreaCode,Integer channelId,String pd){
+    public static ByteArrayEntity UserInfoByMobileRequest(String mobile,String mobileAreaCode,Integer channelId,String responseClass){
         UserBaseServiceProto.UserInfoByMobileRequest.Builder builder=UserBaseServiceProto.UserInfoByMobileRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobile(mobile);
         builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
-        if(pd.equals("userInfoPdCombine")){
+        if(responseClass.equals("userInfoPdCombine")){
             Reporter.log("根据手机号获取用户信息(聚合)_"+incomeMessage+builder+ "}");
         }else{
             Reporter.log("根据手机号获取用户信息_"+incomeMessage+builder+ "}");
