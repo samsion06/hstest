@@ -76,7 +76,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     public void loginByOneKey(){ ;
         try{
 
-            //微信绑定
+            //用户一键登录微信
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/loginByOneKey","");
             post = new HttpPost(uri);
@@ -86,46 +86,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             HttpResponse response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-    @Test(description = "根据渠道用户Id查询用户微信列表信息 X")
-    public void getWeChatByChannelUserId(){
-        try{
-
-            httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByChannelUserId","");
-            post = new HttpPost(uri);;
-            byteArrayEntity =  DataTransferUtil.getUserWeChatAuthByChannelUserIdRequest(channelId,"9692091","123");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response, UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Test(description = "根据openId查询用户微信列表信息")
-    public void getWeChatByOpenId(){
-        try{
-
+            //根据openId查询用户微信列表信息
             httpClient=HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/getWeChatByOpenId","");
             post = new HttpPost(uri);;
@@ -134,6 +95,31 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response, UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test(description = "用户微信登录(幂等)")
+    public void weChatLogin(){
+        try{
+
+            //用户微信登录(幂等)
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/weChat/login","");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.UserWeChatAuthLoginRequest(channelId,"3692091","oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            HttpResponse response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthLoginResponse.class);
 
         }catch (Exception e){
             e.printStackTrace();
