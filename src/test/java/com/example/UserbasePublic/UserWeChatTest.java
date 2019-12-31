@@ -133,15 +133,9 @@ public class UserWeChatTest extends AbstractTestNGSpringContextTests{
         }
     }
 
-    @Test(description = "用户一键登录微信")
+    @Test(description = "检查手机号绑定")
     public void checkPhoneTest(){
 
 
-
-
     }
-
-
-
-
 }
