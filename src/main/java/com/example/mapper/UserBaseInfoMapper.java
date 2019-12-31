@@ -5,14 +5,14 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+//所有接口方法都写在这个接口上
 @Mapper
 public interface UserBaseInfoMapper {
-    //所有接口方法都写在这个接口上
+
     //查询用户
     public UserBaseInfo queryUserBaseInfo(String channelUserId);
 
-   //查询微信
-   //public List<UserAlipayAuthInfo> queryWeChatInfos(String channel_user_id);
+   //查询微信  public List<UserAlipayAuthInfo> queryWeChatInfos(String channel_user_id);
     public UserWeChatInfo queryWeChatInfo(String channelUserId);
 
     //查询支付宝

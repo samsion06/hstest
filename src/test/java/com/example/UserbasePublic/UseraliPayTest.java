@@ -36,6 +36,7 @@ public class UseraliPayTest extends AbstractTestNGSpringContextTests {
             "                                   2.用户支付宝授权" +
             "                                   3.用户支付宝取消授权 OK")
     public void BindAndAuthAndCancel(){
+
         //生成随机数
         String channelUserId=String.valueOf((int)((Math.random()*9+1)*1000));
         String alipayUserId=String.valueOf((int)((Math.random()*9+1)*1000));
