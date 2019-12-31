@@ -133,14 +133,16 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
     @Test(description = "1.根据手机号码获取用户信息" +
                         "2.根据手机号码获取用户信息（聚合）")
-    public void test1(){
+    public void getUserInfoByMobile(){
         try{
+
             //规则：userbase里面得手机号和要在映射表userindx里面得indexid有才行
             //根据手机号码获取用户信息
+            String mobile="18756989065";
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("18756989065","86",channelId,"UserBaseInfo");
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest(mobile,"86",channelId,"UserBaseInfo");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
@@ -148,13 +150,13 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
             //根据手机号码获取用户信息（聚合）
             httpClient = HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/info/pd/get/by/mobile", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("18756989065","86",channelId,"UserBaseInfo");
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest(mobile,"86",channelId,"userInfoPdCombine");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.userInfoPdCombine.class);
 
         }catch (Exception e){
             e.printStackTrace();
