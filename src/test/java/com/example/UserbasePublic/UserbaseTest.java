@@ -86,8 +86,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @Test(description = "根据邀请码获取用户信息" +
-                        "根据邀请码获取用户信息(幂等)")
+    @Test(description = "1.根据邀请码获取用户信息" +
+                        "2.根据邀请码获取用户信息(幂等)")
     public void getInfoByInviteCode() {
         try {
 
@@ -264,8 +264,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
 
 
-    @Test(description = "根据手机号码获取用户信息" +
-                        "根据手机号码获取用户信息（聚合）")
+    @Test(description = "1.根据手机号码获取用户信息" +
+                        "2.根据手机号码获取用户信息（聚合）")
     public void test1(){
         try{
             String loginPwd="123456";
