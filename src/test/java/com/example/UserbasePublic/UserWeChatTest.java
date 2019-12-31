@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URI;
 
 @SpringBootTest
-public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
+public class UserWeChatTest extends AbstractTestNGSpringContextTests{
 
     @Autowired
     private UserBaseInfoMapper userBaseInfoMapper;//数据库取数据用
@@ -30,7 +30,6 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
     private static URI uri;
     private static HttpPost post;
     private static HttpResponse response;
-
 
     @Test(description = "1.微信绑定" +
             "            2.微信解绑 ")
@@ -45,7 +44,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             byteArrayEntity = DataTransferUtil.userWeChatAuthRequest(AppId, channelId,channelUserId,openId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
-            HttpResponse response = httpClient.execute(post);
+            response = httpClient.execute(post);
             String bindResponseMsg = CheckReponseResult.AssertResponse(response);
             Assert.assertEquals("RESP_CODE_SUCCESS",bindResponseMsg);
             CheckDatabase.CheckDatabaseInfo(userBaseInfoMapper,"WeChatInfoBind",channelUserId,channelUserId);
@@ -83,7 +82,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             byteArrayEntity = DataTransferUtil.userWeChatOneKeyLoginRequest(channelId,"17702015334","177417","86");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
-            HttpResponse response = httpClient.execute(post);
+            response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthInfoResponse.class);
 
         }catch (Exception e){
@@ -110,7 +109,7 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             byteArrayEntity = DataTransferUtil.UserWeChatAuthLoginRequest(channelId,"3692091",openId,appId);
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
-            HttpResponse response = httpClient.execute(post);
+            response = httpClient.execute(post);
             CheckReponseResult.AssertResponses(response,UserWeChatAuthServiceProto.UserWeChatAuthLoginResponse.class);
 
             //根据openId查询用户微信列表信息
@@ -133,4 +132,16 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             }
         }
     }
+
+    @Test(description = "用户一键登录微信")
+    public void checkPhoneTest(){
+
+
+
+
+    }
+
+
+
+
 }

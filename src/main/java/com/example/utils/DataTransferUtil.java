@@ -127,7 +127,7 @@ public class DataTransferUtil {
         UserBaseServiceProto.UserInfoByMobileRequest.Builder builder=UserBaseServiceProto.UserInfoByMobileRequest.newBuilder();
         builder.setChannelId(channelId);
         builder.setMobile(mobile);
-        builder.setMobileAreaCode(mobileAreaCode);
+        //builder.setMobileAreaCode(mobileAreaCode);
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         System.out.println(builder);
         if(responseClass.equals("userInfoPdCombine")){
@@ -209,8 +209,6 @@ public class DataTransferUtil {
         }
         return bytes;
     }
-
-
     //用户忘记登录密码
     public static ByteArrayEntity userForgetPwdRequest(Integer channelId, String loginPwd, String mobile){
         UserLoginInfoServiceProto.UserForgetPwdRequest.Builder builder=UserLoginInfoServiceProto.UserForgetPwdRequest.newBuilder();
@@ -220,6 +218,11 @@ public class DataTransferUtil {
         ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
         return bytes;
     }
+
+    /**
+     * 用户微信中心
+     */
+
     //微信绑定
     public static ByteArrayEntity userWeChatAuthRequest(String appId, Integer channelId, String channelUserId, String openId){
         UserWeChatAuthServiceProto.UserWeChatAuthRequest.Builder builder=UserWeChatAuthServiceProto.UserWeChatAuthRequest.newBuilder();
@@ -289,6 +292,11 @@ public class DataTransferUtil {
         Reporter.log("根据openId获取用户微信信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
+
+
+
+
     //根据查询条件查询用户列表
     public static ByteArrayEntity UserBaseInfoByConditionRequest(String channelUserId,Integer channelId){
         UserBaseServiceProto.UserBaseInfoByConditionRequest.Builder builder= UserBaseServiceProto.UserBaseInfoByConditionRequest.newBuilder();

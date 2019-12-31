@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.net.URI;
 
-//https://blog.csdn.net/qq_16605855/article/details/81183990  testNg集成springboot框架
+//https://blog.csdn.net/qq_16605855/article/details/81183990(testNg集成SpringBoot)
 @SpringBootTest
 public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
@@ -135,16 +135,27 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
                         "2.根据手机号码获取用户信息（聚合）")
     public void test1(){
         try{
+            //规则：userbase里面得手机号和要在映射表userindx里面得indexid有才行
             //根据手机号码获取用户信息
             httpClient = HttpClients.createDefault();
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
             post = new HttpPost(uri);
-            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("13486667245","86",channelId,"UserBaseInfo");
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("18756989065","86",channelId,"UserBaseInfo");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            //校验结果
             CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+
+            //根据手机号码获取用户信息（聚合）
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/getUserInfoByMobile", "");
+            post = new HttpPost(uri);
+            byteArrayEntity = DataTransferUtil.UserInfoByMobileRequest("18756989065","86",channelId,"UserBaseInfo");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserBaseServiceProto.UserBaseInfo.class);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -272,39 +283,6 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
-
-
-    @Test(description = "获取用户基础信息(幂等)")
-    public void getUserBaseInfoTest(){
-        try {
-
-            httpClient=HttpClients.createDefault();
-            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/getUserBaseInfo","");
-            System.out.println(uri);
-            post = new HttpPost(uri);;
-            byteArrayEntity = DataTransferUtil.UserInfoRequest(channelId, "3692091");
-            post.setEntity(byteArrayEntity);
-            post.setHeader("Content-Type", "application/x-protobuf");
-            response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserBaseInfo.class);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-    }
-
-
-
-
-
 }
 
 
