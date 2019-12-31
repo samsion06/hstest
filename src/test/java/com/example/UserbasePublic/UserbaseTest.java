@@ -32,7 +32,8 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
 
     @Test(description = "1.用户登录" +
                      "   2.获取用户基础信息" +
-                     "   3.修改头像")
+                     "   3.修改昵称" +
+                     "   4.修改头像")
     public void LoginAndUpdate() {
         String mobile = "17720130632"; //3692091
         String pwd = "123456";
