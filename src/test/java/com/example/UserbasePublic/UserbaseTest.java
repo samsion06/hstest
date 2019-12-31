@@ -275,7 +275,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
-            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserBaseInfo.class);
 
         } catch (Exception e) {
             e.printStackTrace();
