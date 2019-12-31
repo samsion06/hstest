@@ -31,7 +31,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
     private static HttpResponse response;
 
     @Test(description = "1.用户登录" +
-                     "   2.修改昵称" +
+                     "   2.获取用户基础信息" +
                      "   3.修改头像")
     public void LoginAndUpdate() {
         String mobile = "17720130632"; //3692091
@@ -52,6 +52,16 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             String result = CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
             String ChannelUserId = DataUtils.substring(result, "userId", 10, ",", 1);
             System.out.println(ChannelUserId);
+
+            //获取用户基础信息
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/getUserBaseInfo","");
+            System.out.println(uri);
+            post = new HttpPost(uri);;
+            byteArrayEntity = DataTransferUtil.UserInfoRequest(channelId, ChannelUserId);
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.UserBaseInfo.class);
 
             //修改昵称
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/nick/name/update", "");
@@ -271,7 +281,7 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/getUserBaseInfo","");
             System.out.println(uri);
             post = new HttpPost(uri);;
-            byteArrayEntity = DataTransferUtil.UserInfoRequest(channelId, "3692080");
+            byteArrayEntity = DataTransferUtil.UserInfoRequest(channelId, "3692091");
             post.setEntity(byteArrayEntity);
             post.setHeader("Content-Type", "application/x-protobuf");
             response = httpClient.execute(post);
