@@ -10,7 +10,7 @@ public class UserLoginInfo {
     private String loginName;
     private String loginPwd;
     private String loginSalt;
-    private String isDelete;
+    private Integer isDelete;
     private Date creatTime;
     private Date updateTime;
 
@@ -70,11 +70,11 @@ public class UserLoginInfo {
         this.loginSalt = loginSalt;
     }
 
-    public String getIsDelete() {
+    public Integer getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(String isDelete) {
+    public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
 
@@ -104,10 +104,9 @@ public class UserLoginInfo {
                 ", loginName='" + loginName + '\'' +
                 ", loginPwd='" + loginPwd + '\'' +
                 ", loginSalt='" + loginSalt + '\'' +
-                ", isDelete='" + isDelete + '\'' +
+                ", isDelete=" + isDelete +
                 ", creatTime=" + creatTime +
                 ", updateTime=" + updateTime +
                 '}';
     }
-
 }
