@@ -133,17 +133,4 @@ public class UserWeChatTest  extends AbstractTestNGSpringContextTests{
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
