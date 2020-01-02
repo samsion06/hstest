@@ -133,6 +133,21 @@ public class UserAddressTest extends AbstractTestNGSpringContextTests {
         }
     }
 
+    @Test(description ="更新用户收货地址标签(幂等)2020/01/02")
+    public void tagUpdateTest(){
+        try{
+            httpClient = HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/address/tag/update", null);
+            post = new HttpPost(uri);
+            byteArrayEntity =  DataTransferUtil.UserAddressTagRequest("5201314",1,"1",1);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response,UserAddressServiceProto.SysAreaNodeTreeResponse.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 
