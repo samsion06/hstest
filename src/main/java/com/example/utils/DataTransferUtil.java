@@ -116,6 +116,20 @@ public class DataTransferUtil {
         Reporter.log("获取用户信息_"+incomeMessage+builder+ "}");
         return bytes;
     }
+
+    //修改用户身份状态
+    public static ByteArrayEntity UserStatusUpdateRequest(Integer channelId, String unionId, String openId){
+        UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.Builder builder= UserBaseServiceProto.UserInfoUnionIdOpenIdRequest.newBuilder();
+        builder.setChannelId(channelId);
+        builder.setOpenId(openId);
+        builder.setUnionId(unionId);
+        //System.out.println(builder);
+        ByteArrayEntity bytes=new ByteArrayEntity(builder.build().toByteArray());
+        Reporter.log("修改用户身份状态_"+incomeMessage+builder+ "}");
+        return bytes;
+    }
+
+
     //获取用户基础信息
     public static ByteArrayEntity UserInfoRequest(Integer channelId,String channelUserId){
         UserBaseServiceProto.UserInfoRequest.Builder builder=UserBaseServiceProto.UserInfoRequest.newBuilder();

@@ -284,6 +284,25 @@ public class UserbaseTest extends AbstractTestNGSpringContextTests {
             }
         }
     }
+
+    @Test(description = "修改用户身份状态")
+    public void userStatusUpdate(){
+
+        try{
+            httpClient=HttpClients.createDefault();
+            uri = new URI(HttpConfigUtil.scheme, HttpConfigUtil.url, "/base/user/status/update ","");
+            System.out.println(uri);
+            post = new HttpPost(uri);;
+            byteArrayEntity = DataTransferUtil.UserStatusUpdateRequest(channelId, "ox-FY1f0_ub3FnM_v9n7ITb1q-f0", "oBrt31Sg6EqD9DJxB0Mz9EOl-Pp4");
+            post.setEntity(byteArrayEntity);
+            post.setHeader("Content-Type", "application/x-protobuf");
+            response = httpClient.execute(post);
+            CheckReponseResult.AssertResponses(response, UserBaseServiceProto.userInfoPdCombine.class);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
 
 
